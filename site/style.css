@@ -151,6 +151,8 @@ nav a {
   margin-block: 0.5rem;
 }
 
+/* The page itself never scrolls sideways (body wraps long text); the tables
+   scroll inside .table-wrap instead, so columns keep readable widths. */
 table {
   border-collapse: collapse;
   width: 100%;
@@ -169,10 +171,46 @@ td {
   border-bottom: 1px solid var(--rule);
   text-align: left;
   vertical-align: top;
+  /* Undo body's `overflow-wrap:anywhere` inside tables: words and numbers must
+     never split mid-token, the wrapper scrolls instead. */
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
 }
 
 thead th {
   border-bottom: 2px solid var(--line);
+  white-space: nowrap;
+}
+
+/* Short codes and numbers stay on one line. */
+#standings tbody th,
+#standings tbody td,
+#schedule tbody td:nth-child(1),
+#schedule tbody td:nth-child(2),
+#schedule tbody td:nth-child(3) {
+  white-space: nowrap;
+}
+
+/* Standings is all short columns: show it at its natural width and let the
+   wrapper scroll when the viewport cannot hold it. */
+#standings table {
+  min-width: max-content;
+}
+
+/* Schedule: the Match, Venue and Result/Status cells wrap at word boundaries
+   only, with a floor so rows stay short instead of collapsing into a tall
+   one-letter column. */
+#schedule tbody td:nth-child(4) {
+  min-width: 7rem;
+}
+
+#schedule tbody td:nth-child(5) {
+  min-width: 9rem;
+}
+
+#schedule tbody td:nth-child(6) {
+  min-width: 11rem;
 }
 
 tr.completed td,
@@ -205,6 +243,19 @@ tr.next-match {
 }
 
 @media (max-width: 480px) {
+  /* Narrow screens: tighter cells and shorter leading keep the scrolled
+     schedule rows compact; the standings then fit without scrolling. */
+  #schedule th,
+  #schedule td {
+    padding-inline: 0.5rem;
+    line-height: 1.4;
+  }
+
+  #standings th,
+  #standings td {
+    padding-inline: 0.4rem;
+  }
+
   .team-short {
     display: inline;
   }
