@@ -1,0 +1,1172 @@
+{
+  "schema_version": 1,
+  "season": {
+    "year": 2026,
+    "name": "NPL 2026 (Season 3)",
+    "timezone": "Asia/Kathmandu",
+    "utc_offset": "+05:45"
+  },
+  "updated_at": "2026-10-29T15:04:01Z",
+  "source": {
+    "name": "nplt20league.com",
+    "url": "https://nplt20league.com/"
+  },
+  "teams": [
+    {
+      "slug": "biratnagar-kings",
+      "name": "Biratnagar Kings",
+      "short": "BIK"
+    },
+    {
+      "slug": "chitwan-rhinos",
+      "name": "Chitwan Rhinos",
+      "short": "CHR"
+    },
+    {
+      "slug": "janakpur-bolts",
+      "name": "Janakpur Bolts",
+      "short": "JAB"
+    },
+    {
+      "slug": "karnali-yaks",
+      "name": "Karnali Yaks",
+      "short": "KAY"
+    },
+    {
+      "slug": "kathmandu-gurkhas",
+      "name": "Kathmandu Gurkhas",
+      "short": "KAG"
+    },
+    {
+      "slug": "lumbini-lions",
+      "name": "Lumbini Lions",
+      "short": "LUL"
+    },
+    {
+      "slug": "pokhara-avengers",
+      "name": "Pokhara Avengers",
+      "short": "POA"
+    },
+    {
+      "slug": "sudurpaschim-royals",
+      "name": "Sudurpaschim Royals",
+      "short": "SPR"
+    }
+  ],
+  "standings": [
+    {
+      "position": 1,
+      "team": "karnali-yaks",
+      "played": 2,
+      "won": 2,
+      "lost": 0,
+      "tied": 0,
+      "no_result": 0,
+      "points": 4,
+      "nrr": 0.534
+    },
+    {
+      "position": 2,
+      "team": "lumbini-lions",
+      "played": 1,
+      "won": 1,
+      "lost": 0,
+      "tied": 0,
+      "no_result": 0,
+      "points": 2,
+      "nrr": 4.599
+    },
+    {
+      "position": 3,
+      "team": "chitwan-rhinos",
+      "played": 1,
+      "won": 1,
+      "lost": 0,
+      "tied": 0,
+      "no_result": 0,
+      "points": 2,
+      "nrr": 0.4
+    },
+    {
+      "position": 4,
+      "team": "janakpur-bolts",
+      "played": 2,
+      "won": 1,
+      "lost": 1,
+      "tied": 0,
+      "no_result": 0,
+      "points": 2,
+      "nrr": -0.041
+    },
+    {
+      "position": 5,
+      "team": "sudurpaschim-royals",
+      "played": 2,
+      "won": 1,
+      "lost": 1,
+      "tied": 0,
+      "no_result": 0,
+      "points": 2,
+      "nrr": -1.43
+    },
+    {
+      "position": 6,
+      "team": "biratnagar-kings",
+      "played": 2,
+      "won": 0,
+      "lost": 2,
+      "tied": 0,
+      "no_result": 0,
+      "points": 0,
+      "nrr": -0.262
+    },
+    {
+      "position": 7,
+      "team": "kathmandu-gurkhas",
+      "played": 1,
+      "won": 0,
+      "lost": 1,
+      "tied": 0,
+      "no_result": 0,
+      "points": 0,
+      "nrr": -0.944
+    },
+    {
+      "position": 8,
+      "team": "pokhara-avengers",
+      "played": 1,
+      "won": 0,
+      "lost": 1,
+      "tied": 0,
+      "no_result": 0,
+      "points": 0,
+      "nrr": -1.542
+    }
+  ],
+  "matches": [
+    {
+      "number": 1,
+      "label": "Match 1",
+      "stage": "league",
+      "id": "435ca870-c3a0-40ac-a251-5d9f62a084b7",
+      "start_utc": "2026-10-26T11:15:00Z",
+      "venue": "Tribhuvan University Cricket Ground, Kirtipur",
+      "status": "completed",
+      "status_raw": "completed",
+      "teams": [
+        {
+          "slug": "lumbini-lions",
+          "name": "Lumbini Lions",
+          "short": "LUL",
+          "placeholder": false,
+          "score": "88/3",
+          "overs": "9.5"
+        },
+        {
+          "slug": "sudurpaschim-royals",
+          "name": "Sudurpaschim Royals",
+          "short": "SPR",
+          "placeholder": false,
+          "score": "87/10",
+          "overs": "17.2"
+        }
+      ],
+      "result": "Lumbini Lions won by 7 wickets",
+      "outcome": "result",
+      "winner": "lumbini-lions",
+      "updated_at": "2026-10-26T18:45:25Z"
+    },
+    {
+      "number": 2,
+      "label": "Match 2",
+      "stage": "league",
+      "id": "e3f7843d-d68b-4f0e-9211-9db483edbf01",
+      "start_utc": "2026-10-27T06:45:00Z",
+      "venue": "Tribhuvan University Cricket Ground, Kirtipur",
+      "status": "completed",
+      "status_raw": "completed",
+      "teams": [
+        {
+          "slug": "biratnagar-kings",
+          "name": "Biratnagar Kings",
+          "short": "BIK",
+          "placeholder": false,
+          "score": "149/10",
+          "overs": "19.3"
+        },
+        {
+          "slug": "chitwan-rhinos",
+          "name": "Chitwan Rhinos",
+          "short": "CHR",
+          "placeholder": false,
+          "score": "157/3",
+          "overs": "20.0"
+        }
+      ],
+      "result": "Chitwan Rhinos won by 8 runs",
+      "outcome": "result",
+      "winner": "chitwan-rhinos",
+      "updated_at": "2026-10-27T10:31:42Z"
+    },
+    {
+      "number": 3,
+      "label": "Match 3",
+      "stage": "league",
+      "id": "4692623d-87a8-4303-8507-7e356786e3b9",
+      "start_utc": "2026-10-27T11:15:00Z",
+      "venue": "Tribhuvan University Cricket Ground, Kirtipur",
+      "status": "completed",
+      "status_raw": "completed",
+      "teams": [
+        {
+          "slug": "karnali-yaks",
+          "name": "Karnali Yaks",
+          "short": "KAY",
+          "placeholder": false,
+          "score": "132/9",
+          "overs": "20.0"
+        },
+        {
+          "slug": "janakpur-bolts",
+          "name": "Janakpur Bolts",
+          "short": "JAB",
+          "placeholder": false,
+          "score": "113/10",
+          "overs": "19.3"
+        }
+      ],
+      "result": "Karnali Yaks won by 19 runs",
+      "outcome": "result",
+      "winner": "karnali-yaks",
+      "updated_at": "2026-10-27T15:08:21Z"
+    },
+    {
+      "number": 4,
+      "label": "Match 4",
+      "stage": "league",
+      "id": "fa630c2b-6f7c-41bb-8a14-3d7dc04ef774",
+      "start_utc": "2026-10-28T11:15:00Z",
+      "venue": "Tribhuvan University Cricket Ground, Kirtipur",
+      "status": "completed",
+      "status_raw": "completed",
+      "teams": [
+        {
+          "slug": "pokhara-avengers",
+          "name": "Pokhara Avengers",
+          "short": "POA",
+          "placeholder": false,
+          "score": "145/7",
+          "overs": "20.0"
+        },
+        {
+          "slug": "sudurpaschim-royals",
+          "name": "Sudurpaschim Royals",
+          "short": "SPR",
+          "placeholder": false,
+          "score": "148/4",
+          "overs": "16.5"
+        }
+      ],
+      "result": "Sudurpaschim Royals won by 6 wickets",
+      "outcome": "result",
+      "winner": "sudurpaschim-royals",
+      "updated_at": "2026-10-28T14:45:07Z"
+    },
+    {
+      "number": 5,
+      "label": "Match 5",
+      "stage": "league",
+      "id": "556a0688-fba5-434f-945b-80dd545a975d",
+      "start_utc": "2026-10-29T06:45:00Z",
+      "venue": "Tribhuvan University Cricket Ground, Kirtipur",
+      "status": "completed",
+      "status_raw": "completed",
+      "teams": [
+        {
+          "slug": "janakpur-bolts",
+          "name": "Janakpur Bolts",
+          "short": "JAB",
+          "placeholder": false,
+          "score": "116/2",
+          "overs": "17.2"
+        },
+        {
+          "slug": "kathmandu-gurkhas",
+          "name": "Kathmandu Gurkhas",
+          "short": "KAG",
+          "placeholder": false,
+          "score": "115/10",
+          "overs": "19.3"
+        }
+      ],
+      "result": "Janakpur Bolts won by 8 wickets",
+      "outcome": "result",
+      "winner": "janakpur-bolts",
+      "updated_at": "2026-10-29T09:55:56Z"
+    },
+    {
+      "number": 6,
+      "label": "Match 6",
+      "stage": "league",
+      "id": "67f0e92c-7a75-4c40-84f8-666e42837cb8",
+      "start_utc": "2026-10-29T11:15:00Z",
+      "venue": "Tribhuvan University Cricket Ground, Kirtipur",
+      "status": "completed",
+      "status_raw": "completed",
+      "teams": [
+        {
+          "slug": "karnali-yaks",
+          "name": "Karnali Yaks",
+          "short": "KAY",
+          "placeholder": false,
+          "score": "187/6",
+          "overs": "19.5"
+        },
+        {
+          "slug": "biratnagar-kings",
+          "name": "Biratnagar Kings",
+          "short": "BIK",
+          "placeholder": false,
+          "score": "186/7",
+          "overs": "20.0"
+        }
+      ],
+      "result": "Karnali Yaks won by 4 wickets",
+      "outcome": "result",
+      "winner": "karnali-yaks",
+      "updated_at": "2026-10-29T14:58:56Z"
+    },
+    {
+      "number": 7,
+      "label": "Match 7",
+      "stage": "league",
+      "id": "060d9ee1-05c3-4c56-833c-ba7a127be1c8",
+      "start_utc": "2026-10-31T06:45:00Z",
+      "venue": "Tribhuvan University Cricket Ground, Kirtipur",
+      "status": "scheduled",
+      "status_raw": "start_in",
+      "teams": [
+        {
+          "slug": "lumbini-lions",
+          "name": "Lumbini Lions",
+          "short": "LUL",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        },
+        {
+          "slug": "chitwan-rhinos",
+          "name": "Chitwan Rhinos",
+          "short": "CHR",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        }
+      ],
+      "result": null,
+      "outcome": null,
+      "winner": null,
+      "updated_at": "2026-10-29T14:58:56Z"
+    },
+    {
+      "number": 8,
+      "label": "Match 8",
+      "stage": "league",
+      "id": "ba0cacbf-47e0-409e-9b77-a31a0b8da5b4",
+      "start_utc": "2026-10-31T11:15:00Z",
+      "venue": "Tribhuvan University Cricket Ground, Kirtipur",
+      "status": "scheduled",
+      "status_raw": "scheduled",
+      "teams": [
+        {
+          "slug": "sudurpaschim-royals",
+          "name": "Sudurpaschim Royals",
+          "short": "SPR",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        },
+        {
+          "slug": "biratnagar-kings",
+          "name": "Biratnagar Kings",
+          "short": "BIK",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        }
+      ],
+      "result": null,
+      "outcome": null,
+      "winner": null,
+      "updated_at": "2026-10-26T18:45:03Z"
+    },
+    {
+      "number": 9,
+      "label": "Match 9",
+      "stage": "league",
+      "id": "c419c00f-0390-4894-8109-bb46c3736d7d",
+      "start_utc": "2026-11-01T11:15:00Z",
+      "venue": "Tribhuvan University Cricket Ground, Kirtipur",
+      "status": "scheduled",
+      "status_raw": "scheduled",
+      "teams": [
+        {
+          "slug": "janakpur-bolts",
+          "name": "Janakpur Bolts",
+          "short": "JAB",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        },
+        {
+          "slug": "pokhara-avengers",
+          "name": "Pokhara Avengers",
+          "short": "POA",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        }
+      ],
+      "result": null,
+      "outcome": null,
+      "winner": null,
+      "updated_at": "2026-10-26T18:45:04Z"
+    },
+    {
+      "number": 10,
+      "label": "Match 10",
+      "stage": "league",
+      "id": "50b7ba7f-9983-49af-9a1f-cc675280d7aa",
+      "start_utc": "2026-11-02T06:45:00Z",
+      "venue": "Tribhuvan University Cricket Ground, Kirtipur",
+      "status": "scheduled",
+      "status_raw": "scheduled",
+      "teams": [
+        {
+          "slug": "kathmandu-gurkhas",
+          "name": "Kathmandu Gurkhas",
+          "short": "KAG",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        },
+        {
+          "slug": "karnali-yaks",
+          "name": "Karnali Yaks",
+          "short": "KAY",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        }
+      ],
+      "result": null,
+      "outcome": null,
+      "winner": null,
+      "updated_at": "2026-10-26T18:45:04Z"
+    },
+    {
+      "number": 11,
+      "label": "Match 11",
+      "stage": "league",
+      "id": "09ec0dac-f99b-47c6-8cbb-78551efc870c",
+      "start_utc": "2026-11-02T11:15:00Z",
+      "venue": "Tribhuvan University Cricket Ground, Kirtipur",
+      "status": "scheduled",
+      "status_raw": "scheduled",
+      "teams": [
+        {
+          "slug": "sudurpaschim-royals",
+          "name": "Sudurpaschim Royals",
+          "short": "SPR",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        },
+        {
+          "slug": "chitwan-rhinos",
+          "name": "Chitwan Rhinos",
+          "short": "CHR",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        }
+      ],
+      "result": null,
+      "outcome": null,
+      "winner": null,
+      "updated_at": "2026-10-26T18:45:05Z"
+    },
+    {
+      "number": 12,
+      "label": "Match 12",
+      "stage": "league",
+      "id": "5872b8ea-4c72-4878-ba6e-91282eb4a7ea",
+      "start_utc": "2026-11-03T06:45:00Z",
+      "venue": "Tribhuvan University Cricket Ground, Kirtipur",
+      "status": "scheduled",
+      "status_raw": "scheduled",
+      "teams": [
+        {
+          "slug": "biratnagar-kings",
+          "name": "Biratnagar Kings",
+          "short": "BIK",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        },
+        {
+          "slug": "janakpur-bolts",
+          "name": "Janakpur Bolts",
+          "short": "JAB",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        }
+      ],
+      "result": null,
+      "outcome": null,
+      "winner": null,
+      "updated_at": "2026-10-26T18:45:06Z"
+    },
+    {
+      "number": 13,
+      "label": "Match 13",
+      "stage": "league",
+      "id": "bdec2717-af6e-464b-804a-d17cf599f20f",
+      "start_utc": "2026-11-03T11:15:00Z",
+      "venue": "Tribhuvan University Cricket Ground, Kirtipur",
+      "status": "scheduled",
+      "status_raw": "scheduled",
+      "teams": [
+        {
+          "slug": "lumbini-lions",
+          "name": "Lumbini Lions",
+          "short": "LUL",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        },
+        {
+          "slug": "pokhara-avengers",
+          "name": "Pokhara Avengers",
+          "short": "POA",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        }
+      ],
+      "result": null,
+      "outcome": null,
+      "winner": null,
+      "updated_at": "2026-10-26T18:45:06Z"
+    },
+    {
+      "number": 14,
+      "label": "Match 14",
+      "stage": "league",
+      "id": "dac87ddf-f7c0-4dd9-9c72-5790f344bd8c",
+      "start_utc": "2026-11-05T06:45:00Z",
+      "venue": "Tribhuvan University Cricket Ground, Kirtipur",
+      "status": "scheduled",
+      "status_raw": "scheduled",
+      "teams": [
+        {
+          "slug": "lumbini-lions",
+          "name": "Lumbini Lions",
+          "short": "LUL",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        },
+        {
+          "slug": "janakpur-bolts",
+          "name": "Janakpur Bolts",
+          "short": "JAB",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        }
+      ],
+      "result": null,
+      "outcome": null,
+      "winner": null,
+      "updated_at": "2026-10-26T18:45:07Z"
+    },
+    {
+      "number": 15,
+      "label": "Match 15",
+      "stage": "league",
+      "id": "e3a06b01-4537-4f45-abe2-889e1ccb86fc",
+      "start_utc": "2026-11-05T11:15:00Z",
+      "venue": "Tribhuvan University Cricket Ground, Kirtipur",
+      "status": "scheduled",
+      "status_raw": "scheduled",
+      "teams": [
+        {
+          "slug": "kathmandu-gurkhas",
+          "name": "Kathmandu Gurkhas",
+          "short": "KAG",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        },
+        {
+          "slug": "biratnagar-kings",
+          "name": "Biratnagar Kings",
+          "short": "BIK",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        }
+      ],
+      "result": null,
+      "outcome": null,
+      "winner": null,
+      "updated_at": "2026-10-26T18:45:07Z"
+    },
+    {
+      "number": 16,
+      "label": "Match 16",
+      "stage": "league",
+      "id": "a564936f-d565-4a92-8520-4b3f0c500a00",
+      "start_utc": "2026-11-06T06:45:00Z",
+      "venue": "Tribhuvan University Cricket Ground, Kirtipur",
+      "status": "scheduled",
+      "status_raw": "scheduled",
+      "teams": [
+        {
+          "slug": "sudurpaschim-royals",
+          "name": "Sudurpaschim Royals",
+          "short": "SPR",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        },
+        {
+          "slug": "karnali-yaks",
+          "name": "Karnali Yaks",
+          "short": "KAY",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        }
+      ],
+      "result": null,
+      "outcome": null,
+      "winner": null,
+      "updated_at": "2026-10-26T18:45:08Z"
+    },
+    {
+      "number": 17,
+      "label": "Match 17",
+      "stage": "league",
+      "id": "bd1112b8-36e7-40ca-8156-66d98385f0ad",
+      "start_utc": "2026-11-06T11:15:00Z",
+      "venue": "Tribhuvan University Cricket Ground, Kirtipur",
+      "status": "scheduled",
+      "status_raw": "scheduled",
+      "teams": [
+        {
+          "slug": "chitwan-rhinos",
+          "name": "Chitwan Rhinos",
+          "short": "CHR",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        },
+        {
+          "slug": "pokhara-avengers",
+          "name": "Pokhara Avengers",
+          "short": "POA",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        }
+      ],
+      "result": null,
+      "outcome": null,
+      "winner": null,
+      "updated_at": "2026-10-26T18:45:09Z"
+    },
+    {
+      "number": 18,
+      "label": "Match 18",
+      "stage": "league",
+      "id": "ec1ace55-103d-4f74-94d0-c00334bbe397",
+      "start_utc": "2026-11-07T11:15:00Z",
+      "venue": "Tribhuvan University Cricket Ground, Kirtipur",
+      "status": "scheduled",
+      "status_raw": "scheduled",
+      "teams": [
+        {
+          "slug": "kathmandu-gurkhas",
+          "name": "Kathmandu Gurkhas",
+          "short": "KAG",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        },
+        {
+          "slug": "lumbini-lions",
+          "name": "Lumbini Lions",
+          "short": "LUL",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        }
+      ],
+      "result": null,
+      "outcome": null,
+      "winner": null,
+      "updated_at": "2026-10-26T18:45:09Z"
+    },
+    {
+      "number": 19,
+      "label": "Match 19",
+      "stage": "league",
+      "id": "9b4f5f44-d6dc-44fe-8e4d-a127e6360729",
+      "start_utc": "2026-11-09T06:45:00Z",
+      "venue": "Tribhuvan University Cricket Ground, Kirtipur",
+      "status": "scheduled",
+      "status_raw": "scheduled",
+      "teams": [
+        {
+          "slug": "pokhara-avengers",
+          "name": "Pokhara Avengers",
+          "short": "POA",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        },
+        {
+          "slug": "karnali-yaks",
+          "name": "Karnali Yaks",
+          "short": "KAY",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        }
+      ],
+      "result": null,
+      "outcome": null,
+      "winner": null,
+      "updated_at": "2026-10-26T18:45:10Z"
+    },
+    {
+      "number": 20,
+      "label": "Match 20",
+      "stage": "league",
+      "id": "97d8b00f-cf83-4430-bde3-86c6362789d5",
+      "start_utc": "2026-11-09T11:15:00Z",
+      "venue": "Tribhuvan University Cricket Ground, Kirtipur",
+      "status": "scheduled",
+      "status_raw": "scheduled",
+      "teams": [
+        {
+          "slug": "chitwan-rhinos",
+          "name": "Chitwan Rhinos",
+          "short": "CHR",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        },
+        {
+          "slug": "kathmandu-gurkhas",
+          "name": "Kathmandu Gurkhas",
+          "short": "KAG",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        }
+      ],
+      "result": null,
+      "outcome": null,
+      "winner": null,
+      "updated_at": "2026-10-26T18:45:11Z"
+    },
+    {
+      "number": 21,
+      "label": "Match 21",
+      "stage": "league",
+      "id": "5253e941-abad-4456-8350-e19a3c4701e4",
+      "start_utc": "2026-11-10T11:15:00Z",
+      "venue": "Tribhuvan University Cricket Ground, Kirtipur",
+      "status": "scheduled",
+      "status_raw": "scheduled",
+      "teams": [
+        {
+          "slug": "sudurpaschim-royals",
+          "name": "Sudurpaschim Royals",
+          "short": "SPR",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        },
+        {
+          "slug": "janakpur-bolts",
+          "name": "Janakpur Bolts",
+          "short": "JAB",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        }
+      ],
+      "result": null,
+      "outcome": null,
+      "winner": null,
+      "updated_at": "2026-10-26T18:45:11Z"
+    },
+    {
+      "number": 22,
+      "label": "Match 22",
+      "stage": "league",
+      "id": "7e484214-93c1-4306-99a3-606d72049c80",
+      "start_utc": "2026-11-12T06:45:00Z",
+      "venue": "Tribhuvan University Cricket Ground, Kirtipur",
+      "status": "scheduled",
+      "status_raw": "scheduled",
+      "teams": [
+        {
+          "slug": "biratnagar-kings",
+          "name": "Biratnagar Kings",
+          "short": "BIK",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        },
+        {
+          "slug": "pokhara-avengers",
+          "name": "Pokhara Avengers",
+          "short": "POA",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        }
+      ],
+      "result": null,
+      "outcome": null,
+      "winner": null,
+      "updated_at": "2026-10-26T18:45:12Z"
+    },
+    {
+      "number": 23,
+      "label": "Match 23",
+      "stage": "league",
+      "id": "2128dd61-e2fd-44c9-8756-e122b196522c",
+      "start_utc": "2026-11-12T11:15:00Z",
+      "venue": "Tribhuvan University Cricket Ground, Kirtipur",
+      "status": "scheduled",
+      "status_raw": "scheduled",
+      "teams": [
+        {
+          "slug": "karnali-yaks",
+          "name": "Karnali Yaks",
+          "short": "KAY",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        },
+        {
+          "slug": "lumbini-lions",
+          "name": "Lumbini Lions",
+          "short": "LUL",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        }
+      ],
+      "result": null,
+      "outcome": null,
+      "winner": null,
+      "updated_at": "2026-10-26T18:45:12Z"
+    },
+    {
+      "number": 24,
+      "label": "Match 24",
+      "stage": "league",
+      "id": "05fc741a-7005-44a6-89a6-e94eeb0b5ed7",
+      "start_utc": "2026-11-13T06:45:00Z",
+      "venue": "Tribhuvan University Cricket Ground, Kirtipur",
+      "status": "scheduled",
+      "status_raw": "scheduled",
+      "teams": [
+        {
+          "slug": "kathmandu-gurkhas",
+          "name": "Kathmandu Gurkhas",
+          "short": "KAG",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        },
+        {
+          "slug": "sudurpaschim-royals",
+          "name": "Sudurpaschim Royals",
+          "short": "SPR",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        }
+      ],
+      "result": null,
+      "outcome": null,
+      "winner": null,
+      "updated_at": "2026-10-26T18:45:13Z"
+    },
+    {
+      "number": 25,
+      "label": "Match 25",
+      "stage": "league",
+      "id": "79e5ef79-d23a-43b6-9ae4-9b83a02e6a03",
+      "start_utc": "2026-11-13T11:15:00Z",
+      "venue": "Tribhuvan University Cricket Ground, Kirtipur",
+      "status": "scheduled",
+      "status_raw": "scheduled",
+      "teams": [
+        {
+          "slug": "janakpur-bolts",
+          "name": "Janakpur Bolts",
+          "short": "JAB",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        },
+        {
+          "slug": "chitwan-rhinos",
+          "name": "Chitwan Rhinos",
+          "short": "CHR",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        }
+      ],
+      "result": null,
+      "outcome": null,
+      "winner": null,
+      "updated_at": "2026-10-26T18:45:14Z"
+    },
+    {
+      "number": 26,
+      "label": "Match 26",
+      "stage": "league",
+      "id": "649b55fe-388c-4afc-b586-e6f602636614",
+      "start_utc": "2026-11-14T11:15:00Z",
+      "venue": "Tribhuvan University Cricket Ground, Kirtipur",
+      "status": "scheduled",
+      "status_raw": "scheduled",
+      "teams": [
+        {
+          "slug": "biratnagar-kings",
+          "name": "Biratnagar Kings",
+          "short": "BIK",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        },
+        {
+          "slug": "lumbini-lions",
+          "name": "Lumbini Lions",
+          "short": "LUL",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        }
+      ],
+      "result": null,
+      "outcome": null,
+      "winner": null,
+      "updated_at": "2026-10-26T18:45:14Z"
+    },
+    {
+      "number": 27,
+      "label": "Match 27",
+      "stage": "league",
+      "id": "b544dc2b-d54a-426f-a2b3-24aa5d771bdb",
+      "start_utc": "2026-11-15T06:45:00Z",
+      "venue": "Tribhuvan University Cricket Ground, Kirtipur",
+      "status": "scheduled",
+      "status_raw": "scheduled",
+      "teams": [
+        {
+          "slug": "chitwan-rhinos",
+          "name": "Chitwan Rhinos",
+          "short": "CHR",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        },
+        {
+          "slug": "karnali-yaks",
+          "name": "Karnali Yaks",
+          "short": "KAY",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        }
+      ],
+      "result": null,
+      "outcome": null,
+      "winner": null,
+      "updated_at": "2026-10-26T18:45:15Z"
+    },
+    {
+      "number": 28,
+      "label": "Match 28",
+      "stage": "league",
+      "id": "40e83cb5-ff02-4ebd-895a-9f22627e0126",
+      "start_utc": "2026-11-15T11:15:00Z",
+      "venue": "Tribhuvan University Cricket Ground, Kirtipur",
+      "status": "scheduled",
+      "status_raw": "scheduled",
+      "teams": [
+        {
+          "slug": "pokhara-avengers",
+          "name": "Pokhara Avengers",
+          "short": "POA",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        },
+        {
+          "slug": "kathmandu-gurkhas",
+          "name": "Kathmandu Gurkhas",
+          "short": "KAG",
+          "placeholder": false,
+          "score": null,
+          "overs": null
+        }
+      ],
+      "result": null,
+      "outcome": null,
+      "winner": null,
+      "updated_at": "2026-10-26T18:45:15Z"
+    },
+    {
+      "number": 29,
+      "label": "Qualifier 1",
+      "stage": "qualifier_1",
+      "id": "c7ee0a2c-08dc-4678-b74d-e6bbdc6b9184",
+      "start_utc": "2026-11-17T11:15:00Z",
+      "venue": "Tribhuvan University Cricket Ground, Kirtipur",
+      "status": "scheduled",
+      "status_raw": "scheduled",
+      "teams": [
+        {
+          "slug": null,
+          "name": "1st place",
+          "short": null,
+          "placeholder": true,
+          "score": null,
+          "overs": null
+        },
+        {
+          "slug": null,
+          "name": "2nd place",
+          "short": null,
+          "placeholder": true,
+          "score": null,
+          "overs": null
+        }
+      ],
+      "result": null,
+      "outcome": null,
+      "winner": null,
+      "updated_at": "2026-10-26T18:45:16Z"
+    },
+    {
+      "number": 30,
+      "label": "Eliminator",
+      "stage": "eliminator",
+      "id": "2d342b60-a063-4870-ba02-d59315abd5e5",
+      "start_utc": "2026-11-18T11:15:00Z",
+      "venue": "Tribhuvan University Cricket Ground, Kirtipur",
+      "status": "scheduled",
+      "status_raw": "scheduled",
+      "teams": [
+        {
+          "slug": null,
+          "name": "3rd place",
+          "short": null,
+          "placeholder": true,
+          "score": null,
+          "overs": null
+        },
+        {
+          "slug": null,
+          "name": "4th place",
+          "short": null,
+          "placeholder": true,
+          "score": null,
+          "overs": null
+        }
+      ],
+      "result": null,
+      "outcome": null,
+      "winner": null,
+      "updated_at": "2026-10-26T18:45:17Z"
+    },
+    {
+      "number": 31,
+      "label": "Qualifier 2",
+      "stage": "qualifier_2",
+      "id": "583556a3-4045-4ef8-bafe-ef34db9b6308",
+      "start_utc": "2026-11-19T11:15:00Z",
+      "venue": "Tribhuvan University Cricket Ground, Kirtipur",
+      "status": "scheduled",
+      "status_raw": "scheduled",
+      "teams": [
+        {
+          "slug": null,
+          "name": "Loser of Qualifier 1",
+          "short": null,
+          "placeholder": true,
+          "score": null,
+          "overs": null
+        },
+        {
+          "slug": null,
+          "name": "Winner of Eliminator",
+          "short": null,
+          "placeholder": true,
+          "score": null,
+          "overs": null
+        }
+      ],
+      "result": null,
+      "outcome": null,
+      "winner": null,
+      "updated_at": "2026-10-26T18:45:17Z"
+    },
+    {
+      "number": 32,
+      "label": "Final",
+      "stage": "final",
+      "id": "a97f9321-b9d1-4d84-858f-bfce001c35fe",
+      "start_utc": "2026-11-21T11:15:00Z",
+      "venue": "Tribhuvan University Cricket Ground, Kirtipur",
+      "status": "scheduled",
+      "status_raw": "scheduled",
+      "teams": [
+        {
+          "slug": null,
+          "name": "Winner of Qualifier 1",
+          "short": null,
+          "placeholder": true,
+          "score": null,
+          "overs": null
+        },
+        {
+          "slug": null,
+          "name": "Winner of Qualifier 2",
+          "short": null,
+          "placeholder": true,
+          "score": null,
+          "overs": null
+        }
+      ],
+      "result": null,
+      "outcome": null,
+      "winner": null,
+      "updated_at": "2026-10-26T18:45:18Z"
+    }
+  ]
+}
