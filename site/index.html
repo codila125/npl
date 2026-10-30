@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script>
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem("npl-theme"); } catch (e) {}
+      if (t !== "light" && t !== "dark") {
+        t = window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      }
+      document.documentElement.setAttribute("data-theme", t);
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <title>Nepal Premier League 2026</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header>
+    <h1>Nepal Premier League 2026</h1>
+    <button id="theme-toggle" type="button" aria-pressed="false">Dark mode</button>
+  </header>
+  <nav aria-label="Sections">
+    <ul>
+      <li><a href="#standings">Standings</a></li>
+      <li><a href="#schedule">Schedule</a></li>
+      <li><a href="#calendar">Calendar</a></li>
+    </ul>
+  </nav>
+  <main id="main" aria-busy="true">
+    <div id="live-region" class="visually-hidden" aria-live="polite"></div>
+    <div id="refresh-note" class="refresh-note" hidden></div>
+
+    <section id="standings" aria-labelledby="standings-heading">
+      <h2 id="standings-heading">Standings</h2>
+      <div id="standings-content"><p>Loading…</p></div>
+    </section>
+
+    <section id="schedule" aria-labelledby="schedule-heading">
+      <h2 id="schedule-heading">Schedule</h2>
+      <div id="schedule-content"><p>Loading…</p></div>
+    </section>
+
+    <section id="calendar" aria-labelledby="calendar-heading">
+      <h2 id="calendar-heading">Calendar</h2>
+      <p id="calendar-status">Loading teams…</p>
+      <ul id="calendar-list">
+        <li class="calendar-row" id="all-matches-row">
+          <span class="calendar-name">All matches</span>
+          <span class="calendar-actions">
+            <a class="subscribe" href="webcal://codila125.github.io/npl/calendar/npl.ics">Subscribe</a>
+            <a class="google" target="_blank" rel="noopener"
+               href="https://calendar.google.com/calendar/r?cid=webcal%3A%2F%2Fcodila125.github.io%2Fnpl%2Fcalendar%2Fnpl.ics">Google Calendar</a>
+            <span class="url-line">
+              <span class="calendar-url">https://codila125.github.io/npl/calendar/npl.ics</span>
+              <button type="button" class="copy"
+                      data-url="https://codila125.github.io/npl/calendar/npl.ics">Copy URL</button>
+            </span>
+          </span>
+        </li>
+      </ul>
+    </section>
+  </main>
+  <footer>
+    <p>Unofficial fan site. Data from nplt20league.com, refreshed about every 30 minutes. Source code: github.com/codila125/npl</p>
+  </footer>
+</body>
+</html>

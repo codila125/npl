@@ -1,0 +1,310 @@
+/* Nepal Premier League 2026 — monochrome theme tokens and layout. */
+
+/* tokens:light */
+:root,
+:root[data-theme="light"] {
+  --bg: #ffffff;
+  --fg: #000000;
+  --muted: #595959;
+  --line: #767676;
+  --rule: #d9d9d9;
+  --accent: #8a5a00;
+}
+
+/* tokens:dark */
+:root[data-theme="dark"] {
+  --bg: #000000;
+  --fg: #ffffff;
+  --muted: #a6a6a6;
+  --line: #8c8c8c;
+  --rule: #2e2e2e;
+  --accent: #e6b84a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --bg: #000000;
+    --fg: #ffffff;
+    --muted: #a6a6a6;
+    --line: #8c8c8c;
+    --rule: #2e2e2e;
+    --accent: #e6b84a;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+body {
+  margin: 0;
+  padding: 1rem;
+  max-width: 60rem;
+  margin-inline: auto;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  color: var(--fg);
+  background: var(--bg);
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+h1 {
+  font-size: 1.6rem;
+  margin: 0.5rem 0;
+}
+
+h2 {
+  font-size: 1.25rem;
+  margin: 1.5rem 0 0.5rem;
+}
+
+a {
+  color: var(--fg);
+}
+
+button {
+  font: inherit;
+  color: var(--fg);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 0.25rem;
+  min-height: 44px;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: var(--fg);
+}
+
+a.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  z-index: 10;
+  background: var(--bg);
+  color: var(--fg);
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--fg);
+  border-radius: 0.25rem;
+}
+
+a.skip-link:focus {
+  top: 1rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0.75rem 0;
+}
+
+nav a {
+  display: inline-block;
+  min-height: 44px;
+  line-height: 44px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 2px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.refresh-note {
+  color: var(--muted);
+  border: 1px solid var(--line);
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  margin-block: 0.5rem;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-variant-numeric: tabular-nums;
+}
+
+caption {
+  text-align: left;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+th,
+td {
+  padding: 0.5rem 0.6rem;
+  border-bottom: 1px solid var(--rule);
+  text-align: left;
+  vertical-align: top;
+}
+
+thead th {
+  border-bottom: 2px solid var(--line);
+}
+
+tr.completed td,
+tr.completed th {
+  color: var(--muted);
+}
+
+tr.next-match {
+  box-shadow: inset 3px 0 0 0 var(--accent);
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  padding: 0.15rem 0.4rem;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  border-radius: 0.25rem;
+  margin-right: 0.35rem;
+}
+
+.placeholder {
+  font-style: italic;
+}
+
+.team-short {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .team-short {
+    display: inline;
+  }
+
+  .team-full {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}
+
+.filter-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-block: 0.5rem;
+}
+
+.filter-row select {
+  font: inherit;
+  color: var(--fg);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 0.25rem;
+  min-height: 44px;
+  padding: 0.4rem 0.5rem;
+}
+
+.next-summary {
+  margin-block: 0.5rem;
+}
+
+.next-summary a {
+  display: inline-block;
+  min-height: 44px;
+  line-height: 44px;
+  padding-inline: 0.25rem;
+}
+
+.calendar-list,
+#calendar-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0;
+}
+
+.calendar-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.calendar-name {
+  font-weight: 700;
+}
+
+.calendar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  align-items: center;
+}
+
+.url-line {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.calendar-url {
+  color: var(--muted);
+  word-break: break-all;
+}
+
+.calendar-actions a {
+  display: inline-block;
+  min-height: 44px;
+  line-height: 44px;
+}
+
+footer {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* no animations are defined anywhere */
+}
