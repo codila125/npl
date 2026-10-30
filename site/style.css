@@ -1,4 +1,5 @@
-/* Nepal Premier League 2026 — monochrome theme tokens and layout. */
+/* Nepal Premier League 2026 — Swiss-style theme tokens and layout.
+   Grotesque type, a strict two-column grid, heavy rules, one red accent. */
 
 /* tokens:light */
 :root,
@@ -8,7 +9,7 @@
   --muted: #595959;
   --line: #767676;
   --rule: #d9d9d9;
-  --accent: #8a5a00;
+  --accent: #d0021b;
 }
 
 /* tokens:dark */
@@ -18,7 +19,7 @@
   --muted: #a6a6a6;
   --line: #8c8c8c;
   --rule: #2e2e2e;
-  --accent: #e6b84a;
+  --accent: #ff5a4f;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -28,8 +29,15 @@
     --muted: #a6a6a6;
     --line: #8c8c8c;
     --rule: #2e2e2e;
-    --accent: #e6b84a;
+    --accent: #ff5a4f;
   }
+}
+
+:root {
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --label-col: 12rem;
+  --gutter: 2rem;
+  --hover: color-mix(in srgb, var(--fg) 5%, transparent);
 }
 
 * {
@@ -39,55 +47,104 @@
 html {
   background: var(--bg);
   color: var(--fg);
+  transition: background-color 0.3s var(--ease), color 0.3s var(--ease);
 }
 
 body {
   margin: 0;
-  padding: 1rem;
-  max-width: 60rem;
+  padding: 0 1.5rem 4rem;
+  max-width: 80rem;
   margin-inline: auto;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+  font-size: 1rem;
   line-height: 1.5;
+  letter-spacing: -0.005em;
   overflow-wrap: anywhere;
   color: var(--fg);
   background: var(--bg);
+  -webkit-font-smoothing: antialiased;
 }
 
+/* Header: one oversized, tightly set title above a heavy rule. */
 header {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 1rem 2rem;
   flex-wrap: wrap;
+  padding-top: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 4px solid var(--fg);
+  position: relative;
+}
+
+/* Red bar that draws across under the title on load. */
+header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 6rem;
+  height: 4px;
+  background: var(--accent);
+  transform-origin: left;
+  animation: draw 0.9s 0.2s var(--ease) both;
 }
 
 h1 {
-  font-size: 1.6rem;
-  margin: 0.5rem 0;
+  font-size: clamp(2.5rem, 7.5vw, 6rem);
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+  margin: 0;
+  max-width: 11ch;
+  overflow-wrap: normal;
 }
 
 h2 {
-  font-size: 1.25rem;
-  margin: 1.5rem 0 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0;
 }
 
 a {
   color: var(--fg);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color 0.2s var(--ease), text-decoration-color 0.2s var(--ease);
+}
+
+a:hover {
+  color: var(--accent);
 }
 
 button {
   font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: var(--fg);
   background: var(--bg);
-  border: 1px solid var(--line);
-  border-radius: 0.25rem;
+  border: 1px solid var(--fg);
+  border-radius: 0;
   min-height: 44px;
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem 1rem;
   cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.2s var(--ease), color 0.2s var(--ease);
 }
 
 button:hover {
-  border-color: var(--fg);
+  background: var(--fg);
+  color: var(--bg);
+}
+
+button:active {
+  transform: translateY(1px);
 }
 
 a.skip-link {
@@ -99,30 +156,64 @@ a.skip-link {
   color: var(--fg);
   padding: 0.75rem 1rem;
   border: 2px solid var(--fg);
-  border-radius: 0.25rem;
 }
 
 a.skip-link:focus {
   top: 1rem;
 }
 
+/* Nav: numbered, uppercase index that stays pinned while scrolling. */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--bg);
+  border-bottom: 1px solid var(--rule);
+  transition: background-color 0.3s var(--ease);
+}
+
 nav ul {
   list-style: none;
   display: flex;
-  gap: 1.25rem;
+  gap: 2rem;
   flex-wrap: wrap;
   padding: 0;
-  margin: 0.75rem 0;
+  margin: 0;
+  counter-reset: nav;
+}
+
+nav li {
+  counter-increment: nav;
 }
 
 nav a {
   display: inline-block;
   min-height: 44px;
   line-height: 44px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  /* Underline that grows from the left on hover. */
+  background: linear-gradient(var(--accent), var(--accent)) left bottom / 0 2px no-repeat;
+  transition: background-size 0.3s var(--ease), color 0.2s var(--ease);
+}
+
+nav a::before {
+  content: counter(nav, decimal-leading-zero);
+  color: var(--accent);
+  margin-right: 0.5rem;
+  font-variant-numeric: tabular-nums;
+}
+
+nav a:hover {
+  color: var(--fg);
+  background-size: 100% 2px;
 }
 
 :focus-visible {
-  outline: 2px solid var(--fg);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
@@ -141,9 +232,61 @@ nav a {
 
 .refresh-note {
   color: var(--muted);
-  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
   padding: 0.5rem 0.75rem;
-  border-radius: 0.25rem;
+  margin-top: 1.5rem;
+}
+
+/* Sections: label column on the left, content on the right. */
+main {
+  counter-reset: section;
+}
+
+section {
+  counter-increment: section;
+  display: grid;
+  grid-template-columns: var(--label-col) minmax(0, 1fr);
+  column-gap: var(--gutter);
+  align-items: start;
+  margin-top: 4rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--fg);
+  scroll-margin-top: 3.5rem;
+  animation: rise 0.7s var(--ease) both;
+}
+
+section:nth-of-type(1) { animation-delay: 0.1s; }
+section:nth-of-type(2) { animation-delay: 0.2s; }
+section:nth-of-type(3) { animation-delay: 0.3s; }
+
+section > h2 {
+  grid-column: 1;
+  grid-row: 1 / span 3;
+  position: sticky;
+  top: 4rem;
+}
+
+section > h2::before {
+  content: counter(section, decimal-leading-zero);
+  display: block;
+  color: var(--accent);
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+  font-variant-numeric: tabular-nums;
+}
+
+section > :not(h2) {
+  grid-column: 2;
+}
+
+section p {
+  margin: 0 0 1rem;
+}
+
+header,
+nav {
+  animation: rise 0.6s var(--ease) both;
 }
 
 .table-wrap {
@@ -161,13 +304,17 @@ table {
 
 caption {
   text-align: left;
+  font-size: 0.8125rem;
   font-weight: 700;
-  margin-bottom: 0.25rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
 }
 
 th,
 td {
-  padding: 0.5rem 0.6rem;
+  padding: 0.7rem 0.75rem;
   border-bottom: 1px solid var(--rule);
   text-align: left;
   vertical-align: top;
@@ -178,9 +325,30 @@ td {
   hyphens: none;
 }
 
+th:first-child,
+td:first-child {
+  padding-left: 0;
+}
+
 thead th {
-  border-bottom: 2px solid var(--line);
+  border-bottom: 2px solid var(--fg);
   white-space: nowrap;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+tbody th {
+  font-weight: 700;
+}
+
+tbody tr {
+  transition: background-color 0.2s var(--ease);
+}
+
+tbody tr:hover {
+  background: var(--hover);
 }
 
 /* Short codes and numbers stay on one line. */
@@ -196,6 +364,11 @@ thead th {
    wrapper scroll when the viewport cannot hold it. */
 #standings table {
   min-width: max-content;
+}
+
+/* Points column carries the weight. */
+#standings tbody td:nth-child(7) {
+  font-weight: 700;
 }
 
 /* Schedule: the Match, Venue and Result/Status cells wrap at word boundaries
@@ -219,18 +392,23 @@ tr.completed th {
 }
 
 tr.next-match {
-  box-shadow: inset 3px 0 0 0 var(--accent);
+  box-shadow: inset 4px 0 0 0 var(--accent);
+  scroll-margin-top: 4rem;
+}
+
+tr.next-match td:first-child {
+  padding-left: 0.85rem;
 }
 
 .badge {
   display: inline-block;
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   font-weight: 700;
+  letter-spacing: 0.08em;
   line-height: 1.2;
-  padding: 0.15rem 0.4rem;
-  border: 1px solid var(--accent);
-  color: var(--accent);
-  border-radius: 0.25rem;
+  padding: 0.2rem 0.45rem;
+  background: var(--accent);
+  color: var(--bg);
   margin-right: 0.35rem;
 }
 
@@ -238,11 +416,181 @@ tr.next-match {
   font-style: italic;
 }
 
+.updated {
+  margin-top: 1rem;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
 .team-short {
   display: none;
 }
 
+/* Freshly rendered data fades in. */
+.table-wrap,
+.next-summary,
+.filter-row,
+.calendar-row.team-row {
+  animation: fade 0.5s var(--ease) both;
+}
+
+.calendar-row.team-row:nth-child(2) { animation-delay: 0.03s; }
+.calendar-row.team-row:nth-child(3) { animation-delay: 0.06s; }
+.calendar-row.team-row:nth-child(4) { animation-delay: 0.09s; }
+.calendar-row.team-row:nth-child(5) { animation-delay: 0.12s; }
+.calendar-row.team-row:nth-child(6) { animation-delay: 0.15s; }
+.calendar-row.team-row:nth-child(7) { animation-delay: 0.18s; }
+.calendar-row.team-row:nth-child(8) { animation-delay: 0.21s; }
+.calendar-row.team-row:nth-child(9) { animation-delay: 0.24s; }
+
+.filter-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-block: 0 1rem;
+}
+
+.filter-row label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.filter-row select {
+  font: inherit;
+  color: var(--fg);
+  background: var(--bg);
+  border: 1px solid var(--fg);
+  border-radius: 0;
+  min-height: 44px;
+  padding: 0.4rem 0.75rem;
+  cursor: pointer;
+}
+
+.next-summary {
+  margin-block: 0 1rem;
+  padding: 0.25rem 0 0.25rem 1rem;
+  border-left: 4px solid var(--accent);
+  font-weight: 500;
+}
+
+.next-summary a {
+  display: inline-block;
+  min-height: 44px;
+  line-height: 44px;
+  padding-inline: 0.25rem;
+}
+
+/* Calendar: every row shares the same five columns, so names, links, URLs
+   and buttons line up down the list. Long URLs truncate instead of wrapping. */
+.calendar-list,
+#calendar-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 2px solid var(--fg);
+}
+
+.calendar-row {
+  display: grid;
+  grid-template-columns: 11rem auto auto minmax(0, 1fr) auto;
+  column-gap: 1.5rem;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--rule);
+  transition: background-color 0.2s var(--ease);
+}
+
+.calendar-row:hover {
+  background: var(--hover);
+}
+
+.calendar-actions,
+.url-line {
+  display: contents;
+}
+
+.calendar-name {
+  font-weight: 700;
+  overflow-wrap: normal;
+}
+
+.calendar-url {
+  color: var(--muted);
+  font-size: 0.875rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+.calendar-actions a {
+  display: inline-block;
+  min-height: 44px;
+  line-height: 44px;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+/* Below ~64rem the label column folds above the content. */
+@media (max-width: 64rem) {
+  section {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  section > h2 {
+    grid-row: auto;
+    position: static;
+    margin-bottom: 1.5rem;
+  }
+
+  section > :not(h2) {
+    grid-column: 1;
+  }
+}
+
+/* Narrow: calendar rows stack — name, then links, then URL + copy. */
+@media (max-width: 40rem) {
+  nav {
+    position: static;
+  }
+
+  .calendar-row {
+    grid-template-columns: max-content max-content minmax(0, 1fr) auto;
+    column-gap: 1.25rem;
+    padding: 0.75rem 0;
+  }
+
+  .calendar-name {
+    grid-column: 1 / -1;
+  }
+
+  .calendar-url {
+    grid-column: 1 / 4;
+    grid-row: 3;
+  }
+
+  .calendar-row .copy {
+    grid-column: 4;
+    grid-row: 3;
+  }
+}
+
 @media (max-width: 480px) {
+  body {
+    padding-inline: 1rem;
+  }
+
+  nav ul {
+    gap: 1.25rem;
+  }
+
+  section {
+    margin-top: 3rem;
+  }
+
   /* Narrow screens: tighter cells and shorter leading keep the scrolled
      schedule rows compact; the standings then fit without scrolling. */
   #schedule th,
@@ -274,88 +622,46 @@ tr.next-match {
   }
 }
 
-.filter-row {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  margin-block: 0.5rem;
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
-.filter-row select {
-  font: inherit;
-  color: var(--fg);
-  background: var(--bg);
-  border: 1px solid var(--line);
-  border-radius: 0.25rem;
-  min-height: 44px;
-  padding: 0.4rem 0.5rem;
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-.next-summary {
-  margin-block: 0.5rem;
+@keyframes draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
 }
 
-.next-summary a {
-  display: inline-block;
-  min-height: 44px;
-  line-height: 44px;
-  padding-inline: 0.25rem;
-}
-
-.calendar-list,
-#calendar-list {
-  list-style: none;
-  padding: 0;
-  margin: 0.5rem 0;
-}
-
-.calendar-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1rem;
-  align-items: baseline;
-  justify-content: space-between;
-  padding: 0.6rem 0;
-  border-bottom: 1px solid var(--rule);
-}
-
-.calendar-name {
-  font-weight: 700;
-}
-
-.calendar-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1rem;
-  align-items: center;
-}
-
-.url-line {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.calendar-url {
-  color: var(--muted);
-  word-break: break-all;
-}
-
-.calendar-actions a {
-  display: inline-block;
-  min-height: 44px;
-  line-height: 44px;
-}
-
-footer {
-  margin-top: 2rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--rule);
-  color: var(--muted);
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  /* no animations are defined anywhere */
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }

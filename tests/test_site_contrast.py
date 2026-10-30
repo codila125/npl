@@ -173,7 +173,7 @@ def test_index_landmarks_and_skip_link():
     assert "<header" in html
     assert '<nav aria-label="Sections"' in html
     assert "<main" in html
-    assert "<footer" in html
+    assert "<footer" not in html, "footer was removed on purpose"
     assert "Skip to content" in html
     assert html.index("Skip to content") < html.index("<header"), "skip link must be first"
 
