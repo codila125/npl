@@ -185,3 +185,33 @@ def test_no_result_match_reaches_json_and_calendar(tmp_path):
     calendar = (site / "calendar" / "npl.ics").read_text()
     event = calendar.split("UID:npl-2026-m01@codila125.github.io", 1)[1].split("END:VEVENT")[0]
     assert "Result: No result" in event
+
+
+def test_stats_reach_the_published_json(tmp_path):
+    site = tmp_path / "site"
+    assert run(["--from-dir", str(SEASON_2026), "--site-dir", str(site)]) == 0
+    stats = json.loads((site / "data" / "npl.json").read_text())["stats"]
+    assert [len(rows) for rows in stats.values()] == [5, 5, 5, 5]
+
+
+def test_invalid_stats_keep_previous_stats_and_the_run_succeeds(tmp_path, capsys):
+    site = tmp_path / "site"
+    assert run(["--from-dir", str(SEASON_2026), "--site-dir", str(site)]) == 0
+    published = json.loads((site / "data" / "npl.json").read_text())["stats"]
+
+    def corrupt(rows):
+        rows["data"][0]["teamId"] = "not-a-team"
+
+    source = fixture_dir(tmp_path, stats=corrupt)
+    capsys.readouterr()
+    assert run(["--from-dir", str(source), "--site-dir", str(site)]) == 0
+    assert "warning: stats skipped: [V17]" in capsys.readouterr().err
+    assert json.loads((site / "data" / "npl.json").read_text())["stats"] == published
+
+
+def test_missing_stats_without_previous_publishes_null(tmp_path):
+    source = fixture_dir(tmp_path)
+    (source / "stats.json").unlink()
+    site = tmp_path / "site"
+    assert run(["--from-dir", str(source), "--site-dir", str(site)]) == 0
+    assert json.loads((site / "data" / "npl.json").read_text())["stats"] is None

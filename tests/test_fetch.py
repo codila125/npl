@@ -18,9 +18,11 @@ ROBOTS_URL = f"{BASE}/robots.txt"
 TEAMS_URL = f"{BASE}/api/v1/teams"
 MATCHES_URL = f"{BASE}/api/v1/matches?season={config.SEASON_YEAR}"
 POINTS_URL = f"{BASE}/api/v1/points?season={config.SEASON_YEAR}"
+STATS_URL = f"{BASE}/api/v1/stats?season={config.SEASON_YEAR}"
 
 ALLOW_ALL_ROBOTS = "User-Agent: *\nAllow: /\n"
 DISALLOW_API_ROBOTS = "User-Agent: *\nDisallow: /api/\n"
+DISALLOW_STATS_ROBOTS = "User-Agent: *\nDisallow: /api/v1/stats\n"
 
 
 class FakeResponse:
@@ -67,6 +69,7 @@ def _happy_routes(overrides=None):
         TEAMS_URL: FakeResponse(200, _fixture_text("teams")),
         MATCHES_URL: FakeResponse(200, _fixture_text("matches")),
         POINTS_URL: FakeResponse(200, _fixture_text("points")),
+        STATS_URL: FakeResponse(200, _fixture_text("stats")),
     }
     if overrides:
         routes.update(overrides)
@@ -80,6 +83,7 @@ def test_load_remote_returns_raw_source():
     assert len(raw.teams) == 8
     assert len(raw.matches) == 32
     assert len(raw.points) == 8
+    assert len(raw.stats) == 60
 
 
 def test_season_parameter_on_matches_and_points_only():
@@ -199,3 +203,24 @@ def test_load_from_dir_reads_fixtures():
     assert len(raw.teams) == 8
     assert len(raw.matches) == 32
     assert len(raw.points) == 8
+
+
+def test_stats_failure_leaves_stats_none_and_the_run_continues(capsys):
+    session = FakeSession(_happy_routes({STATS_URL: FakeResponse(404)}))
+    raw = load_remote(session)
+    assert raw.stats is None
+    assert len(raw.matches) == 32
+    assert "warning: stats unavailable" in capsys.readouterr().err
+
+
+def test_stats_disallowed_by_robots_is_skipped_not_fetched():
+    session = FakeSession(_happy_routes({ROBOTS_URL: FakeResponse(200, DISALLOW_STATS_ROBOTS)}))
+    raw = load_remote(session)
+    assert raw.stats is None
+    assert STATS_URL not in [c["url"] for c in session.calls]
+
+
+def test_load_from_dir_without_stats_file(tmp_path):
+    for name in ("teams", "matches", "points"):
+        (tmp_path / f"{name}.json").write_text(_fixture_text(name))
+    assert load_from_dir(tmp_path).stats is None

@@ -1168,5 +1168,235 @@
       "winner": null,
       "updated_at": "2026-10-26T18:45:18Z"
     }
-  ]
+  ],
+  "stats": {
+    "top_run_scorer": [
+      {
+        "rank": 1,
+        "player": "Lokesh Bam",
+        "team": "biratnagar-kings",
+        "innings": 2,
+        "runs": 113,
+        "wickets": 0,
+        "average": "56.50",
+        "strike_rate": "171.21",
+        "economy": null
+      },
+      {
+        "rank": 2,
+        "player": "Dipendra Singh Airee",
+        "team": "sudurpaschim-royals",
+        "innings": 2,
+        "runs": 78,
+        "wickets": 2,
+        "average": "78.00",
+        "strike_rate": "132.20",
+        "economy": "6.64"
+      },
+      {
+        "rank": 3,
+        "player": "Moeen Ali",
+        "team": "janakpur-bolts",
+        "innings": 2,
+        "runs": 77,
+        "wickets": 3,
+        "average": "77.00",
+        "strike_rate": "105.48",
+        "economy": "5.25"
+      },
+      {
+        "rank": 4,
+        "player": "Ariful Islam Jony",
+        "team": "karnali-yaks",
+        "innings": 2,
+        "runs": 75,
+        "wickets": 0,
+        "average": "37.50",
+        "strike_rate": "182.93",
+        "economy": null
+      },
+      {
+        "rank": 5,
+        "player": "Pawan Sarraf",
+        "team": "karnali-yaks",
+        "innings": 2,
+        "runs": 73,
+        "wickets": 0,
+        "average": "36.50",
+        "strike_rate": "112.31",
+        "economy": "6.75"
+      }
+    ],
+    "top_wicket_taker": [
+      {
+        "rank": 1,
+        "player": "Rahul Yadav",
+        "team": "janakpur-bolts",
+        "innings": 2,
+        "runs": 46,
+        "wickets": 5,
+        "average": "9.20",
+        "strike_rate": "10.00",
+        "economy": "5.75"
+      },
+      {
+        "rank": 2,
+        "player": "Sompal Kami",
+        "team": "karnali-yaks",
+        "innings": 2,
+        "runs": 38,
+        "wickets": 5,
+        "average": "7.60",
+        "strike_rate": "170.27",
+        "economy": "6.33"
+      },
+      {
+        "rank": 3,
+        "player": "Anil Kharel",
+        "team": "sudurpaschim-royals",
+        "innings": 2,
+        "runs": 32,
+        "wickets": 5,
+        "average": "6.40",
+        "strike_rate": "57.69",
+        "economy": "6.40"
+      },
+      {
+        "rank": 4,
+        "player": "Harmeet Singh",
+        "team": "janakpur-bolts",
+        "innings": 2,
+        "runs": 40,
+        "wickets": 4,
+        "average": "10.00",
+        "strike_rate": "146.15",
+        "economy": "5.33"
+      },
+      {
+        "rank": 5,
+        "player": "Kishore Mahato",
+        "team": "lumbini-lions",
+        "innings": 1,
+        "runs": 22,
+        "wickets": 4,
+        "average": "5.50",
+        "strike_rate": null,
+        "economy": "5.50"
+      }
+    ],
+    "batting_strike_rate": [
+      {
+        "rank": 1,
+        "player": "D’Arcy Short",
+        "team": "lumbini-lions",
+        "innings": 1,
+        "runs": 40,
+        "wickets": 0,
+        "average": "40.00",
+        "strike_rate": "222.22",
+        "economy": null
+      },
+      {
+        "rank": 2,
+        "player": "Deepak Dumre",
+        "team": "karnali-yaks",
+        "innings": 2,
+        "runs": 33,
+        "wickets": 0,
+        "average": "16.50",
+        "strike_rate": "206.25",
+        "economy": null
+      },
+      {
+        "rank": 3,
+        "player": "Andre Russell",
+        "team": "biratnagar-kings",
+        "innings": 2,
+        "runs": 60,
+        "wickets": 1,
+        "average": "30.00",
+        "strike_rate": "187.50",
+        "economy": "10.50"
+      },
+      {
+        "rank": 4,
+        "player": "Ariful Islam Jony",
+        "team": "karnali-yaks",
+        "innings": 2,
+        "runs": 75,
+        "wickets": 0,
+        "average": "37.50",
+        "strike_rate": "182.93",
+        "economy": null
+      },
+      {
+        "rank": 5,
+        "player": "Brandon McMullen",
+        "team": "sudurpaschim-royals",
+        "innings": 2,
+        "runs": 24,
+        "wickets": 0,
+        "average": "12.00",
+        "strike_rate": "171.43",
+        "economy": "11.00"
+      }
+    ],
+    "bowling_economy": [
+      {
+        "rank": 1,
+        "player": "Sher Malla",
+        "team": "lumbini-lions",
+        "innings": 1,
+        "runs": 11,
+        "wickets": 3,
+        "average": "3.67",
+        "strike_rate": null,
+        "economy": "2.75"
+      },
+      {
+        "rank": 2,
+        "player": "Saif Hassan",
+        "team": "janakpur-bolts",
+        "innings": 1,
+        "runs": 11,
+        "wickets": 2,
+        "average": "5.50",
+        "strike_rate": "102.56",
+        "economy": "2.75"
+      },
+      {
+        "rank": 3,
+        "player": "Aaditya Mahata",
+        "team": "janakpur-bolts",
+        "innings": 1,
+        "runs": 3,
+        "wickets": 0,
+        "average": null,
+        "strike_rate": "0.00",
+        "economy": "3.00"
+      },
+      {
+        "rank": 4,
+        "player": "Ranjeet Kumar",
+        "team": "chitwan-rhinos",
+        "innings": 1,
+        "runs": 12,
+        "wickets": 1,
+        "average": "12.00",
+        "strike_rate": null,
+        "economy": "4.00"
+      },
+      {
+        "rank": 5,
+        "player": "Sumit Maharjan",
+        "team": "kathmandu-gurkhas",
+        "innings": 1,
+        "runs": 4,
+        "wickets": 0,
+        "average": null,
+        "strike_rate": "111.11",
+        "economy": "4.00"
+      }
+    ]
+  }
 }

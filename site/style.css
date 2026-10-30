@@ -267,6 +267,7 @@ section {
 section:nth-of-type(1) { animation-delay: 0.1s; }
 section:nth-of-type(2) { animation-delay: 0.2s; }
 section:nth-of-type(3) { animation-delay: 0.3s; }
+section:nth-of-type(4) { animation-delay: 0.4s; }
 
 section > h2 {
   grid-column: 1;
@@ -382,6 +383,66 @@ tbody tr:hover {
 /* Points column carries the weight. */
 #standings tbody td:nth-child(7) {
   font-weight: 700;
+}
+
+/* Stats: four leaderboards, two per row, one per row when narrow. Every
+   cell is short (names, codes, figures), so none wrap; the wrapper scrolls. */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.5rem var(--gutter);
+}
+
+.stats-grid .table-wrap {
+  margin-block: 0;
+}
+
+#stats tbody th,
+#stats tbody td {
+  white-space: nowrap;
+}
+
+#stats tbody td {
+  font-variant-numeric: tabular-nums;
+}
+
+#stats th,
+#stats td {
+  padding-inline: 0.5rem;
+}
+
+#stats tbody td.key {
+  font-weight: 700;
+}
+
+#stats abbr {
+  text-decoration: none;
+  cursor: help;
+}
+
+@media (max-width: 48rem) {
+  .stats-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Phones: drop the innings column and let names wrap (at spaces only) so
+   the ranked figure stays on screen. */
+@media (max-width: 480px) {
+  #stats th:nth-child(4),
+  #stats td:nth-child(4) {
+    display: none;
+  }
+
+  #stats tbody th {
+    white-space: normal;
+    min-width: 6rem;
+  }
+
+  #stats th,
+  #stats td {
+    padding-inline: 0.4rem;
+  }
 }
 
 /* Schedule: the Match, Venue and Result/Status cells wrap at word boundaries
