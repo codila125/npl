@@ -308,7 +308,6 @@ nav {
 table {
   border-collapse: collapse;
   width: 100%;
-  font-variant-numeric: tabular-nums;
 }
 
 caption {
@@ -373,6 +372,11 @@ tbody tr:hover {
    wrapper scroll when the viewport cannot hold it. */
 #standings table {
   min-width: max-content;
+}
+
+/* Fixed-width digits only where columns of figures must line up. */
+#standings tbody td {
+  font-variant-numeric: tabular-nums;
 }
 
 /* Points column carries the weight. */
