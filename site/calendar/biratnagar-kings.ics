@@ -1,0 +1,109 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//codila125//NPL calendar feed//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:NPL 2026 — Biratnagar Kings
+X-WR-CALDESC:Nepal Premier League 2026 match schedule and results. Times ar
+ e shown in your own time zone.
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:npl-2026-m02@codila125.github.io
+DTSTAMP:20261027T103142Z
+LAST-MODIFIED:20261027T103142Z
+DTSTART:20261027T064500Z
+DTEND:20261027T101500Z
+SUMMARY:Biratnagar Kings vs Chitwan Rhinos (NPL Match 2)
+LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
+DESCRIPTION:Result: Chitwan Rhinos won by 8 runs\nBiratnagar Kings 149/10 (
+ 19.3 ov)\nChitwan Rhinos 157/3 (20.0 ov)\nhttps://codila125.github.io/npl/
+URL:https://codila125.github.io/npl/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:npl-2026-m06@codila125.github.io
+DTSTAMP:20261029T145856Z
+LAST-MODIFIED:20261029T145856Z
+DTSTART:20261029T111500Z
+DTEND:20261029T144500Z
+SUMMARY:Karnali Yaks vs Biratnagar Kings (NPL Match 6)
+LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
+DESCRIPTION:Result: Karnali Yaks won by 4 wickets\nKarnali Yaks 187/6 (19.5
+  ov)\nBiratnagar Kings 186/7 (20.0 ov)\nhttps://codila125.github.io/npl/
+URL:https://codila125.github.io/npl/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:npl-2026-m08@codila125.github.io
+DTSTAMP:20261026T184503Z
+LAST-MODIFIED:20261026T184503Z
+DTSTART:20261031T111500Z
+DTEND:20261031T144500Z
+SUMMARY:Sudurpaschim Royals vs Biratnagar Kings (NPL Match 8)
+LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
+DESCRIPTION:NPL 2026 · Match 8\nKick-off 5:00 PM NPT\nhttps://codila125.gi
+ thub.io/npl/
+URL:https://codila125.github.io/npl/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:npl-2026-m12@codila125.github.io
+DTSTAMP:20261026T184506Z
+LAST-MODIFIED:20261026T184506Z
+DTSTART:20261103T064500Z
+DTEND:20261103T101500Z
+SUMMARY:Biratnagar Kings vs Janakpur Bolts (NPL Match 12)
+LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
+DESCRIPTION:NPL 2026 · Match 12\nKick-off 12:30 PM NPT\nhttps://codila125.
+ github.io/npl/
+URL:https://codila125.github.io/npl/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:npl-2026-m15@codila125.github.io
+DTSTAMP:20261026T184507Z
+LAST-MODIFIED:20261026T184507Z
+DTSTART:20261105T111500Z
+DTEND:20261105T144500Z
+SUMMARY:Kathmandu Gurkhas vs Biratnagar Kings (NPL Match 15)
+LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
+DESCRIPTION:NPL 2026 · Match 15\nKick-off 5:00 PM NPT\nhttps://codila125.g
+ ithub.io/npl/
+URL:https://codila125.github.io/npl/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:npl-2026-m22@codila125.github.io
+DTSTAMP:20261026T184512Z
+LAST-MODIFIED:20261026T184512Z
+DTSTART:20261112T064500Z
+DTEND:20261112T101500Z
+SUMMARY:Biratnagar Kings vs Pokhara Avengers (NPL Match 22)
+LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
+DESCRIPTION:NPL 2026 · Match 22\nKick-off 12:30 PM NPT\nhttps://codila125.
+ github.io/npl/
+URL:https://codila125.github.io/npl/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:npl-2026-m26@codila125.github.io
+DTSTAMP:20261026T184514Z
+LAST-MODIFIED:20261026T184514Z
+DTSTART:20261114T111500Z
+DTEND:20261114T144500Z
+SUMMARY:Biratnagar Kings vs Lumbini Lions (NPL Match 26)
+LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
+DESCRIPTION:NPL 2026 · Match 26\nKick-off 5:00 PM NPT\nhttps://codila125.g
+ ithub.io/npl/
+URL:https://codila125.github.io/npl/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,109 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//codila125//NPL calendar feed//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:NPL 2026 — Chitwan Rhinos
+X-WR-CALDESC:Nepal Premier League 2026 match schedule and results. Times ar
+ e shown in your own time zone.
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:npl-2026-m02@codila125.github.io
+DTSTAMP:20261027T103142Z
+LAST-MODIFIED:20261027T103142Z
+DTSTART:20261027T064500Z
+DTEND:20261027T101500Z
+SUMMARY:Biratnagar Kings vs Chitwan Rhinos (NPL Match 2)
+LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
+DESCRIPTION:Result: Chitwan Rhinos won by 8 runs\nBiratnagar Kings 149/10 (
+ 19.3 ov)\nChitwan Rhinos 157/3 (20.0 ov)\nhttps://codila125.github.io/npl/
+URL:https://codila125.github.io/npl/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:npl-2026-m07@codila125.github.io
+DTSTAMP:20261029T145856Z
+LAST-MODIFIED:20261029T145856Z
+DTSTART:20261031T064500Z
+DTEND:20261031T101500Z
+SUMMARY:Lumbini Lions vs Chitwan Rhinos (NPL Match 7)
+LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
+DESCRIPTION:NPL 2026 · Match 7\nKick-off 12:30 PM NPT\nhttps://codila125.g
+ ithub.io/npl/
+URL:https://codila125.github.io/npl/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:npl-2026-m11@codila125.github.io
+DTSTAMP:20261026T184505Z
+LAST-MODIFIED:20261026T184505Z
+DTSTART:20261102T111500Z
+DTEND:20261102T144500Z
+SUMMARY:Sudurpaschim Royals vs Chitwan Rhinos (NPL Match 11)
+LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
+DESCRIPTION:NPL 2026 · Match 11\nKick-off 5:00 PM NPT\nhttps://codila125.g
+ ithub.io/npl/
+URL:https://codila125.github.io/npl/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:npl-2026-m17@codila125.github.io
+DTSTAMP:20261026T184509Z
+LAST-MODIFIED:20261026T184509Z
+DTSTART:20261106T111500Z
+DTEND:20261106T144500Z
+SUMMARY:Chitwan Rhinos vs Pokhara Avengers (NPL Match 17)
+LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
+DESCRIPTION:NPL 2026 · Match 17\nKick-off 5:00 PM NPT\nhttps://codila125.g
+ ithub.io/npl/
+URL:https://codila125.github.io/npl/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:npl-2026-m20@codila125.github.io
+DTSTAMP:20261026T184511Z
+LAST-MODIFIED:20261026T184511Z
+DTSTART:20261109T111500Z
+DTEND:20261109T144500Z
+SUMMARY:Chitwan Rhinos vs Kathmandu Gurkhas (NPL Match 20)
+LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
+DESCRIPTION:NPL 2026 · Match 20\nKick-off 5:00 PM NPT\nhttps://codila125.g
+ ithub.io/npl/
+URL:https://codila125.github.io/npl/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:npl-2026-m25@codila125.github.io
+DTSTAMP:20261026T184514Z
+LAST-MODIFIED:20261026T184514Z
+DTSTART:20261113T111500Z
+DTEND:20261113T144500Z
+SUMMARY:Janakpur Bolts vs Chitwan Rhinos (NPL Match 25)
+LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
+DESCRIPTION:NPL 2026 · Match 25\nKick-off 5:00 PM NPT\nhttps://codila125.g
+ ithub.io/npl/
+URL:https://codila125.github.io/npl/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:npl-2026-m27@codila125.github.io
+DTSTAMP:20261026T184515Z
+LAST-MODIFIED:20261026T184515Z
+DTSTART:20261115T064500Z
+DTEND:20261115T101500Z
+SUMMARY:Chitwan Rhinos vs Karnali Yaks (NPL Match 27)
+LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
+DESCRIPTION:NPL 2026 · Match 27\nKick-off 12:30 PM NPT\nhttps://codila125.
+ github.io/npl/
+URL:https://codila125.github.io/npl/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

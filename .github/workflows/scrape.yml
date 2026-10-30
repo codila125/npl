@@ -1,0 +1,85 @@
+name: Scrape and deploy
+
+# Scheduled scrape -> commit data if it changed -> deploy Pages from that commit.
+# A push made with GITHUB_TOKEN does not trigger other workflows, so the deploy
+# job lives in this same workflow and is ordered with `needs`.
+on:
+  schedule:
+    - cron: "7,37 * * * *" # every 30 min, off the :00/:30 peak
+  workflow_dispatch:
+    inputs:
+      allow_regression:
+        description: "Allow fewer completed matches than the committed data (rule V15)"
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: npl-scrape-deploy
+  cancel-in-progress: false
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write # only this job can push
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
+      sha: ${{ steps.commit.outputs.sha }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+      - run: pip install -r requirements.txt
+      - name: Scrape (fails the run on bad data; writes nothing in that case)
+        run: python -m scraper ${{ inputs.allow_regression && '--allow-regression' || '' }}
+      - name: Commit data if changed
+        id: commit
+        run: |
+          set -euo pipefail
+          changed=false
+          if [ -n "$(git status --porcelain -- site)" ] && [ "$GITHUB_REF" = "refs/heads/main" ]; then
+            git config user.name  "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A site
+            git commit -m "chore(data): refresh NPL data"
+            git pull --rebase origin main
+            git push origin HEAD:main
+            changed=true
+          fi
+          echo "changed=$changed" >> "$GITHUB_OUTPUT"
+          echo "sha=$(git rev-parse HEAD)"  >> "$GITHUB_OUTPUT"
+
+  deploy:
+    needs: scrape
+    # Deploy when the data changed; on push/manual always (publishes code changes
+    # and recovers a failed deploy), even if the scrape failed, because the last
+    # good data is in git. A scheduled run with a failed or unchanged scrape
+    # never deploys.
+    if: ${{ !cancelled() && (needs.scrape.outputs.changed == 'true' || github.event_name != 'schedule') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: "${{ steps.deploy.outputs.page_url }}"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: "${{ needs.scrape.outputs.sha || github.sha }}"
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: site
+      - id: deploy
+        uses: actions/deploy-pages@v5

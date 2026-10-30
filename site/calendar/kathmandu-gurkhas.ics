@@ -1,0 +1,110 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//codila125//NPL calendar feed//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:NPL 2026 — Kathmandu Gurkhas
+X-WR-CALDESC:Nepal Premier League 2026 match schedule and results. Times ar
+ e shown in your own time zone.
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:npl-2026-m05@codila125.github.io
+DTSTAMP:20261029T095556Z
+LAST-MODIFIED:20261029T095556Z
+DTSTART:20261029T064500Z
+DTEND:20261029T101500Z
+SUMMARY:Janakpur Bolts vs Kathmandu Gurkhas (NPL Match 5)
+LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
+DESCRIPTION:Result: Janakpur Bolts won by 8 wickets\nJanakpur Bolts 116/2 (
+ 17.2 ov)\nKathmandu Gurkhas 115/10 (19.3 ov)\nhttps://codila125.github.io/
+ npl/
+URL:https://codila125.github.io/npl/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:npl-2026-m10@codila125.github.io
+DTSTAMP:20261026T184504Z
+LAST-MODIFIED:20261026T184504Z
+DTSTART:20261102T064500Z
+DTEND:20261102T101500Z
+SUMMARY:Kathmandu Gurkhas vs Karnali Yaks (NPL Match 10)
+LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
+DESCRIPTION:NPL 2026 · Match 10\nKick-off 12:30 PM NPT\nhttps://codila125.
+ github.io/npl/
+URL:https://codila125.github.io/npl/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:npl-2026-m15@codila125.github.io
+DTSTAMP:20261026T184507Z
+LAST-MODIFIED:20261026T184507Z
+DTSTART:20261105T111500Z
+DTEND:20261105T144500Z
+SUMMARY:Kathmandu Gurkhas vs Biratnagar Kings (NPL Match 15)
+LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
+DESCRIPTION:NPL 2026 · Match 15\nKick-off 5:00 PM NPT\nhttps://codila125.g
+ ithub.io/npl/
+URL:https://codila125.github.io/npl/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:npl-2026-m18@codila125.github.io
+DTSTAMP:20261026T184509Z
+LAST-MODIFIED:20261026T184509Z
+DTSTART:20261107T111500Z
+DTEND:20261107T144500Z
+SUMMARY:Kathmandu Gurkhas vs Lumbini Lions (NPL Match 18)
+LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
+DESCRIPTION:NPL 2026 · Match 18\nKick-off 5:00 PM NPT\nhttps://codila125.g
+ ithub.io/npl/
+URL:https://codila125.github.io/npl/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:npl-2026-m20@codila125.github.io
+DTSTAMP:20261026T184511Z
+LAST-MODIFIED:20261026T184511Z
+DTSTART:20261109T111500Z
+DTEND:20261109T144500Z
+SUMMARY:Chitwan Rhinos vs Kathmandu Gurkhas (NPL Match 20)
+LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
+DESCRIPTION:NPL 2026 · Match 20\nKick-off 5:00 PM NPT\nhttps://codila125.g
+ ithub.io/npl/
+URL:https://codila125.github.io/npl/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:npl-2026-m24@codila125.github.io
+DTSTAMP:20261026T184513Z
+LAST-MODIFIED:20261026T184513Z
+DTSTART:20261113T064500Z
+DTEND:20261113T101500Z
+SUMMARY:Kathmandu Gurkhas vs Sudurpaschim Royals (NPL Match 24)
+LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
+DESCRIPTION:NPL 2026 · Match 24\nKick-off 12:30 PM NPT\nhttps://codila125.
+ github.io/npl/
+URL:https://codila125.github.io/npl/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:npl-2026-m28@codila125.github.io
+DTSTAMP:20261026T184515Z
+LAST-MODIFIED:20261026T184515Z
+DTSTART:20261115T111500Z
+DTEND:20261115T144500Z
+SUMMARY:Pokhara Avengers vs Kathmandu Gurkhas (NPL Match 28)
+LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
+DESCRIPTION:NPL 2026 · Match 28\nKick-off 5:00 PM NPT\nhttps://codila125.g
+ ithub.io/npl/
+URL:https://codila125.github.io/npl/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR
