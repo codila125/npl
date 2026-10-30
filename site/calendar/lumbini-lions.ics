@@ -1,0 +1,110 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//codila125//NPL calendar feed//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:NPL 2026 — Lumbini Lions
+X-WR-CALDESC:Nepal Premier League 2026 match schedule and results. Times ar
+ e shown in your own time zone.
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:npl-2026-m01@codila125.github.io
+DTSTAMP:20261026T184525Z
+LAST-MODIFIED:20261026T184525Z
+DTSTART:20261026T111500Z
+DTEND:20261026T144500Z
+SUMMARY:Lumbini Lions vs Sudurpaschim Royals (NPL Match 1)
+LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
+DESCRIPTION:Result: Lumbini Lions won by 7 wickets\nLumbini Lions 88/3 (9.5
+  ov)\nSudurpaschim Royals 87/10 (17.2 ov)\nhttps://codila125.github.io/npl
+ /
+URL:https://codila125.github.io/npl/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:npl-2026-m07@codila125.github.io
+DTSTAMP:20261029T145856Z
+LAST-MODIFIED:20261029T145856Z
+DTSTART:20261031T064500Z
+DTEND:20261031T101500Z
+SUMMARY:Lumbini Lions vs Chitwan Rhinos (NPL Match 7)
+LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
+DESCRIPTION:NPL 2026 · Match 7\nKick-off 12:30 PM NPT\nhttps://codila125.g
+ ithub.io/npl/
+URL:https://codila125.github.io/npl/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:npl-2026-m13@codila125.github.io
+DTSTAMP:20261026T184506Z
+LAST-MODIFIED:20261026T184506Z
+DTSTART:20261103T111500Z
+DTEND:20261103T144500Z
+SUMMARY:Lumbini Lions vs Pokhara Avengers (NPL Match 13)
+LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
+DESCRIPTION:NPL 2026 · Match 13\nKick-off 5:00 PM NPT\nhttps://codila125.g
+ ithub.io/npl/
+URL:https://codila125.github.io/npl/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:npl-2026-m14@codila125.github.io
+DTSTAMP:20261026T184507Z
+LAST-MODIFIED:20261026T184507Z
+DTSTART:20261105T064500Z
+DTEND:20261105T101500Z
+SUMMARY:Lumbini Lions vs Janakpur Bolts (NPL Match 14)
+LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
+DESCRIPTION:NPL 2026 · Match 14\nKick-off 12:30 PM NPT\nhttps://codila125.
+ github.io/npl/
+URL:https://codila125.github.io/npl/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:npl-2026-m18@codila125.github.io
+DTSTAMP:20261026T184509Z
+LAST-MODIFIED:20261026T184509Z
+DTSTART:20261107T111500Z
+DTEND:20261107T144500Z
+SUMMARY:Kathmandu Gurkhas vs Lumbini Lions (NPL Match 18)
+LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
+DESCRIPTION:NPL 2026 · Match 18\nKick-off 5:00 PM NPT\nhttps://codila125.g
+ ithub.io/npl/
+URL:https://codila125.github.io/npl/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:npl-2026-m23@codila125.github.io
+DTSTAMP:20261026T184512Z
+LAST-MODIFIED:20261026T184512Z
+DTSTART:20261112T111500Z
+DTEND:20261112T144500Z
+SUMMARY:Karnali Yaks vs Lumbini Lions (NPL Match 23)
+LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
+DESCRIPTION:NPL 2026 · Match 23\nKick-off 5:00 PM NPT\nhttps://codila125.g
+ ithub.io/npl/
+URL:https://codila125.github.io/npl/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:npl-2026-m26@codila125.github.io
+DTSTAMP:20261026T184514Z
+LAST-MODIFIED:20261026T184514Z
+DTSTART:20261114T111500Z
+DTEND:20261114T144500Z
+SUMMARY:Biratnagar Kings vs Lumbini Lions (NPL Match 26)
+LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
+DESCRIPTION:NPL 2026 · Match 26\nKick-off 5:00 PM NPT\nhttps://codila125.g
+ ithub.io/npl/
+URL:https://codila125.github.io/npl/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

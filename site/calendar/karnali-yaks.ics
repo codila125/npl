@@ -1,0 +1,109 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//codila125//NPL calendar feed//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:NPL 2026 — Karnali Yaks
+X-WR-CALDESC:Nepal Premier League 2026 match schedule and results. Times ar
+ e shown in your own time zone.
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:npl-2026-m03@codila125.github.io
+DTSTAMP:20261027T150821Z
+LAST-MODIFIED:20261027T150821Z
+DTSTART:20261027T111500Z
+DTEND:20261027T144500Z
+SUMMARY:Karnali Yaks vs Janakpur Bolts (NPL Match 3)
+LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
+DESCRIPTION:Result: Karnali Yaks won by 19 runs\nKarnali Yaks 132/9 (20.0 o
+ v)\nJanakpur Bolts 113/10 (19.3 ov)\nhttps://codila125.github.io/npl/
+URL:https://codila125.github.io/npl/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:npl-2026-m06@codila125.github.io
+DTSTAMP:20261029T145856Z
+LAST-MODIFIED:20261029T145856Z
+DTSTART:20261029T111500Z
+DTEND:20261029T144500Z
+SUMMARY:Karnali Yaks vs Biratnagar Kings (NPL Match 6)
+LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
+DESCRIPTION:Result: Karnali Yaks won by 4 wickets\nKarnali Yaks 187/6 (19.5
+  ov)\nBiratnagar Kings 186/7 (20.0 ov)\nhttps://codila125.github.io/npl/
+URL:https://codila125.github.io/npl/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:npl-2026-m10@codila125.github.io
+DTSTAMP:20261026T184504Z
+LAST-MODIFIED:20261026T184504Z
+DTSTART:20261102T064500Z
+DTEND:20261102T101500Z
+SUMMARY:Kathmandu Gurkhas vs Karnali Yaks (NPL Match 10)
+LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
+DESCRIPTION:NPL 2026 · Match 10\nKick-off 12:30 PM NPT\nhttps://codila125.
+ github.io/npl/
+URL:https://codila125.github.io/npl/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:npl-2026-m16@codila125.github.io
+DTSTAMP:20261026T184508Z
+LAST-MODIFIED:20261026T184508Z
+DTSTART:20261106T064500Z
+DTEND:20261106T101500Z
+SUMMARY:Sudurpaschim Royals vs Karnali Yaks (NPL Match 16)
+LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
+DESCRIPTION:NPL 2026 · Match 16\nKick-off 12:30 PM NPT\nhttps://codila125.
+ github.io/npl/
+URL:https://codila125.github.io/npl/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:npl-2026-m19@codila125.github.io
+DTSTAMP:20261026T184510Z
+LAST-MODIFIED:20261026T184510Z
+DTSTART:20261109T064500Z
+DTEND:20261109T101500Z
+SUMMARY:Pokhara Avengers vs Karnali Yaks (NPL Match 19)
+LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
+DESCRIPTION:NPL 2026 · Match 19\nKick-off 12:30 PM NPT\nhttps://codila125.
+ github.io/npl/
+URL:https://codila125.github.io/npl/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:npl-2026-m23@codila125.github.io
+DTSTAMP:20261026T184512Z
+LAST-MODIFIED:20261026T184512Z
+DTSTART:20261112T111500Z
+DTEND:20261112T144500Z
+SUMMARY:Karnali Yaks vs Lumbini Lions (NPL Match 23)
+LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
+DESCRIPTION:NPL 2026 · Match 23\nKick-off 5:00 PM NPT\nhttps://codila125.g
+ ithub.io/npl/
+URL:https://codila125.github.io/npl/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:npl-2026-m27@codila125.github.io
+DTSTAMP:20261026T184515Z
+LAST-MODIFIED:20261026T184515Z
+DTSTART:20261115T064500Z
+DTEND:20261115T101500Z
+SUMMARY:Chitwan Rhinos vs Karnali Yaks (NPL Match 27)
+LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
+DESCRIPTION:NPL 2026 · Match 27\nKick-off 12:30 PM NPT\nhttps://codila125.
+ github.io/npl/
+URL:https://codila125.github.io/npl/
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR
