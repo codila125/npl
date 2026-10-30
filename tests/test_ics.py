@@ -197,6 +197,37 @@ def test_description_completed_with_result_and_scores(season_2026):
     )
 
 
+def test_description_blank_result_with_winner_names_the_winner(season_2026):
+    season = copy.deepcopy(season_2026)
+    m1 = by_number(season, 1)
+    m1["outcome"] = "result"
+    m1["result"] = None
+    assert m1["winner"] == "lumbini-lions"
+    cal = Calendar.from_ical(build_calendars(season)["calendar/npl.ics"])
+    desc = str(find_event(cal, ALL_UID)["DESCRIPTION"])
+    assert desc == (
+        "Result: Lumbini Lions won\n"
+        "Lumbini Lions 88/3 (9.5 ov)\n"
+        "Sudurpaschim Royals 87/10 (17.2 ov)\n"
+        "https://codila125.github.io/npl/"
+    )
+
+
+def test_description_blank_result_without_winner_omits_result_line(season_2026):
+    season = copy.deepcopy(season_2026)
+    m1 = by_number(season, 1)
+    m1["outcome"] = "result"
+    m1["result"] = "   "
+    m1["winner"] = None
+    cal = Calendar.from_ical(build_calendars(season)["calendar/npl.ics"])
+    desc = str(find_event(cal, ALL_UID)["DESCRIPTION"])
+    assert desc == (
+        "Lumbini Lions 88/3 (9.5 ov)\n"
+        "Sudurpaschim Royals 87/10 (17.2 ov)\n"
+        "https://codila125.github.io/npl/"
+    )
+
+
 def test_description_no_result_with_text_and_scores(season_2026):
     season = copy.deepcopy(season_2026)
     m1 = by_number(season, 1)
@@ -237,6 +268,20 @@ def test_completed_match_omits_score_line_when_score_missing(season_2026):
     assert desc == (
         "Result: Lumbini Lions won by 7 wickets\n"
         "Lumbini Lions 88/3 (9.5 ov)\n"
+        "https://codila125.github.io/npl/"
+    )
+
+
+def test_completed_match_score_without_overs_omits_the_overs(season_2026):
+    season = copy.deepcopy(season_2026)
+    m1 = by_number(season, 1)
+    m1["teams"][0]["overs"] = None
+    cal = Calendar.from_ical(build_calendars(season)["calendar/npl.ics"])
+    desc = str(find_event(cal, ALL_UID)["DESCRIPTION"])
+    assert desc == (
+        "Result: Lumbini Lions won by 7 wickets\n"
+        "Lumbini Lions 88/3\n"
+        "Sudurpaschim Royals 87/10 (17.2 ov)\n"
         "https://codila125.github.io/npl/"
     )
 

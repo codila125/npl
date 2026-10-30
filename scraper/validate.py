@@ -19,6 +19,7 @@ Returns every violation, never just the first. Any violation means the run must
 fail and write nothing (ADR-3).
 """
 
+import math
 import re
 from datetime import datetime
 
@@ -316,7 +317,9 @@ def _v12_standings(raw: RawSource) -> list[Violation]:
         except (TypeError, ValueError):
             out.append(Violation("V12", f"row {pos} netRunRate {nrr!r} is not numeric"))
         else:
-            if abs(nrr_value) >= 20:
+            if not math.isfinite(nrr_value):
+                out.append(Violation("V12", f"row {pos} netRunRate {nrr!r} is non-finite"))
+            elif abs(nrr_value) >= 20:
                 out.append(Violation("V12", f"row {pos} |netRunRate| >= 20"))
     return out
 

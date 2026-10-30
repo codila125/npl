@@ -77,16 +77,33 @@ def _summary(match: dict) -> str:
     return f"{side1} vs {side2} (NPL {match['label']})"
 
 
+def _winner_name(match: dict) -> str | None:
+    for side in match["teams"]:
+        if side.get("slug") is not None and side["slug"] == match.get("winner"):
+            return side["name"]
+    return None
+
+
 def _description(match: dict, year: int) -> str:
     lines: list[str] = []
     if match["status"] != "completed":
         lines.append(f"NPL {year} · {match['label']}")
         lines.append(f"Kick-off {_npt_kickoff(match['start_utc'])} NPT")
     else:
-        lines.append(f"Result: {match['result'] or 'No result'}")
+        result = (match["result"] or "").strip()
+        if result:
+            lines.append(f"Result: {result}")
+        elif match["outcome"] == "no_result":
+            lines.append("Result: No result")
+        else:
+            winner_name = _winner_name(match)
+            if winner_name:
+                lines.append(f"Result: {winner_name} won")
         for side in match["teams"]:
             if side["score"] is not None:
-                lines.append(f"{side['name']} {side['score']} ({side['overs']} ov)")
+                overs = side["overs"]
+                suffix = f" ({overs} ov)" if overs is not None else ""
+                lines.append(f"{side['name']} {side['score']}{suffix}")
     lines.append(config.SITE_URL)
     return "\n".join(lines)
 

@@ -50,6 +50,11 @@
     return new URL(".", document.baseURI).href;
   }
 
+  function webcalUrl(url) {
+    var parsed = new URL(url);
+    return "webcal://" + parsed.host + parsed.pathname;
+  }
+
   function nptDate(iso) {
     var ms = Date.parse(iso);
     if (Number.isNaN(ms)) {
@@ -447,7 +452,7 @@
   function buildCalendarRow(slug, name) {
     var base = siteBase();
     var url = base + "calendar/" + slug + ".ics";
-    var webcal = "webcal://" + url.replace(/^https:\/\//, "");
+    var webcal = webcalUrl(url);
     var google = "https://calendar.google.com/calendar/r?cid=" + encodeURIComponent(webcal);
 
     var li = make("li", "calendar-row team-row");
@@ -499,7 +504,7 @@
     }
     var base = siteBase();
     var url = base + "calendar/npl.ics";
-    var webcal = "webcal://" + url.replace(/^https:\/\//, "");
+    var webcal = webcalUrl(url);
     var google = "https://calendar.google.com/calendar/r?cid=" + encodeURIComponent(webcal);
     row.querySelector(".subscribe").href = webcal;
     row.querySelector(".google").href = google;
