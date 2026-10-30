@@ -121,7 +121,8 @@ a:hover {
   color: var(--accent);
 }
 
-button {
+button,
+a.btn {
   font: inherit;
   font-size: 0.8125rem;
   font-weight: 700;
@@ -138,12 +139,20 @@ button {
   transition: background-color 0.2s var(--ease), color 0.2s var(--ease);
 }
 
-button:hover {
+a.btn {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+button:hover,
+a.btn:hover {
   background: var(--fg);
   color: var(--bg);
 }
 
-button:active {
+button:active,
+a.btn:active {
   transform: translateY(1px);
 }
 
@@ -460,13 +469,31 @@ tr.next-match td:first-child {
 
 .filter-row select {
   font: inherit;
+  font-weight: 500;
   color: var(--fg);
-  background: var(--bg);
   border: 1px solid var(--fg);
   border-radius: 0;
   min-height: 44px;
-  padding: 0.4rem 0.75rem;
+  min-width: 14rem;
+  padding: 0.5rem 2.75rem 0.5rem 1rem;
   cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  /* Chevron drawn with two gradients so it follows the theme colour. */
+  background:
+    linear-gradient(45deg, transparent 50%, var(--fg) 50%) right 1.35rem center / 0.4rem 0.4rem no-repeat,
+    linear-gradient(-45deg, transparent 50%, var(--fg) 50%) right 1rem center / 0.4rem 0.4rem no-repeat,
+    var(--bg);
+  transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+
+.filter-row select:hover {
+  box-shadow: inset 0 0 0 1px var(--fg);
+}
+
+.filter-row select option {
+  color: var(--fg);
+  background: var(--bg);
 }
 
 .next-summary {
@@ -483,8 +510,17 @@ tr.next-match td:first-child {
   padding-inline: 0.25rem;
 }
 
-/* Calendar: every row shares the same five columns, so names, links, URLs
-   and buttons line up down the list. Long URLs truncate instead of wrapping. */
+/* Calendar: team name on the left, copy button flush right. */
+.section-intro {
+  color: var(--muted);
+  max-width: 40rem;
+  padding-bottom: 1rem;
+}
+
+#calendar-status:empty {
+  display: none;
+}
+
 .calendar-list,
 #calendar-list {
   list-style: none;
@@ -494,22 +530,18 @@ tr.next-match td:first-child {
 }
 
 .calendar-row {
-  display: grid;
-  grid-template-columns: 11rem auto auto minmax(0, 1fr) auto;
-  column-gap: 1.5rem;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
   padding: 0.5rem 0;
   border-bottom: 1px solid var(--rule);
-  transition: background-color 0.2s var(--ease);
+  transition: background-color 0.2s var(--ease), padding 0.2s var(--ease);
 }
 
 .calendar-row:hover {
   background: var(--hover);
-}
-
-.calendar-actions,
-.url-line {
-  display: contents;
+  padding-inline: 0.75rem;
 }
 
 .calendar-name {
@@ -517,21 +549,16 @@ tr.next-match td:first-child {
   overflow-wrap: normal;
 }
 
-.calendar-url {
-  color: var(--muted);
-  font-size: 0.875rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  min-width: 0;
+.calendar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
-.calendar-actions a {
-  display: inline-block;
-  min-height: 44px;
-  line-height: 44px;
-  font-size: 0.875rem;
-  white-space: nowrap;
+.calendar-actions .btn,
+.calendar-actions button {
+  min-width: 7.5rem;
+  justify-content: center;
 }
 
 /* Below ~64rem the label column folds above the content. */
@@ -558,23 +585,28 @@ tr.next-match td:first-child {
   }
 
   .calendar-row {
-    grid-template-columns: max-content max-content minmax(0, 1fr) auto;
-    column-gap: 1.25rem;
-    padding: 0.75rem 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+    padding-block: 0.75rem;
   }
 
-  .calendar-name {
-    grid-column: 1 / -1;
+  .calendar-row:hover {
+    padding-inline: 0;
   }
 
-  .calendar-url {
-    grid-column: 1 / 4;
-    grid-row: 3;
+  .calendar-actions {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr 1fr;
   }
 
-  .calendar-row .copy {
-    grid-column: 4;
-    grid-row: 3;
+  .calendar-actions .btn,
+  .calendar-actions button {
+    min-width: 0;
+    padding-inline: 0.25rem;
+    font-size: 0.6875rem;
+    letter-spacing: 0.04em;
+    text-align: center;
   }
 }
 
