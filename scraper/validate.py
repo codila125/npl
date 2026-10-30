@@ -11,6 +11,9 @@ V3 (year), V4 (teams), V5/V6 (matches), V7/V8 (participants), V9
 V12 (standings), V13 (updatedAt). ``season`` is the normalized dict and backs
 V14/V15/V16.
 
+``validate_stats(raw)`` (V17) checks the optional stats feed separately: a
+violation there drops this run's stats instead of failing the run.
+
 Callers normalize *before* calling validate: rules V9 and V13 read raw fields
 that ``normalize()`` itself would reject, so the raw source given to
 ``normalize()`` must be parseable even when those rules will flag it.
@@ -25,11 +28,12 @@ from datetime import datetime
 
 from . import config
 from .errors import Violation
-from .normalize import RawSource
+from .normalize import STAT_CATEGORIES, RawSource
 
 SLUG_RE = re.compile(r"^[a-z0-9-]+$")
 CONTROL_RE = re.compile(r"[\x00-\x1f\x7f]")
 MAX_TEXT_LEN = 200
+DECIMAL_RE = re.compile(r"^\d+(?:\.\d+)?$")
 
 _STAGE_COUNTS = {
     "league": 28,
@@ -400,4 +404,34 @@ def _v16_strings(season: dict) -> list[Violation]:
         for i, side in enumerate(m.get("teams", [])):
             _check_text(side.get("name"), f"match {m.get('number')} side {i} name", out)
             _check_text(side.get("short"), f"match {m.get('number')} side {i} short", out)
+    return out
+
+
+def validate_stats(raw: RawSource) -> list[Violation]:
+    out: list[Violation] = []
+    if raw.stats is None:
+        return out
+    team_ids = {t.get("id") for t in raw.teams}
+    for i, r in enumerate(raw.stats):
+        if not isinstance(r, dict) or r.get("category") not in STAT_CATEGORIES:
+            continue  # unknown categories are ignored, not published
+        where = f"stats row {i} ({r.get('category')})"
+        rank = r.get("rank")
+        if type(rank) is not int or rank < 1:
+            out.append(Violation("V17", f"{where} rank {rank!r} is not a positive int"))
+        if r.get("teamId") not in team_ids:
+            out.append(Violation("V17", f"{where} has unknown teamId {r.get('teamId')!r}"))
+        name = r.get("playerName")
+        if not isinstance(name, str) or not name.strip():
+            out.append(Violation("V17", f"{where} has no playerName"))
+        else:
+            _check_text(name, f"{where} playerName", out)
+        for key in ("innings", "runs", "wickets"):
+            value = r.get(key)
+            if type(value) is not int or value < 0:
+                out.append(Violation("V17", f"{where} {key}={value!r} is not a non-negative int"))
+        for key in ("average", "strikeRate", "economy"):
+            value = r.get(key)
+            if value is not None and not DECIMAL_RE.match(str(value)):
+                out.append(Violation("V17", f"{where} {key}={value!r} is not a decimal"))
     return out

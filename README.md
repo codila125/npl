@@ -80,6 +80,8 @@ Official NPL API, four requests per run, sequential, identified with
 - `GET https://nplt20league.com/api/v1/teams`
 - `GET https://nplt20league.com/api/v1/matches?season=2026`
 - `GET https://nplt20league.com/api/v1/points?season=2026`
+- `GET https://nplt20league.com/api/v1/stats?season=2026` (optional: leaderboards for the Stats
+  section; if it fails or does not validate (rule V17) the run keeps the last published stats)
 
 Start times come from `matches[].playedAt` and are cross-checked against the source's
 `timeLabel`/`dateLabel` (rule V9); a mismatch fails the run rather than publishing wrong times.

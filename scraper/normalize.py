@@ -13,6 +13,7 @@ class RawSource(NamedTuple):
     teams: list
     matches: list
     points: list
+    stats: list | None = None  # optional: None when unavailable this run
 
 
 def _number(raw_match: dict) -> int:
@@ -127,6 +128,47 @@ def _standing(p: dict, slug_by_team_id: dict[str, str]) -> dict:
     }
 
 
+STAT_CATEGORIES = (
+    "top_run_scorer",
+    "top_wicket_taker",
+    "batting_strike_rate",
+    "bowling_economy",
+)
+STAT_LEADERS = 5
+
+
+def _decimal(value) -> str | None:
+    """Source decimals ("56.50") kept verbatim as strings; blank -> None."""
+    return None if value is None or str(value).strip() == "" else str(value)
+
+
+def _leader(r: dict, slug_by_team_id: dict[str, str]) -> dict:
+    return {
+        "rank": r["rank"],
+        "player": r["playerName"],
+        "team": slug_by_team_id[r["teamId"]],
+        "innings": r["innings"],
+        "runs": r["runs"],
+        "wickets": r["wickets"],
+        "average": _decimal(r.get("average")),
+        "strike_rate": _decimal(r.get("strikeRate")),
+        "economy": _decimal(r.get("economy")),
+    }
+
+
+def normalize_stats(raw: RawSource) -> dict:
+    """Top STAT_LEADERS per category, keyed by the source category name.
+
+    Call only once ``validate_stats`` passed: rows with unknown teams raise.
+    """
+    slug_by_team_id = {t["id"]: t["slug"] for t in raw.teams}
+    out = {}
+    for category in STAT_CATEGORIES:
+        rows = sorted((r for r in raw.stats if r["category"] == category), key=lambda r: r["rank"])
+        out[category] = [_leader(r, slug_by_team_id) for r in rows[:STAT_LEADERS]]
+    return out
+
+
 def normalize(raw: RawSource) -> dict:
     slug_by_team_id = {t["id"]: t["slug"] for t in raw.teams}
     stamps = [_utc(r["updatedAt"]) for r in (*raw.points, *raw.matches) if r.get("updatedAt")]
@@ -147,4 +189,5 @@ def normalize(raw: RawSource) -> dict:
             (_standing(p, slug_by_team_id) for p in raw.points), key=lambda r: r["position"]
         ),
         "matches": sorted(matches, key=lambda m: (m["start_utc"], m["number"])),
+        "stats": None,  # filled by the CLI once the optional stats feed validates
     }

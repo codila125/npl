@@ -14,8 +14,8 @@ from pathlib import Path
 from . import config, ics, publish
 from .errors import ScrapeError, Violation
 from .fetch import load_from_dir, load_remote
-from .normalize import normalize
-from .validate import validate
+from .normalize import normalize, normalize_stats
+from .validate import validate, validate_stats
 
 DATA_RELPATH = "data/npl.json"
 
@@ -77,10 +77,20 @@ def main(argv: list[str] | None = None) -> int:
         _report([Violation("V2", f"source data could not be normalized: {exc}")])
         return 1
 
-    violations = validate(raw, season, _previous_season(site_dir), args.allow_regression)
+    previous = _previous_season(site_dir)
+    violations = validate(raw, season, previous, args.allow_regression)
     if violations:
         _report(violations)
         return 1
+
+    # Stats are optional: when missing or invalid, keep the last published ones.
+    stats_violations = validate_stats(raw)
+    if raw.stats is not None and not stats_violations:
+        season["stats"] = normalize_stats(raw)
+    else:
+        for violation in stats_violations:
+            print(f"warning: stats skipped: {violation}", file=sys.stderr)
+        season["stats"] = (previous or {}).get("stats")
 
     outputs = {"data/npl.json": publish.render_json(season), **ics.build_calendars(season)}
     print(

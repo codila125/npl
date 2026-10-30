@@ -8,7 +8,11 @@ Implements the fetch-layer rules:
 - V2 — every API request returns HTTP 200 after retries; the body parses as
   JSON; the top level is an object with a non-empty list under ``data``.
 
-Rules V3..V16 live in ``validate.py`` and run on the raw source plus the
+The stats feed is optional: if robots.txt disallows it or the request fails,
+``RawSource.stats`` is ``None`` and the run carries on (the CLI then keeps the
+previously published stats).
+
+Rules V3..V17 live in ``validate.py`` and run on the raw source plus the
 normalized season once fetching succeeds. ``load_remote`` takes an injected
 ``requests``-like session so tests never open a socket; when ``session`` is
 ``None`` it builds a real session. Retries follow the ``urllib3.Retry`` policy
@@ -17,6 +21,7 @@ sleeps between attempts only for the real session.
 """
 
 import json
+import sys
 import time
 from pathlib import Path
 from urllib import robotparser
@@ -32,6 +37,7 @@ ROBOTS_URL = f"{config.SOURCE_BASE}/robots.txt"
 TEAMS_URL = f"{config.SOURCE_BASE}/api/v1/teams"
 MATCHES_URL = f"{config.SOURCE_BASE}/api/v1/matches?season={config.SEASON_YEAR}"
 POINTS_URL = f"{config.SOURCE_BASE}/api/v1/points?season={config.SEASON_YEAR}"
+STATS_URL = f"{config.SOURCE_BASE}/api/v1/stats?season={config.SEASON_YEAR}"
 _FETCH_URLS = (TEAMS_URL, MATCHES_URL, POINTS_URL)
 
 HEADERS = {"User-Agent": config.USER_AGENT, "Accept": "application/json"}
@@ -51,13 +57,14 @@ def _build_session() -> requests.Session:
     return requests.Session()
 
 
-def _check_robots(session) -> None:
+def _check_robots(session):
+    """Fail unless the required URLs are allowed; return the parser (None = allow all)."""
     try:
         resp = session.get(ROBOTS_URL, headers=HEADERS, timeout=TIMEOUT)
     except requests.RequestException as exc:
         raise ScrapeError("V1", f"robots.txt unreachable: {exc}") from exc
     if resp.status_code in (404, 410):
-        return  # no robots.txt → everything allowed
+        return None  # no robots.txt → everything allowed
     if resp.status_code != 200:
         raise ScrapeError("V1", f"robots.txt returned HTTP {resp.status_code}")
     parser = robotparser.RobotFileParser()
@@ -65,6 +72,7 @@ def _check_robots(session) -> None:
     for url in _FETCH_URLS:
         if not parser.can_fetch(config.USER_AGENT, url):
             raise ScrapeError("V1", f"robots.txt disallows {url}")
+    return parser
 
 
 def _parse_json(resp, url: str) -> list:
@@ -105,11 +113,17 @@ def load_remote(session=None) -> RawSource:
     if own_session:
         session = _build_session()
     sleep = time.sleep if own_session else None
-    _check_robots(session)
+    robots = _check_robots(session)
     teams = _get_json(session, TEAMS_URL, sleep=sleep)
     matches = _get_json(session, MATCHES_URL, sleep=sleep)
     points = _get_json(session, POINTS_URL, sleep=sleep)
-    return RawSource(teams=teams, matches=matches, points=points)
+    stats = None
+    if robots is None or robots.can_fetch(config.USER_AGENT, STATS_URL):
+        try:
+            stats = _get_json(session, STATS_URL, sleep=sleep)
+        except ScrapeError as exc:
+            print(f"warning: stats unavailable: {exc}", file=sys.stderr)
+    return RawSource(teams=teams, matches=matches, points=points, stats=stats)
 
 
 def _read_data_file(path: Path) -> list:
@@ -124,8 +138,10 @@ def _read_data_file(path: Path) -> list:
 
 def load_from_dir(path) -> RawSource:
     d = Path(path)
+    stats_file = d / "stats.json"
     return RawSource(
         teams=_read_data_file(d / "teams.json"),
         matches=_read_data_file(d / "matches.json"),
         points=_read_data_file(d / "points.json"),
+        stats=_read_data_file(stats_file) if stats_file.exists() else None,
     )

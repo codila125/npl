@@ -12,6 +12,7 @@
   var liveRegion = document.getElementById("live-region");
   var refreshNote = document.getElementById("refresh-note");
   var standingsContent = document.getElementById("standings-content");
+  var statsContent = document.getElementById("stats-content");
   var scheduleContent = document.getElementById("schedule-content");
   var calendarStatus = document.getElementById("calendar-status");
   var calendarList = document.getElementById("calendar-list");
@@ -269,6 +270,91 @@
     clear(standingsContent);
     standingsContent.appendChild(wrap);
     standingsContent.appendChild(updated);
+  }
+
+  function statValue(value) {
+    return value === null || value === undefined ? "–" : value;
+  }
+
+  // Columns per leaderboard; `key` marks the figure the board is ranked by.
+  var STAT_BOARDS = [
+    { category: "top_run_scorer", title: "Most runs", columns: [
+      ["Inns", "innings"], ["Runs", "runs", true], ["Avg", "average"], ["SR", "strike_rate"]] },
+    { category: "top_wicket_taker", title: "Most wickets", columns: [
+      ["Inns", "innings"], ["Wkts", "wickets", true], ["Avg", "average"], ["Econ", "economy"]] },
+    { category: "batting_strike_rate", title: "Best strike rate", columns: [
+      ["Inns", "innings"], ["Runs", "runs"], ["SR", "strike_rate", true]] },
+    { category: "bowling_economy", title: "Best economy", columns: [
+      ["Inns", "innings"], ["Wkts", "wickets"], ["Econ", "economy", true]] }
+  ];
+
+  function statsTable(board, leaders, teamsBySlug) {
+    var wrap = make("div", "table-wrap");
+    wrap.tabIndex = 0;
+    wrap.setAttribute("role", "region");
+    var captionId = "stats-caption-" + board.category;
+    wrap.setAttribute("aria-labelledby", captionId);
+
+    var table = make("table");
+    var caption = make("caption", null, board.title);
+    caption.id = captionId;
+    table.appendChild(caption);
+
+    var thead = make("thead");
+    var headRow = make("tr");
+    ["#", "Player", "Team"].concat(board.columns.map(function (c) { return c[0]; }))
+      .forEach(function (label) {
+        var th = make("th", null, label);
+        th.scope = "col";
+        headRow.appendChild(th);
+      });
+    thead.appendChild(headRow);
+    table.appendChild(thead);
+
+    var tbody = make("tbody");
+    leaders.forEach(function (row) {
+      var tr = make("tr");
+      tr.appendChild(make("td", null, row.rank));
+      var player = make("th", null, row.player);
+      player.scope = "row";
+      tr.appendChild(player);
+      var team = teamsBySlug[row.team];
+      var teamCell = make("td");
+      var abbr = make("abbr", null, team ? team.short : row.team);
+      if (team) {
+        abbr.title = team.name;
+      }
+      teamCell.appendChild(abbr);
+      tr.appendChild(teamCell);
+      board.columns.forEach(function (column) {
+        tr.appendChild(make("td", column[2] ? "key" : null, statValue(row[column[1]])));
+      });
+      tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+    wrap.appendChild(table);
+    return wrap;
+  }
+
+  function renderStats() {
+    var stats = currentData.stats;
+    var boards = STAT_BOARDS.filter(function (board) {
+      return stats && Array.isArray(stats[board.category]) && stats[board.category].length > 0;
+    });
+    if (boards.length === 0) {
+      setMessage(statsContent, "Stats are not available yet.");
+      return;
+    }
+    var teamsBySlug = {};
+    currentData.teams.forEach(function (team) {
+      teamsBySlug[team.slug] = team;
+    });
+    var grid = make("div", "stats-grid");
+    boards.forEach(function (board) {
+      grid.appendChild(statsTable(board, stats[board.category], teamsBySlug));
+    });
+    clear(statsContent);
+    statsContent.appendChild(grid);
   }
 
   function renderSchedule() {
@@ -533,6 +619,7 @@
     main.setAttribute("aria-busy", "true");
     refreshNote.hidden = true;
     setMessage(standingsContent, "Loading…");
+    setMessage(statsContent, "Loading…");
     setMessage(scheduleContent, "Loading…");
     clear(calendarStatus);
     calendarStatus.appendChild(make("p", null, "Loading teams…"));
@@ -545,6 +632,7 @@
     main.setAttribute("aria-busy", "false");
     refreshNote.hidden = true;
     renderStandings();
+    renderStats();
     renderSchedule();
     renderCalendar();
   }
@@ -553,6 +641,7 @@
     main.setAttribute("aria-busy", "false");
     refreshNote.hidden = true;
     renderErrorBlock(standingsContent);
+    renderErrorBlock(statsContent);
     renderErrorBlock(scheduleContent);
     clear(calendarStatus);
     calendarStatus.appendChild(make("p", null, "Team calendars unavailable until data loads"));

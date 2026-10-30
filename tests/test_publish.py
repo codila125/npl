@@ -91,5 +91,10 @@ def test_written_files_are_world_readable(tmp_path):
 def test_committed_seed_matches_fixtures(season_2026):
     from pathlib import Path
 
-    seed = Path(__file__).parent.parent / "site/data/npl.json"
-    assert seed.read_bytes() == render_json(season_2026)
+    from scraper.fetch import load_from_dir
+    from scraper.normalize import normalize_stats
+
+    root = Path(__file__).parent.parent
+    seed = root / "site/data/npl.json"
+    raw = load_from_dir(root / "tests/fixtures/season2026")
+    assert seed.read_bytes() == render_json({**season_2026, "stats": normalize_stats(raw)})

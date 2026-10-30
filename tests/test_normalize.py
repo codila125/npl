@@ -1,4 +1,9 @@
-from scraper.normalize import normalize
+from pathlib import Path
+
+from scraper.fetch import load_from_dir
+from scraper.normalize import STAT_CATEGORIES, normalize, normalize_stats
+
+FIXTURES = Path(__file__).parent / "fixtures"
 
 
 def test_normalizes_32_matches_numbered_1_to_32(raw_2026):
@@ -204,4 +209,18 @@ def test_normalize_is_deterministic(raw_2026):
     assert normalize(raw_2026) == normalize(raw_2026)
     assert list(normalize(raw_2026)) == [
         "schema_version", "season", "updated_at", "source", "teams", "standings", "matches",
+        "stats",
     ]  # fmt: skip
+
+
+def test_normalize_stats_keeps_top_five_per_category_in_rank_order(raw_2026):
+    raw = raw_2026._replace(stats=load_from_dir(FIXTURES / "season2026").stats)
+    stats = normalize_stats(raw)
+    assert list(stats) == list(STAT_CATEGORIES)
+    for leaders in stats.values():
+        assert [r["rank"] for r in leaders] == [1, 2, 3, 4, 5]
+    top = stats["top_run_scorer"][0]
+    assert top == {
+        "rank": 1, "player": "Lokesh Bam", "team": "biratnagar-kings", "innings": 2,
+        "runs": 113, "wickets": 0, "average": "56.50", "strike_rate": "171.21", "economy": None,
+    }  # fmt: skip
