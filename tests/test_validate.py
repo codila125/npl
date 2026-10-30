@@ -90,6 +90,12 @@ def test_v12_standings_math_broken(raw_2026):
     assert_rule(validate(raw_2026, season), "V12")
 
 
+def test_v12_non_finite_net_run_rate(raw_2026):
+    season = normalize(raw_2026)
+    raw_2026.points[0]["netRunRate"] = "NaN"
+    assert_rule(validate(raw_2026, season), "V12")
+
+
 def test_v13_all_updated_at_missing(raw_2026):
     season = normalize(raw_2026)
     for m in raw_2026.matches:

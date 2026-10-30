@@ -1,6 +1,8 @@
 import json
 import os
 
+import pytest
+
 from scraper.publish import render_json, write_outputs
 
 
@@ -16,6 +18,11 @@ def test_render_json_format(season_2026):
 def test_render_json_keeps_key_order_and_non_ascii():
     out = render_json({"b": 1, "a": "Nepal · Kirtipur"}).decode("utf-8")
     assert out == '{\n  "b": 1,\n  "a": "Nepal · Kirtipur"\n}\n'
+
+
+def test_render_json_rejects_non_finite_floats():
+    with pytest.raises(ValueError):
+        render_json({"netRunRate": float("nan")})
 
 
 def test_write_creates_files_and_reports_changed_paths(tmp_path):

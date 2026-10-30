@@ -9,7 +9,9 @@ CALENDAR_DIR = "calendar"
 
 
 def render_json(season: dict) -> bytes:
-    return (json.dumps(season, indent=2, ensure_ascii=False) + "\n").encode("utf-8")
+    return (
+        json.dumps(season, indent=2, ensure_ascii=False, allow_nan=False) + "\n"
+    ).encode("utf-8")
 
 
 def _atomic_write(path: Path, data: bytes) -> None:
