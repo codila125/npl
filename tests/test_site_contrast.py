@@ -1,14 +1,116 @@
-"""Static-site checks: WCAG AA contrast tokens and HTML skeleton invariants.
+"""Static-site checks: WCAG AA contrast tokens, table layout and HTML invariants.
 
 These tests parse the committed site files (no browser, no network). The contrast
 numbers come from the spec's theme-token table and use the WCAG 2.1 relative
-luminance formula.
+luminance formula. The table rules are checked because `body` wraps anywhere for
+long URLs, which must not reach the tables: cells break at word boundaries only
+and the `div.table-wrap` scrolls instead (AC-8).
 """
 
+import functools
 import re
 from pathlib import Path
 
 SITE = Path(__file__).resolve().parent.parent / "site"
+
+COMMENT = re.compile(r"/\*.*?\*/", re.S)
+CELL_SELECTOR = re.compile(r"(?:^|[\s>+~])(?:table|thead|tbody|tfoot|tr|th|td)$")
+UNSAFE_WRAP = {"overflow-wrap": {"anywhere", "break-word"},
+               "word-break": {"break-all", "break-word"}}
+
+
+@functools.cache
+def _css_rules() -> tuple[tuple[str, dict[str, str]], ...]:
+    """Flatten style.css into (selector group, declarations) pairs.
+
+    At-rule wrappers such as `@media` are dropped, leaving the rules they
+    contain in document order (no rule in this stylesheet needs the media
+    condition to be evaluated to check its declarations).
+    """
+    text = COMMENT.sub("", (SITE / "style.css").read_text())
+    rules: list[tuple[str, dict[str, str]]] = []
+    stack: list[str] = []
+    buffer = ""
+    for char in text:
+        if char == "{":
+            stack.append(buffer.strip())
+            buffer = ""
+        elif char == "}":
+            prelude = stack.pop() if stack else ""
+            if prelude and not prelude.startswith("@"):
+                rules.append((prelude, _declarations(buffer)))
+            buffer = ""
+        else:
+            buffer += char
+    return tuple(rules)
+
+
+def _declarations(body: str) -> dict[str, str]:
+    declarations: dict[str, str] = {}
+    for chunk in body.split(";"):
+        name, separator, value = chunk.partition(":")
+        if separator:
+            declarations[name.strip().lower()] = value.strip()
+    return declarations
+
+
+def _parts(selector_group: str) -> list[str]:
+    return [part.strip() for part in selector_group.split(",")]
+
+
+def _decls(selector_group: str, parts: tuple[str, ...] | None = None) -> dict[str, str]:
+    """Merged declarations of every rule whose selector group contains `parts`.
+
+    With `parts` omitted, every rule whose selector subject is a table, row or
+    cell is collected, i.e. what actually reaches a `td`/`th` box.
+    """
+    merged: dict[str, str] = {}
+    for selector_group, declarations in _css_rules():
+        selected = _parts(selector_group)
+        if parts is None:
+            matches = any(CELL_SELECTOR.search(part) for part in selected)
+        else:
+            matches = any(part in parts for part in selected)
+        if matches:
+            merged.update(declarations)
+    return merged
+
+
+def test_table_cells_break_words_at_boundaries_only():
+    cells = _decls(None)
+    assert cells.get("overflow-wrap") == "normal"
+    assert cells.get("word-break") == "normal"
+    assert cells.get("hyphens") == "none"
+    for selector_group, declarations in _css_rules():
+        if not any(CELL_SELECTOR.search(part) for part in _parts(selector_group)):
+            continue
+        for prop, unsafe in UNSAFE_WRAP.items():
+            assert declarations.get(prop) not in unsafe, (
+                f"{selector_group!r} sets {prop}: {declarations[prop]}"
+            )
+    # Long URLs in the subscribe list still wrap: body keeps `anywhere`.
+    assert _decls(None, ("body",)).get("overflow-wrap") == "anywhere"
+
+
+def test_table_headers_and_short_cells_do_not_wrap():
+    assert _decls(None, ("thead th",)).get("white-space") == "nowrap"
+    assert _decls(None, ("#standings tbody th", "#standings tbody td")).get(
+        "white-space"
+    ) == "nowrap"
+    for column in (1, 2, 3):
+        selector = f"#schedule tbody td:nth-child({column})"
+        assert _decls(None, (selector,)).get("white-space") == "nowrap", selector
+
+
+def test_tables_scroll_inside_their_wrapper():
+    assert _decls(None, ("table",)).get("width") == "100%"
+    assert _decls(None, ("#standings table",)).get("min-width") == "max-content"
+    # Schedule long-text columns wrap, so they get a width floor (long names
+    # never squeeze a column into one letter per line).
+    for column in (4, 5, 6):
+        selector = f"#schedule tbody td:nth-child({column})"
+        floor = _decls(None, (selector,)).get("min-width", "")
+        assert re.fullmatch(r"\d+(?:\.\d+)?rem", floor), (selector, floor)
 
 
 def _parse_tokens() -> dict[str, dict[str, str]]:
