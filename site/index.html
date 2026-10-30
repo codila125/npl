@@ -50,19 +50,18 @@
 
     <section id="calendar" aria-labelledby="calendar-heading">
       <h2 id="calendar-heading">Calendar</h2>
+      <p class="section-intro">Subscribe in one tap, or copy a feed URL into Apple, Google or Outlook Calendar. Fixtures and results update automatically.</p>
       <p id="calendar-status">Loading teams…</p>
       <ul id="calendar-list">
         <li class="calendar-row" id="all-matches-row">
           <span class="calendar-name">All matches</span>
           <span class="calendar-actions">
-            <a class="subscribe" href="webcal://codila125.github.io/npl/calendar/npl.ics">Subscribe</a>
-            <a class="google" target="_blank" rel="noopener"
+            <a class="btn subscribe" aria-label="Subscribe to All matches calendar"
+               href="webcal://codila125.github.io/npl/calendar/npl.ics">Subscribe</a>
+            <a class="btn google" target="_blank" rel="noopener" aria-label="Add All matches to Google Calendar"
                href="https://calendar.google.com/calendar/r?cid=webcal%3A%2F%2Fcodila125.github.io%2Fnpl%2Fcalendar%2Fnpl.ics">Google Calendar</a>
-            <span class="url-line">
-              <span class="calendar-url">https://codila125.github.io/npl/calendar/npl.ics</span>
-              <button type="button" class="copy"
-                      data-url="https://codila125.github.io/npl/calendar/npl.ics">Copy URL</button>
-            </span>
+            <button type="button" class="copy" aria-label="Copy All matches calendar URL"
+                    data-url="https://codila125.github.io/npl/calendar/npl.ics">Copy URL</button>
           </span>
         </li>
       </ul>

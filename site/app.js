@@ -55,6 +55,10 @@
     return "webcal://" + parsed.host + parsed.pathname;
   }
 
+  function googleUrl(url) {
+    return "https://calendar.google.com/calendar/r?cid=" + encodeURIComponent(webcalUrl(url));
+  }
+
   function nptDate(iso) {
     var ms = Date.parse(iso);
     if (Number.isNaN(ms)) {
@@ -450,33 +454,30 @@
   }
 
   function buildCalendarRow(slug, name) {
-    var base = siteBase();
-    var url = base + "calendar/" + slug + ".ics";
-    var webcal = webcalUrl(url);
-    var google = "https://calendar.google.com/calendar/r?cid=" + encodeURIComponent(webcal);
+    var url = siteBase() + "calendar/" + slug + ".ics";
 
     var li = make("li", "calendar-row team-row");
     li.appendChild(make("span", "calendar-name", name));
 
     var actions = make("span", "calendar-actions");
 
-    var subscribe = make("a", "subscribe", "Subscribe");
-    subscribe.href = webcal;
+    var subscribe = make("a", "btn subscribe", "Subscribe");
+    subscribe.href = webcalUrl(url);
+    subscribe.setAttribute("aria-label", "Subscribe to " + name + " calendar");
     actions.appendChild(subscribe);
 
-    var googleLink = make("a", "google", "Google Calendar");
-    googleLink.href = google;
+    var googleLink = make("a", "btn google", "Google Calendar");
+    googleLink.href = googleUrl(url);
     googleLink.target = "_blank";
     googleLink.rel = "noopener";
+    googleLink.setAttribute("aria-label", "Add " + name + " to Google Calendar");
     actions.appendChild(googleLink);
 
-    var urlLine = make("span", "url-line");
-    urlLine.appendChild(make("span", "calendar-url", url));
     var copy = make("button", "copy", "Copy URL");
     copy.type = "button";
     copy.dataset.url = url;
-    urlLine.appendChild(copy);
-    actions.appendChild(urlLine);
+    copy.setAttribute("aria-label", "Copy " + name + " calendar URL");
+    actions.appendChild(copy);
 
     li.appendChild(actions);
     return li;
@@ -502,13 +503,9 @@
     if (!row) {
       return;
     }
-    var base = siteBase();
-    var url = base + "calendar/npl.ics";
-    var webcal = webcalUrl(url);
-    var google = "https://calendar.google.com/calendar/r?cid=" + encodeURIComponent(webcal);
-    row.querySelector(".subscribe").href = webcal;
-    row.querySelector(".google").href = google;
-    row.querySelector(".calendar-url").textContent = url;
+    var url = siteBase() + "calendar/npl.ics";
+    row.querySelector(".subscribe").href = webcalUrl(url);
+    row.querySelector(".google").href = googleUrl(url);
     row.querySelector(".copy").dataset.url = url;
   }
 
@@ -522,7 +519,8 @@
       }, 2000);
     }
     function fail() {
-      announce("Copy failed — select the URL above and copy it manually.");
+      announce("Copy failed — copy the URL manually.");
+      window.prompt("Copy this calendar URL:", url);
     }
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(url).then(success, fail);
