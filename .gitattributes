@@ -1,0 +1,2 @@
+*.ics -text
+site/data/*.json text eol=lf
