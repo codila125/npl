@@ -6,7 +6,7 @@
     "timezone": "Asia/Kathmandu",
     "utc_offset": "+05:45"
   },
-  "updated_at": "2026-10-29T15:04:01Z",
+  "updated_at": "2026-10-31T08:49:41Z",
   "source": {
     "name": "nplt20league.com",
     "url": "https://nplt20league.com/"
@@ -63,7 +63,7 @@
       "tied": 0,
       "no_result": 0,
       "points": 4,
-      "nrr": 0.534
+      "nrr": 0.439
     },
     {
       "position": 2,
@@ -74,7 +74,7 @@
       "tied": 0,
       "no_result": 0,
       "points": 2,
-      "nrr": 4.599
+      "nrr": 3.93
     },
     {
       "position": 3,
@@ -85,7 +85,7 @@
       "tied": 0,
       "no_result": 0,
       "points": 2,
-      "nrr": 0.4
+      "nrr": 0.209
     },
     {
       "position": 4,
@@ -96,7 +96,7 @@
       "tied": 0,
       "no_result": 0,
       "points": 2,
-      "nrr": -0.041
+      "nrr": -0.036
     },
     {
       "position": 5,
@@ -107,7 +107,7 @@
       "tied": 0,
       "no_result": 0,
       "points": 2,
-      "nrr": -1.43
+      "nrr": -0.932
     },
     {
       "position": 6,
@@ -118,7 +118,7 @@
       "tied": 0,
       "no_result": 0,
       "points": 0,
-      "nrr": -0.262
+      "nrr": -0.155
     },
     {
       "position": 7,
@@ -129,7 +129,7 @@
       "tied": 0,
       "no_result": 0,
       "points": 0,
-      "nrr": -0.944
+      "nrr": -0.795
     },
     {
       "position": 8,
@@ -343,8 +343,8 @@
       "id": "060d9ee1-05c3-4c56-833c-ba7a127be1c8",
       "start_utc": "2026-10-31T06:45:00Z",
       "venue": "Tribhuvan University Cricket Ground, Kirtipur",
-      "status": "scheduled",
-      "status_raw": "start_in",
+      "status": "completed",
+      "status_raw": "completed",
       "teams": [
         {
           "slug": "lumbini-lions",
@@ -363,10 +363,10 @@
           "overs": null
         }
       ],
-      "result": null,
-      "outcome": null,
+      "result": "Match Abandoned",
+      "outcome": "no_result",
       "winner": null,
-      "updated_at": "2026-10-29T14:58:56Z"
+      "updated_at": "2026-10-31T08:34:57Z"
     },
     {
       "number": 8,
@@ -376,7 +376,7 @@
       "start_utc": "2026-10-31T11:15:00Z",
       "venue": "Tribhuvan University Cricket Ground, Kirtipur",
       "status": "scheduled",
-      "status_raw": "scheduled",
+      "status_raw": "start_in",
       "teams": [
         {
           "slug": "sudurpaschim-royals",
@@ -398,7 +398,7 @@
       "result": null,
       "outcome": null,
       "winner": null,
-      "updated_at": "2026-10-26T18:45:03Z"
+      "updated_at": "2026-10-31T08:34:27Z"
     },
     {
       "number": 9,
@@ -1344,17 +1344,6 @@
     "bowling_economy": [
       {
         "rank": 1,
-        "player": "Sher Malla",
-        "team": "lumbini-lions",
-        "innings": 1,
-        "runs": 11,
-        "wickets": 3,
-        "average": "3.67",
-        "strike_rate": null,
-        "economy": "2.75"
-      },
-      {
-        "rank": 2,
         "player": "Saif Hassan",
         "team": "janakpur-bolts",
         "innings": 1,
@@ -1362,6 +1351,17 @@
         "wickets": 2,
         "average": "5.50",
         "strike_rate": "102.56",
+        "economy": "2.75"
+      },
+      {
+        "rank": 2,
+        "player": "Sher Malla",
+        "team": "lumbini-lions",
+        "innings": 1,
+        "runs": 11,
+        "wickets": 3,
+        "average": "3.67",
+        "strike_rate": null,
         "economy": "2.75"
       },
       {
