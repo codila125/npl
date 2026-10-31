@@ -299,6 +299,64 @@ nav {
   animation: rise 0.6s var(--ease) both;
 }
 
+/* Live panel: same label/content grid as a section, unnumbered, only shown
+   around a match's start time. */
+.live-panel {
+  display: grid;
+  grid-template-columns: var(--label-col) minmax(0, 1fr);
+  column-gap: var(--gutter);
+  align-items: start;
+  margin-top: 4rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--accent);
+  animation: rise 0.7s var(--ease) both;
+}
+
+.live-panel[hidden] {
+  display: none;
+}
+
+.live-panel > h2 {
+  grid-column: 1;
+}
+
+.live-panel > div {
+  grid-column: 2;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.live-match p {
+  margin: 0 0 0.5rem;
+}
+
+.live-title {
+  font-weight: 700;
+}
+
+.live-scores {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  gap: 0.25rem 2rem;
+  margin: 0 0 0.5rem;
+}
+
+.live-scores dt {
+  font-weight: 500;
+}
+
+.live-scores dd {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.live-target,
+.live-status {
+  font-weight: 500;
+}
+
 .table-wrap {
   overflow-x: auto;
   margin-block: 0.5rem;
@@ -639,6 +697,18 @@ tr.next-match td:first-child {
   }
 
   section > :not(h2) {
+    grid-column: 1;
+  }
+
+  .live-panel {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .live-panel > h2 {
+    margin-bottom: 1rem;
+  }
+
+  .live-panel > div {
     grid-column: 1;
   }
 }

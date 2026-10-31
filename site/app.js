@@ -5,6 +5,11 @@
   var NPT_OFFSET_MS = (5 * 60 + 45) * 60 * 1000;
   var MATCH_WINDOW_MS = 4 * 60 * 60 * 1000;
   var DATA_URL = "data/npl.json";
+  // Cloudflare Worker in worker/live.js; empty disables the live panel.
+  var LIVE_URL = "https://npl-live.codyprab34.workers.dev/live";
+  var LIVE_POLL_MS = 30 * 1000;
+  var LIVE_LEAD_MS = 15 * 60 * 1000;
+  var LIVE_TAIL_MS = 6 * 60 * 60 * 1000;
   var MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   var DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
@@ -17,10 +22,14 @@
   var calendarStatus = document.getElementById("calendar-status");
   var calendarList = document.getElementById("calendar-list");
   var themeToggle = document.getElementById("theme-toggle");
+  var livePanel = document.getElementById("live");
+  var liveContent = document.getElementById("live-content");
 
   var currentData = null;
   var schemaMismatch = false;
   var lastHiddenAt = null;
+  var liveTimer = null;
+  var lastLive = null;
 
   function announce(message) {
     liveRegion.textContent = "";
@@ -615,6 +624,131 @@
     }
   }
 
+  // Matches the live panel follows: not completed in the published data and
+  // inside [start - LIVE_LEAD_MS, start + LIVE_TAIL_MS).
+  function liveCandidates(now) {
+    if (!currentData) {
+      return [];
+    }
+    return currentData.matches.filter(function (match) {
+      var startMs = Date.parse(match.start_utc);
+      return match.status !== "completed" && !Number.isNaN(startMs) &&
+        now >= startMs - LIVE_LEAD_MS && now < startMs + LIVE_TAIL_MS;
+    });
+  }
+
+  function hasScore(live) {
+    return live.teams.some(function (side) {
+      return side.score !== null && side.score !== undefined;
+    });
+  }
+
+  function liveStatus(match, live, now) {
+    if (live && live.status === "completed") {
+      return live.result || "Completed";
+    }
+    if (live && hasScore(live)) {
+      return "In progress";
+    }
+    if (now < Date.parse(match.start_utc)) {
+      return "Starts " + formatTime(match.start_utc) + " NPT";
+    }
+    return "Scheduled for " + formatTime(match.start_utc) +
+      " NPT — no score from the official source yet.";
+  }
+
+  function renderLiveMatch(match, live, now) {
+    var block = make("div", "live-match");
+    var head = make("p", "live-title");
+    if (live && hasScore(live) && live.status !== "completed") {
+      head.appendChild(make("span", "badge", "LIVE"));
+      head.appendChild(document.createTextNode(" "));
+    }
+    head.appendChild(document.createTextNode(matchLabel(match) + " · " +
+      match.teams.map(function (side) { return side.name; }).join(" vs ")));
+    block.appendChild(head);
+
+    if (live && hasScore(live)) {
+      var liveBySlug = {};
+      live.teams.forEach(function (side) {
+        liveBySlug[side.slug] = side;
+      });
+      var list = make("dl", "live-scores");
+      var target = null;
+      match.teams.forEach(function (side) {
+        var row = liveBySlug[side.slug];
+        list.appendChild(make("dt", null, side.name));
+        var score = row && row.score ? row.score : "Yet to bat";
+        if (row && row.score && row.overs) {
+          score += " (" + row.overs + " ov)";
+        }
+        list.appendChild(make("dd", null, score));
+        if (row && row.target) {
+          target = row.target;
+        }
+      });
+      block.appendChild(list);
+      if (target && live.status !== "completed") {
+        block.appendChild(make("p", "live-target", "Target " + target));
+      }
+    }
+
+    block.appendChild(make("p", "live-status", liveStatus(match, live, now)));
+    if (live && live.updated_at) {
+      block.appendChild(make("p", "updated",
+        "Official source last updated " + formatUpdatedAt(live.updated_at) + " NPT"));
+    }
+    return block;
+  }
+
+  function renderLive(candidates, payload, failed) {
+    var now = Date.now();
+    var liveById = {};
+    if (payload) {
+      payload.matches.forEach(function (live) {
+        liveById[live.id] = live;
+      });
+    }
+    clear(liveContent);
+    candidates.forEach(function (match) {
+      liveContent.appendChild(renderLiveMatch(match, liveById[match.id] || null, now));
+    });
+    if (failed) {
+      liveContent.appendChild(make("p", "updated", payload ?
+        "Couldn't refresh live scores — showing the last check." :
+        "Live scores are unavailable right now."));
+    }
+    livePanel.hidden = false;
+  }
+
+  function pollLive() {
+    clearTimeout(liveTimer);
+    liveTimer = null;
+    if (!LIVE_URL || !currentData || document.visibilityState === "hidden") {
+      return;
+    }
+    liveTimer = setTimeout(pollLive, LIVE_POLL_MS);
+    var candidates = liveCandidates(Date.now());
+    if (candidates.length === 0) {
+      livePanel.hidden = true;
+      return;
+    }
+    fetch(LIVE_URL, { cache: "no-store" }).then(function (response) {
+      if (!response.ok) {
+        throw new Error("HTTP " + response.status);
+      }
+      return response.json();
+    }).then(function (payload) {
+      if (!payload || !Array.isArray(payload.matches)) {
+        throw new Error("bad live payload");
+      }
+      lastLive = payload;
+      renderLive(candidates, payload, false);
+    }).catch(function () {
+      renderLive(candidates, lastLive, true);
+    });
+  }
+
   function showLoading() {
     main.setAttribute("aria-busy", "true");
     refreshNote.hidden = true;
@@ -635,6 +769,7 @@
     renderStats();
     renderSchedule();
     renderCalendar();
+    pollLive();
   }
 
   function renderError() {
@@ -750,6 +885,8 @@
     } else if (document.visibilityState === "visible") {
       if (lastHiddenAt !== null && Date.now() - lastHiddenAt > 5 * 60 * 1000) {
         loadData(true);
+      } else {
+        pollLive();
       }
     }
   });
