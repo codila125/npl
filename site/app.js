@@ -641,7 +641,7 @@
       return live.result || "Completed";
     }
     if (live && hasScore(live)) {
-      return "In progress";
+      return null;
     }
     if (now < Date.parse(match.start_utc)) {
       return "Starts " + formatTime(match.start_utc) + " NPT";
@@ -666,7 +666,6 @@
         liveBySlug[side.slug] = side;
       });
       var list = make("dl", "live-scores");
-      var target = null;
       match.teams.forEach(function (side) {
         var row = liveBySlug[side.slug];
         list.appendChild(make("dt", null, side.name));
@@ -675,17 +674,14 @@
           score += " (" + row.overs + " ov)";
         }
         list.appendChild(make("dd", null, score));
-        if (row && row.target) {
-          target = row.target;
-        }
       });
       block.appendChild(list);
-      if (target && live.status !== "completed") {
-        block.appendChild(make("p", "live-target", "Target " + target));
-      }
     }
 
-    block.appendChild(make("p", "live-status", liveStatus(match, live, now)));
+    var status = liveStatus(match, live, now);
+    if (status) {
+      block.appendChild(make("p", "live-status", status));
+    }
     return block;
   }
 
