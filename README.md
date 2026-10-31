@@ -105,8 +105,8 @@ with CORS for `https://codila125.github.io` (and `http://localhost:8000` for loc
 
 The page polls it every 30 s, only while the tab is visible and only from 15 minutes before a
 match's start until it is completed in the published data (capped at 6 hours). The panel shows
-exactly what the source reports; when the source has no score yet it says so rather than
-guessing. If the Worker is down the panel says so and the rest of the page is unaffected.
+exactly what the source reports; with no score yet it shows only the scheduled start time,
+and never a guessed score. If the Worker is down the panel says so and the rest of the page is unaffected.
 
 Deploy (once, from a Cloudflare account):
 
