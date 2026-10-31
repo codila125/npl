@@ -270,15 +270,8 @@
     table.appendChild(tbody);
     wrap.appendChild(table);
 
-    var updated = make("p", "updated");
-    var time = make("time");
-    time.dateTime = data.updated_at;
-    time.textContent = formatUpdatedAt(data.updated_at) + " NPT";
-    updated.append("Data updated ", time);
-
     clear(standingsContent);
     standingsContent.appendChild(wrap);
-    standingsContent.appendChild(updated);
   }
 
   function statValue(value) {
@@ -653,8 +646,7 @@
     if (now < Date.parse(match.start_utc)) {
       return "Starts " + formatTime(match.start_utc) + " NPT";
     }
-    return "Scheduled for " + formatTime(match.start_utc) +
-      " NPT — no score from the official source yet.";
+    return "Scheduled for " + formatTime(match.start_utc) + " NPT";
   }
 
   function renderLiveMatch(match, live, now) {
@@ -694,10 +686,6 @@
     }
 
     block.appendChild(make("p", "live-status", liveStatus(match, live, now)));
-    if (live && live.updated_at) {
-      block.appendChild(make("p", "updated",
-        "Official source last updated " + formatUpdatedAt(live.updated_at) + " NPT"));
-    }
     return block;
   }
 
