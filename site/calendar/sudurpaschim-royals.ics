@@ -40,14 +40,15 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:npl-2026-m08@codila125.github.io
-DTSTAMP:20261031T083427Z
-LAST-MODIFIED:20261031T083427Z
+DTSTAMP:20261031T165545Z
+LAST-MODIFIED:20261031T165545Z
 DTSTART:20261031T111500Z
 DTEND:20261031T144500Z
 SUMMARY:Sudurpaschim Royals vs Biratnagar Kings (NPL Match 8)
 LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
-DESCRIPTION:NPL 2026 · Match 8\nKick-off 5:00 PM NPT\nhttps://codila125.gi
- thub.io/npl/
+DESCRIPTION:Result: Biratnagar Kings won by 35 runs\nSudurpaschim Royals 70
+ /3 (5.0 ov)\nBiratnagar Kings 105/2 (5.0 ov)\nhttps://codila125.github.io/
+ npl/
 URL:https://codila125.github.io/npl/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
