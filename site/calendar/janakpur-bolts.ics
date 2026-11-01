@@ -39,14 +39,14 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:npl-2026-m09@codila125.github.io
-DTSTAMP:20261101T141401Z
-LAST-MODIFIED:20261101T141401Z
+DTSTAMP:20261101T150041Z
+LAST-MODIFIED:20261101T150041Z
 DTSTART:20261101T111500Z
 DTEND:20261101T144500Z
 SUMMARY:Janakpur Bolts vs Pokhara Avengers (NPL Match 9)
 LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
-DESCRIPTION:NPL 2026 · Match 9\nKick-off 5:00 PM NPT\nhttps://codila125.gi
- thub.io/npl/
+DESCRIPTION:Result: Janakpur Bolts won by 9 runs\nJanakpur Bolts 147/7 (20.
+ 0 ov)\nPokhara Avengers 138/9 (20.0 ov)\nhttps://codila125.github.io/npl/
 URL:https://codila125.github.io/npl/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
