@@ -88,13 +88,16 @@ def test_written_files_are_world_readable(tmp_path):
     assert (tmp_path / "data/npl.json").stat().st_mode & 0o777 == 0o644
 
 
-def test_committed_seed_matches_fixtures(season_2026):
+def test_committed_seed_is_canonical_and_complete():
+    """The bot rewrites site/data/npl.json every 30 minutes, so it cannot be
+    compared with frozen fixtures. Check what must always hold instead: the
+    file is byte-for-byte what `render_json` writes, and has every section."""
+    import json
     from pathlib import Path
 
-    from scraper.fetch import load_from_dir
-    from scraper.normalize import normalize_stats
-
-    root = Path(__file__).parent.parent
-    seed = root / "site/data/npl.json"
-    raw = load_from_dir(root / "tests/fixtures/season2026")
-    assert seed.read_bytes() == render_json({**season_2026, "stats": normalize_stats(raw)})
+    seed = Path(__file__).parent.parent / "site/data/npl.json"
+    data = json.loads(seed.read_text())
+    assert seed.read_bytes() == render_json(data)
+    assert data["schema_version"] == 1
+    for key in ("season", "updated_at", "teams", "standings", "matches", "stats"):
+        assert data[key], key
