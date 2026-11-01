@@ -748,7 +748,26 @@
       }
       group.balls.unshift(c);
     });
-    return overs.slice(0, 4);
+    // The API only sends the latest ~20 balls, so an older over is often cut
+    // off at its start. Keep the newest over (it may be in progress) and show
+    // an older one only when all six legal balls are known.
+    return overs.filter(function (over, index) {
+      var legal = over.balls.filter(function (ball) { return !ball.extra || ball.extra[0] === "L" || ball.extra === "B"; });
+      return index === 0 || legal.length >= 6;
+    }).slice(0, 4);
+  }
+
+  function ballKey(ball) {
+    return [ball.innings, ball.over, ball.extra, ball.wicket].join("|");
+  }
+
+  // Poll results carry only the latest balls; keep earlier ones we have seen
+  // so overs complete while the page stays open. Newest first, newest wins.
+  function mergeCommentary(fresh, previous) {
+    var seen = {};
+    fresh.forEach(function (ball) { seen[ballKey(ball)] = true; });
+    var kept = (previous || []).filter(function (ball) { return !seen[ballKey(ball)]; });
+    return fresh.concat(kept).slice(0, 120);
   }
 
   function renderOvers(card, innings) {
@@ -1020,6 +1039,8 @@
         return response.json();
       }).then(function (card) {
         if (card && Array.isArray(card.innings) && card.team1 && card.squad) {
+          card.commentary = mergeCommentary(card.commentary || [],
+            lastCards[match.id] && lastCards[match.id].commentary);
           lastCards[match.id] = card;
         }
       }).catch(function () {});
