@@ -764,7 +764,8 @@
       var balls = make("span", "balls");
       over.balls.forEach(function (ball) {
         var chip = make("span", "ball" + (ball.wicket ? " wicket" : ball.boundary ? " boundary" : ""),
-          ball.wicket ? "W" : ball.runs === null ? "·" : ball.runs);
+          ball.wicket ? "W" : ball.extra ? ball.extra.charAt(0) + ball.extra.slice(1).toLowerCase() :
+            ball.runs === null ? "·" : ball.runs);
         chip.title = ball.over + " " + (ball.text || "");
         balls.appendChild(chip);
       });
