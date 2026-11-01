@@ -6,7 +6,7 @@
     "timezone": "Asia/Kathmandu",
     "utc_offset": "+05:45"
   },
-  "updated_at": "2026-11-01T11:45:50Z",
+  "updated_at": "2026-11-01T11:47:26Z",
   "source": {
     "name": "nplt20league.com",
     "url": "https://nplt20league.com/"
@@ -415,8 +415,8 @@
           "name": "Janakpur Bolts",
           "short": "JAB",
           "placeholder": false,
-          "score": "47/1",
-          "overs": "6.5"
+          "score": "48/1",
+          "overs": "7.1"
         },
         {
           "slug": "pokhara-avengers",
@@ -430,7 +430,7 @@
       "result": null,
       "outcome": null,
       "winner": null,
-      "updated_at": "2026-11-01T11:45:50Z"
+      "updated_at": "2026-11-01T11:47:26Z"
     },
     {
       "number": 10,
