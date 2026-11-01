@@ -105,6 +105,40 @@ function trimInnings(inn) {
   };
 }
 
+// The feed sometimes lists a delivery twice (a bare "no run," stub, then the
+// full commentary) under the same over label. Wides share their label with the
+// next legal ball, so `extra` ("WD", "NB") is part of the identity. Keep the
+// entry with the most text, in the order first seen (newest first).
+function trimCommentary(entries) {
+  const byBall = new Map();
+  for (const c of entries || []) {
+    if ((c.type !== "ball" && c.type !== "wicket") || text(c.over) === null) {
+      continue;
+    }
+    const code = String(c.runs ?? "").toUpperCase();
+    const extra = ["WD", "NB", "LB", "B"].includes(code) ? code : null;
+    const ball = {
+      innings: c.inningsId ?? null,
+      over: text(c.over),
+      over_number: num(c.overNumber),
+      ball: num(c.ballNumber),
+      batter: text(c.batterName),
+      bowler: text(c.bowlerName),
+      runs: num(c.runsScored),
+      extra,
+      wicket: c.isWicket === true,
+      boundary: c.isBoundary === true,
+      text: text(c.text),
+    };
+    const key = `${ball.innings}|${ball.over}|${extra}|${ball.wicket}`;
+    const prev = byBall.get(key);
+    if (!prev || (ball.text || "").length > (prev.text || "").length) {
+      byBall.set(key, ball);
+    }
+  }
+  return [...byBall.values()];
+}
+
 export function trimScorecard(source, fetchedAt) {
   const d = source && source.data;
   if (!d || typeof d !== "object" || !Array.isArray(d.innings)) {
@@ -134,20 +168,7 @@ export function trimScorecard(source, fetchedAt) {
       team2: ((d.squad && d.squad.team2) || []).map(player),
     },
     innings: d.innings.map(trimInnings),
-    commentary: (d.commentary || [])
-      .filter((c) => c.type === "ball" || c.type === "wicket")
-      .map((c) => ({
-        innings: c.inningsId ?? null,
-        over: text(c.over),
-        over_number: num(c.overNumber),
-        ball: num(c.ballNumber),
-        batter: text(c.batterName),
-        bowler: text(c.bowlerName),
-        runs: num(c.runsScored ?? c.runs),
-        wicket: c.isWicket === true,
-        boundary: c.isBoundary === true,
-        text: text(c.text),
-      })),
+    commentary: trimCommentary(d.commentary),
   };
 }
 
