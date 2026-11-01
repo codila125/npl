@@ -23,3 +23,10 @@ def test_worker_uses_scraper_source_and_user_agent():
 def test_worker_allows_the_published_site_origin():
     site = urlsplit(config.SITE_URL)
     assert f'"{site.scheme}://{site.netloc}"' in WORKER
+
+
+def test_worker_scorecard_route_targets_the_same_api_and_validates_ids():
+    assert _const("SCORECARD_BASE") == f"{config.SOURCE_BASE}/api/v1/matches/"
+    assert "/scorecard`" in WORKER
+    # Only UUID match ids are proxied, so the route cannot be pointed elsewhere.
+    assert "MATCH_ID.test(" in WORKER
