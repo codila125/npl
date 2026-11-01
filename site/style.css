@@ -491,7 +491,7 @@ nav {
   font-weight: 700;
 }
 
-.crease-stat.batter:first-of-type .crease-name {
+.crease-stat.on-strike .crease-name {
   color: var(--accent);
 }
 

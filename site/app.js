@@ -840,6 +840,9 @@
     batters.slice(0, 2).forEach(function (b) {
       var item = stat(b.name + (b.on_strike ? " *" : ""), b.runs + " (" + b.balls + ")");
       item.classList.add("batter");
+      if (b.on_strike) {
+        item.classList.add("on-strike");
+      }
       item.appendChild(make("span", "crease-sub", b.fours + "×4 · " + b.sixes + "×6 · SR " +
         (b.strike_rate === null ? "–" : b.strike_rate.toFixed(0))));
       row.appendChild(item);
