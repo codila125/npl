@@ -30,6 +30,9 @@
   var lastHiddenAt = null;
   var liveTimer = null;
   var lastLive = null;
+  var lastCards = {};
+  var selectedInnings = {};
+  var liveView = null;
 
   function announce(message) {
     liveRegion.textContent = "";
@@ -649,43 +652,329 @@
     return "Scheduled for " + formatTime(match.start_utc) + " NPT";
   }
 
-  function renderLiveMatch(match, live, now) {
+  function cell(tag, text, className) {
+    return make(tag, className || null, text === null || text === undefined ? "–" : text);
+  }
+
+  function scoreTable(caption, columns, rows) {
+    var wrap = make("div", "table-wrap");
+    var table = make("table", "score-table");
+    table.appendChild(make("caption", null, caption));
+    var head = make("tr");
+    columns.forEach(function (name, index) {
+      head.appendChild(make("th", index === 0 ? null : "num", name));
+    });
+    table.appendChild(make("thead")).appendChild(head);
+    var body = make("tbody");
+    rows.forEach(function (row) {
+      body.appendChild(row);
+    });
+    table.appendChild(body);
+    wrap.appendChild(table);
+    return wrap;
+  }
+
+  function nameCell(name, note, active) {
+    var th = make("th");
+    var line = make("span", active ? "at-crease" : null, name + (active ? " *" : ""));
+    th.appendChild(line);
+    if (note) {
+      th.appendChild(make("span", "sub", note));
+    }
+    return th;
+  }
+
+  function battingRows(innings) {
+    return innings.batting.map(function (b) {
+      var row = make("tr");
+      var active = !b.out && b.on_strike;
+      row.appendChild(nameCell(b.name, b.out ? b.dismissal : "not out", active));
+      row.appendChild(cell("td", b.runs, "num strong"));
+      row.appendChild(cell("td", b.balls, "num"));
+      row.appendChild(cell("td", b.fours, "num"));
+      row.appendChild(cell("td", b.sixes, "num"));
+      row.appendChild(cell("td", b.strike_rate === null ? null : b.strike_rate.toFixed(1), "num"));
+      return row;
+    });
+  }
+
+  function bowlingRows(innings) {
+    return innings.bowling.map(function (b) {
+      var row = make("tr");
+      row.appendChild(nameCell(b.name, null, b.bowling_now));
+      row.appendChild(cell("td", b.overs, "num"));
+      row.appendChild(cell("td", b.maidens, "num"));
+      row.appendChild(cell("td", b.runs, "num"));
+      row.appendChild(cell("td", b.wickets, "num strong"));
+      row.appendChild(cell("td", b.economy === null ? null : b.economy.toFixed(2), "num"));
+      return row;
+    });
+  }
+
+  // Scorecard names carry role marks the squad list lacks: "Rohit Paudel (c)".
+  function bareName(name) {
+    return name.replace(/\s*\((?:c|wk|c & wk)\)\s*$/i, "").trim();
+  }
+
+  // Squad members of `teamId` whose name is not in `seen`.
+  function yetTo(card, teamId, seen) {
+    var side = card.team1.team_id === teamId ? card.squad.team1 : card.squad.team2;
+    var taken = seen.map(bareName);
+    return side.filter(function (p) {
+      return taken.indexOf(bareName(p.name)) === -1;
+    }).map(function (p) { return p.name; });
+  }
+
+  function listLine(label, names) {
+    var line = make("p", "roster");
+    line.appendChild(make("strong", null, label));
+    line.appendChild(document.createTextNode(" " + (names.length ? names.join(", ") : "–")));
+    return line;
+  }
+
+  // Newest-first commentary → overs newest-first, each ball oldest-first.
+  function recentOvers(card, inningsId) {
+    var overs = [];
+    var byNumber = {};
+    card.commentary.forEach(function (c) {
+      if (c.innings !== inningsId || c.over_number === null) {
+        return;
+      }
+      var group = byNumber[c.over_number];
+      if (!group) {
+        group = { number: c.over_number + 1, bowler: c.bowler, balls: [] };
+        byNumber[c.over_number] = group;
+        overs.push(group);
+      }
+      group.balls.unshift(c);
+    });
+    return overs.slice(0, 4);
+  }
+
+  function renderOvers(card, innings) {
+    var overs = recentOvers(card, innings.id);
+    if (overs.length === 0) {
+      return null;
+    }
+    var list = make("ol", "overs");
+    overs.forEach(function (over) {
+      var item = make("li");
+      var total = over.balls.reduce(function (sum, ball) { return sum + (ball.runs || 0); }, 0);
+      item.appendChild(make("span", "over-no", "Over " + over.number));
+      var balls = make("span", "balls");
+      over.balls.forEach(function (ball) {
+        var chip = make("span", "ball" + (ball.wicket ? " wicket" : ball.boundary ? " boundary" : ""),
+          ball.wicket ? "W" : ball.runs === null ? "·" : ball.runs);
+        chip.title = ball.over + " " + (ball.text || "");
+        balls.appendChild(chip);
+      });
+      item.appendChild(balls);
+      item.appendChild(make("span", "over-meta", total + (total === 1 ? " run · " : " runs · ") + (over.bowler || "")));
+      list.appendChild(item);
+    });
+    var block = make("div", "overs-block");
+    block.appendChild(make("h3", null, "Recent overs"));
+    block.appendChild(list);
+    return block;
+  }
+
+  function ballsOf(overs) {
+    var parts = String(overs || "0").split(".");
+    return Number(parts[0]) * 6 + Number(parts[1] || 0);
+  }
+
+  // "X need N runs from B balls · RRR" while the second innings is in progress.
+  function chaseLine(card, current) {
+    if (!current || card.status === "completed" || !card.target || !card.max_overs ||
+        card.innings_order.indexOf(current.id) !== 1 || current.runs === null) {
+      return null;
+    }
+    var need = card.target - current.runs;
+    var left = card.max_overs * 6 - ballsOf(current.overs);
+    if (need <= 0 || left <= 0) {
+      return null;
+    }
+    var rate = (need * 6 / left).toFixed(2);
+    return current.team + " need " + need + " from " + left + " balls · required rate " + rate;
+  }
+
+  function stat(label, value) {
+    var node = make("div", "crease-stat");
+    node.appendChild(make("span", "crease-name", label));
+    node.appendChild(make("span", "crease-figure", value));
+    return node;
+  }
+
+  // Who is out there right now: not-out batters and the bowler in action.
+  function renderCrease(innings) {
+    var batters = innings.batting.filter(function (b) {
+      return !b.out && (b.balls || b.runs || b.on_strike);
+    });
+    var bowler = innings.bowling.filter(function (b) { return b.bowling_now; })[0];
+    if (!batters.length && !bowler) {
+      return null;
+    }
+    var strip = make("div", "crease");
+    strip.appendChild(make("h3", null, "At the crease"));
+    var row = make("div", "crease-row");
+    batters.slice(0, 2).forEach(function (b) {
+      var item = stat(b.name + (b.on_strike ? " *" : ""), b.runs + " (" + b.balls + ")");
+      item.classList.add("batter");
+      item.appendChild(make("span", "crease-sub", b.fours + "×4 · " + b.sixes + "×6 · SR " +
+        (b.strike_rate === null ? "–" : b.strike_rate.toFixed(0))));
+      row.appendChild(item);
+    });
+    if (bowler) {
+      var item = stat(bowler.name, bowler.wickets + "/" + bowler.runs);
+      item.classList.add("bowler");
+      item.appendChild(make("span", "crease-sub", bowler.overs + " ov · " + bowler.maidens +
+        " mdn · econ " + (bowler.economy === null ? "–" : bowler.economy.toFixed(1))));
+      row.appendChild(item);
+    }
+    strip.appendChild(row);
+    return strip;
+  }
+
+  function renderInnings(card, innings) {
+    var panel = make("div", "innings");
+    var crease = card.status !== "completed" && card.current_innings === innings.id ?
+      renderCrease(innings) : null;
+    if (crease) {
+      panel.appendChild(crease);
+    }
+    var overs = renderOvers(card, innings);
+    if (overs) {
+      panel.appendChild(overs);
+    }
+    var otherTeamId = card.team1.team_id === innings.team_id ? card.team2.team_id : card.team1.team_id;
+    panel.appendChild(scoreTable("Batting", ["Batter", "R", "B", "4s", "6s", "SR"], battingRows(innings)));
+    panel.appendChild(listLine("Yet to bat", yetTo(card, innings.team_id, innings.batting.map(function (b) {
+      return b.name;
+    }))));
+    if (innings.extras_detail) {
+      panel.appendChild(listLine("Extras", [innings.extras + " (" + innings.extras_detail + ")"]));
+    }
+    if (innings.fall_of_wickets.length) {
+      panel.appendChild(listLine("Fall of wickets", innings.fall_of_wickets.map(function (f) {
+        return f.score + " (" + f.player + ", " + f.over + " ov)";
+      })));
+    }
+    panel.appendChild(scoreTable("Bowling", ["Bowler", "O", "M", "R", "W", "Econ"], bowlingRows(innings)));
+    panel.appendChild(listLine("Yet to bowl", yetTo(card, otherTeamId, innings.bowling.map(function (b) {
+      return b.name;
+    }))));
+    return panel;
+  }
+
+  function renderTabs(matchId, innings, selectedId) {
+    var tabs = make("div", "innings-tabs");
+    tabs.setAttribute("role", "group");
+    tabs.setAttribute("aria-label", "Innings");
+    innings.forEach(function (inn) {
+      var tab = make("button", "innings-tab", (inn.short || inn.team) + " " + (inn.score || ""));
+      tab.type = "button";
+      tab.setAttribute("aria-pressed", inn.id === selectedId ? "true" : "false");
+      tab.setAttribute("data-tab", matchId + ":" + inn.id);
+      tab.addEventListener("click", function () {
+        selectedInnings[matchId] = inn.id;
+        rerenderLive();
+      });
+      tabs.appendChild(tab);
+    });
+    return tabs;
+  }
+
+  function renderScorecard(match, card) {
+    var wrap = make("div", "scorecard");
+    var shown = card.innings.filter(function (inn) {
+      return inn.batting.length || inn.bowling.length;
+    });
+    if (!shown.length) {
+      return wrap;
+    }
+    var selected = shown.filter(function (inn) {
+      return inn.id === selectedInnings[match.id];
+    })[0] || shown.filter(function (inn) {
+      return inn.id === card.current_innings;
+    })[0] || shown[0];
+    // Current innings first, so the tabs read "now, then earlier".
+    shown.sort(function (a, b) {
+      return (b.id === card.current_innings) - (a.id === card.current_innings);
+    });
+    if (shown.length > 1) {
+      wrap.appendChild(renderTabs(match.id, shown, selected.id));
+    }
+    wrap.appendChild(renderInnings(card, selected));
+    return wrap;
+  }
+
+  function renderBoard(match, live, card) {
+    var liveBySlug = {};
+    live.teams.forEach(function (side) {
+      liveBySlug[side.slug] = side;
+    });
+    var batting = null;
+    if (card) {
+      card.innings.forEach(function (inn) {
+        if (inn.id === card.current_innings) {
+          batting = inn.team;
+        }
+      });
+    }
+    var board = make("div", "board");
+    match.teams.forEach(function (side) {
+      var row = liveBySlug[side.slug];
+      var team = make("div", "board-team" + (batting === side.name && live.status !== "completed" ? " batting" : ""));
+      team.appendChild(make("span", "board-name", side.name));
+      team.appendChild(make("span", "board-score", row && row.score ? row.score : "Yet to bat"));
+      if (row && row.score && row.overs) {
+        team.appendChild(make("span", "board-overs", row.overs + " ov"));
+      }
+      board.appendChild(team);
+    });
+    return board;
+  }
+
+  function renderLiveMatch(match, live, now, card) {
     var block = make("div", "live-match");
     var head = make("p", "live-title");
     if (live && hasScore(live) && live.status !== "completed") {
       head.appendChild(make("span", "badge", "LIVE"));
-      head.appendChild(document.createTextNode(" "));
     }
-    head.appendChild(document.createTextNode(matchLabel(match) + " · " +
+    head.appendChild(make("span", null, matchLabel(match) + " · " +
       match.teams.map(function (side) { return side.name; }).join(" vs ")));
     block.appendChild(head);
 
     if (live && hasScore(live)) {
-      var liveBySlug = {};
-      live.teams.forEach(function (side) {
-        liveBySlug[side.slug] = side;
-      });
-      var list = make("dl", "live-scores");
-      match.teams.forEach(function (side) {
-        var row = liveBySlug[side.slug];
-        list.appendChild(make("dt", null, side.name));
-        var score = row && row.score ? row.score : "Yet to bat";
-        if (row && row.score && row.overs) {
-          score += " (" + row.overs + " ov)";
-        }
-        list.appendChild(make("dd", null, score));
-      });
-      block.appendChild(list);
+      block.appendChild(renderBoard(match, live, card));
     }
-
     var status = liveStatus(match, live, now);
-    if (status) {
-      block.appendChild(make("p", "live-status", status));
+    var current = card && card.innings.filter(function (inn) {
+      return inn.id === card.current_innings;
+    })[0];
+    var chase = card ? chaseLine(card, current) : null;
+    if (chase || status) {
+      block.appendChild(make("p", "live-status", chase || status));
+    }
+    if (card && card.toss) {
+      block.appendChild(make("p", "live-toss", card.toss));
+    }
+    if (card && card.innings.length) {
+      block.appendChild(renderScorecard(match, card));
     }
     return block;
   }
 
-  function renderLive(candidates, payload, failed) {
+  function rerenderLive() {
+    if (liveView) {
+      renderLive(liveView.candidates, liveView.payload, liveView.failed, lastCards);
+    }
+  }
+
+  function renderLive(candidates, payload, failed, cards) {
+    liveView = { candidates: candidates, payload: payload, failed: failed };
+    var focused = document.activeElement && document.activeElement.getAttribute &&
+      document.activeElement.getAttribute("data-tab");
     var now = Date.now();
     var liveById = {};
     if (payload) {
@@ -695,7 +984,7 @@
     }
     clear(liveContent);
     candidates.forEach(function (match) {
-      liveContent.appendChild(renderLiveMatch(match, liveById[match.id] || null, now));
+      liveContent.appendChild(renderLiveMatch(match, liveById[match.id] || null, now, cards[match.id] || null));
     });
     if (failed) {
       liveContent.appendChild(make("p", "updated", payload ?
@@ -703,6 +992,37 @@
         "Live scores are unavailable right now."));
     }
     livePanel.hidden = false;
+    if (focused) {
+      var again = liveContent.querySelector('[data-tab="' + focused + '"]');
+      if (again) {
+        again.focus();
+      }
+    }
+  }
+
+  // Per-match scorecards for matches that have a score; a failed card keeps
+  // the last good one and never fails the panel.
+  function loadCards(candidates, payload) {
+    var scored = {};
+    payload.matches.forEach(function (live) {
+      if (hasScore(live)) {
+        scored[live.id] = true;
+      }
+    });
+    return Promise.all(candidates.filter(function (match) {
+      return scored[match.id];
+    }).map(function (match) {
+      return fetch(LIVE_URL + "/" + encodeURIComponent(match.id), { cache: "no-store" }).then(function (response) {
+        if (!response.ok) {
+          throw new Error("HTTP " + response.status);
+        }
+        return response.json();
+      }).then(function (card) {
+        if (card && Array.isArray(card.innings) && card.team1 && card.squad) {
+          lastCards[match.id] = card;
+        }
+      }).catch(function () {});
+    }));
   }
 
   function pollLive() {
@@ -727,9 +1047,12 @@
         throw new Error("bad live payload");
       }
       lastLive = payload;
-      renderLive(candidates, payload, false);
+      renderLive(candidates, payload, false, lastCards);
+      return loadCards(candidates, payload).then(function () {
+        renderLive(candidates, payload, false, lastCards);
+      });
     }).catch(function () {
-      renderLive(candidates, lastLive, true);
+      renderLive(candidates, lastLive, true, lastCards);
     });
   }
 
