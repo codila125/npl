@@ -6,7 +6,7 @@
     "timezone": "Asia/Kathmandu",
     "utc_offset": "+05:45"
   },
-  "updated_at": "2026-11-01T15:05:46Z",
+  "updated_at": "2026-11-02T09:52:51Z",
   "source": {
     "name": "nplt20league.com",
     "url": "https://nplt20league.com/"
@@ -439,30 +439,30 @@
       "id": "50b7ba7f-9983-49af-9a1f-cc675280d7aa",
       "start_utc": "2026-11-02T06:45:00Z",
       "venue": "Tribhuvan University Cricket Ground, Kirtipur",
-      "status": "scheduled",
-      "status_raw": "start_in",
+      "status": "other",
+      "status_raw": "live",
       "teams": [
         {
           "slug": "kathmandu-gurkhas",
           "name": "Kathmandu Gurkhas",
           "short": "KAG",
           "placeholder": false,
-          "score": null,
-          "overs": null
+          "score": "87/3",
+          "overs": "12.1"
         },
         {
           "slug": "karnali-yaks",
           "name": "Karnali Yaks",
           "short": "KAY",
           "placeholder": false,
-          "score": null,
-          "overs": null
+          "score": "180/6",
+          "overs": "20.0"
         }
       ],
       "result": null,
       "outcome": null,
       "winner": null,
-      "updated_at": "2026-11-01T15:00:42Z"
+      "updated_at": "2026-11-02T09:52:51Z"
     },
     {
       "number": 11,
