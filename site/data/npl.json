@@ -6,7 +6,7 @@
     "timezone": "Asia/Kathmandu",
     "utc_offset": "+05:45"
   },
-  "updated_at": "2026-11-02T14:55:00Z",
+  "updated_at": "2026-11-03T10:01:01Z",
   "source": {
     "name": "nplt20league.com",
     "url": "https://nplt20league.com/"
@@ -503,30 +503,30 @@
       "id": "5872b8ea-4c72-4878-ba6e-91282eb4a7ea",
       "start_utc": "2026-11-03T06:45:00Z",
       "venue": "Tribhuvan University Cricket Ground, Kirtipur",
-      "status": "scheduled",
-      "status_raw": "start_in",
+      "status": "other",
+      "status_raw": "live",
       "teams": [
         {
           "slug": "biratnagar-kings",
           "name": "Biratnagar Kings",
           "short": "BIK",
           "placeholder": false,
-          "score": null,
-          "overs": null
+          "score": "174/3",
+          "overs": "20.0"
         },
         {
           "slug": "janakpur-bolts",
           "name": "Janakpur Bolts",
           "short": "JAB",
           "placeholder": false,
-          "score": null,
-          "overs": null
+          "score": "136/4",
+          "overs": "17.0"
         }
       ],
       "result": null,
       "outcome": null,
       "winner": null,
-      "updated_at": "2026-11-02T14:49:58Z"
+      "updated_at": "2026-11-03T10:01:01Z"
     },
     {
       "number": 13,
