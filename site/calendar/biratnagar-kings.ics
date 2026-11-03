@@ -53,14 +53,15 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:npl-2026-m12@codila125.github.io
-DTSTAMP:20261103T100101Z
-LAST-MODIFIED:20261103T100101Z
+DTSTAMP:20261103T102116Z
+LAST-MODIFIED:20261103T102116Z
 DTSTART:20261103T064500Z
 DTEND:20261103T101500Z
 SUMMARY:Biratnagar Kings vs Janakpur Bolts (NPL Match 12)
 LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
-DESCRIPTION:NPL 2026 · Match 12\nKick-off 12:30 PM NPT\nhttps://codila125.
- github.io/npl/
+DESCRIPTION:Result: Biratnagar Kings won by 2 runs\nBiratnagar Kings 174/3 
+ (20.0 ov)\nJanakpur Bolts 172/7 (20.0 ov)\nhttps://codila125.github.io/npl
+ /
 URL:https://codila125.github.io/npl/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
