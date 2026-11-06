@@ -52,14 +52,15 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:npl-2026-m17@codila125.github.io
-DTSTAMP:20261026T184509Z
-LAST-MODIFIED:20261026T184509Z
+DTSTAMP:20261106T144941Z
+LAST-MODIFIED:20261106T144941Z
 DTSTART:20261106T111500Z
 DTEND:20261106T144500Z
 SUMMARY:Chitwan Rhinos vs Pokhara Avengers (NPL Match 17)
 LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
-DESCRIPTION:NPL 2026 · Match 17\nKick-off 5:00 PM NPT\nhttps://codila125.g
- ithub.io/npl/
+DESCRIPTION:Result: Chitwan Rhinos won by 30 runs\nChitwan Rhinos 151/6 (20
+ .0 ov)\nPokhara Avengers 121/10 (19.0 ov)\nhttps://codila125.github.io/npl
+ /
 URL:https://codila125.github.io/npl/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
