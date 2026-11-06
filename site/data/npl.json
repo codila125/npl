@@ -6,7 +6,7 @@
     "timezone": "Asia/Kathmandu",
     "utc_offset": "+05:45"
   },
-  "updated_at": "2026-11-05T14:10:28Z",
+  "updated_at": "2026-11-06T09:46:05Z",
   "source": {
     "name": "nplt20league.com",
     "url": "https://nplt20league.com/"
@@ -631,30 +631,30 @@
       "id": "a564936f-d565-4a92-8520-4b3f0c500a00",
       "start_utc": "2026-11-06T06:45:00Z",
       "venue": "Tribhuvan University Cricket Ground, Kirtipur",
-      "status": "scheduled",
-      "status_raw": "start_in",
+      "status": "other",
+      "status_raw": "live",
       "teams": [
         {
           "slug": "sudurpaschim-royals",
           "name": "Sudurpaschim Royals",
           "short": "SPR",
           "placeholder": false,
-          "score": null,
-          "overs": null
+          "score": "176/6",
+          "overs": "20.0"
         },
         {
           "slug": "karnali-yaks",
           "name": "Karnali Yaks",
           "short": "KAY",
           "placeholder": false,
-          "score": null,
-          "overs": null
+          "score": "52/5",
+          "overs": "10.4"
         }
       ],
       "result": null,
       "outcome": null,
       "winner": null,
-      "updated_at": "2026-11-05T13:47:26Z"
+      "updated_at": "2026-11-06T09:46:05Z"
     },
     {
       "number": 17,
