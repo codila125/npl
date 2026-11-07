@@ -66,14 +66,15 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:npl-2026-m18@codila125.github.io
-DTSTAMP:20261106T144942Z
-LAST-MODIFIED:20261106T144942Z
+DTSTAMP:20261107T150600Z
+LAST-MODIFIED:20261107T150600Z
 DTSTART:20261107T111500Z
 DTEND:20261107T144500Z
 SUMMARY:Kathmandu Gurkhas vs Lumbini Lions (NPL Match 18)
 LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
-DESCRIPTION:NPL 2026 · Match 18\nKick-off 5:00 PM NPT\nhttps://codila125.g
- ithub.io/npl/
+DESCRIPTION:Result: Kathmandu Gorkhas won by 36 runs\nKathmandu Gurkhas 160
+ /8 (20.0 ov)\nLumbini Lions 124/10 (19.3 ov)\nhttps://codila125.github.io/
+ npl/
 URL:https://codila125.github.io/npl/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
