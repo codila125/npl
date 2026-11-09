@@ -6,7 +6,7 @@
     "timezone": "Asia/Kathmandu",
     "utc_offset": "+05:45"
   },
-  "updated_at": "2026-11-07T15:11:05Z",
+  "updated_at": "2026-11-09T09:35:06Z",
   "source": {
     "name": "nplt20league.com",
     "url": "https://nplt20league.com/"
@@ -727,30 +727,30 @@
       "id": "9b4f5f44-d6dc-44fe-8e4d-a127e6360729",
       "start_utc": "2026-11-09T06:45:00Z",
       "venue": "Tribhuvan University Cricket Ground, Kirtipur",
-      "status": "scheduled",
-      "status_raw": "start_in",
+      "status": "other",
+      "status_raw": "live",
       "teams": [
         {
           "slug": "pokhara-avengers",
           "name": "Pokhara Avengers",
           "short": "POA",
           "placeholder": false,
-          "score": null,
-          "overs": null
+          "score": "217/3",
+          "overs": "20.0"
         },
         {
           "slug": "karnali-yaks",
           "name": "Karnali Yaks",
           "short": "KAY",
           "placeholder": false,
-          "score": null,
-          "overs": null
+          "score": "86/6",
+          "overs": "10.0"
         }
       ],
       "result": null,
       "outcome": null,
       "winner": null,
-      "updated_at": "2026-11-07T15:06:00Z"
+      "updated_at": "2026-11-09T09:35:06Z"
     },
     {
       "number": 20,
