@@ -6,7 +6,7 @@
     "timezone": "Asia/Kathmandu",
     "utc_offset": "+05:45"
   },
-  "updated_at": "2026-11-09T15:07:40Z",
+  "updated_at": "2026-11-10T11:39:10Z",
   "source": {
     "name": "nplt20league.com",
     "url": "https://nplt20league.com/"
@@ -791,16 +791,16 @@
       "id": "5253e941-abad-4456-8350-e19a3c4701e4",
       "start_utc": "2026-11-10T11:15:00Z",
       "venue": "Tribhuvan University Cricket Ground, Kirtipur",
-      "status": "scheduled",
-      "status_raw": "start_in",
+      "status": "other",
+      "status_raw": "live",
       "teams": [
         {
           "slug": "sudurpaschim-royals",
           "name": "Sudurpaschim Royals",
           "short": "SPR",
           "placeholder": false,
-          "score": null,
-          "overs": null
+          "score": "33/1",
+          "overs": "5.0"
         },
         {
           "slug": "janakpur-bolts",
@@ -814,7 +814,7 @@
       "result": null,
       "outcome": null,
       "winner": null,
-      "updated_at": "2026-11-09T15:02:36Z"
+      "updated_at": "2026-11-10T11:39:10Z"
     },
     {
       "number": 22,
