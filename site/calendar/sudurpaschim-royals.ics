@@ -85,14 +85,15 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:npl-2026-m21@codila125.github.io
-DTSTAMP:20261110T113910Z
-LAST-MODIFIED:20261110T113910Z
+DTSTAMP:20261110T144831Z
+LAST-MODIFIED:20261110T144831Z
 DTSTART:20261110T111500Z
 DTEND:20261110T144500Z
 SUMMARY:Sudurpaschim Royals vs Janakpur Bolts (NPL Match 21)
 LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
-DESCRIPTION:NPL 2026 · Match 21\nKick-off 5:00 PM NPT\nhttps://codila125.g
- ithub.io/npl/
+DESCRIPTION:Result: Sudurpaschim Royals won by 27 runs\nSudurpaschim Royals
+  120/9 (20.0 ov)\nJanakpur Bolts 93/10 (19.5 ov)\nhttps://codila125.github
+ .io/npl/
 URL:https://codila125.github.io/npl/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
