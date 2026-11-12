@@ -6,7 +6,7 @@
     "timezone": "Asia/Kathmandu",
     "utc_offset": "+05:45"
   },
-  "updated_at": "2026-11-10T14:53:36Z",
+  "updated_at": "2026-11-12T10:29:46Z",
   "source": {
     "name": "nplt20league.com",
     "url": "https://nplt20league.com/"
@@ -63,7 +63,7 @@
       "tied": 0,
       "no_result": 0,
       "points": 8,
-      "nrr": 1.168
+      "nrr": 1.075
     },
     {
       "position": 2,
@@ -74,7 +74,7 @@
       "tied": 0,
       "no_result": 0,
       "points": 8,
-      "nrr": 0.081
+      "nrr": 0.276
     },
     {
       "position": 3,
@@ -85,10 +85,21 @@
       "tied": 0,
       "no_result": 1,
       "points": 7,
-      "nrr": 1.501
+      "nrr": 1.356
     },
     {
       "position": 4,
+      "team": "biratnagar-kings",
+      "played": 6,
+      "won": 3,
+      "lost": 3,
+      "tied": 0,
+      "no_result": 0,
+      "points": 6,
+      "nrr": -0.568
+    },
+    {
+      "position": 5,
       "team": "chitwan-rhinos",
       "played": 5,
       "won": 2,
@@ -96,10 +107,10 @@
       "tied": 0,
       "no_result": 1,
       "points": 5,
-      "nrr": -0.057
+      "nrr": -0.142
     },
     {
-      "position": 5,
+      "position": 6,
       "team": "janakpur-bolts",
       "played": 6,
       "won": 2,
@@ -107,18 +118,7 @@
       "tied": 0,
       "no_result": 0,
       "points": 4,
-      "nrr": -0.303
-    },
-    {
-      "position": 6,
-      "team": "biratnagar-kings",
-      "played": 5,
-      "won": 2,
-      "lost": 3,
-      "tied": 0,
-      "no_result": 0,
-      "points": 4,
-      "nrr": -0.82
+      "nrr": -0.295
     },
     {
       "position": 7,
@@ -129,18 +129,18 @@
       "tied": 0,
       "no_result": 0,
       "points": 4,
-      "nrr": -0.905
+      "nrr": -0.775
     },
     {
       "position": 8,
       "team": "pokhara-avengers",
-      "played": 5,
+      "played": 6,
       "won": 1,
-      "lost": 4,
+      "lost": 5,
       "tied": 0,
       "no_result": 0,
       "points": 2,
-      "nrr": -0.707
+      "nrr": -0.568
     }
   ],
   "matches": [
@@ -823,30 +823,30 @@
       "id": "7e484214-93c1-4306-99a3-606d72049c80",
       "start_utc": "2026-11-12T06:45:00Z",
       "venue": "Tribhuvan University Cricket Ground, Kirtipur",
-      "status": "scheduled",
-      "status_raw": "start_in",
+      "status": "completed",
+      "status_raw": "completed",
       "teams": [
         {
           "slug": "biratnagar-kings",
           "name": "Biratnagar Kings",
           "short": "BIK",
           "placeholder": false,
-          "score": null,
-          "overs": null
+          "score": "136/6",
+          "overs": "19.2"
         },
         {
           "slug": "pokhara-avengers",
           "name": "Pokhara Avengers",
           "short": "POA",
           "placeholder": false,
-          "score": null,
-          "overs": null
+          "score": "132/10",
+          "overs": "17.5"
         }
       ],
-      "result": null,
-      "outcome": null,
-      "winner": null,
-      "updated_at": "2026-11-10T14:48:31Z"
+      "result": "Biratnagar Kings won by 4 wickets",
+      "outcome": "result",
+      "winner": "biratnagar-kings",
+      "updated_at": "2026-11-12T10:14:42Z"
     },
     {
       "number": 23,
@@ -856,7 +856,7 @@
       "start_utc": "2026-11-12T11:15:00Z",
       "venue": "Tribhuvan University Cricket Ground, Kirtipur",
       "status": "scheduled",
-      "status_raw": "scheduled",
+      "status_raw": "start_in",
       "teams": [
         {
           "slug": "karnali-yaks",
@@ -878,7 +878,7 @@
       "result": null,
       "outcome": null,
       "winner": null,
-      "updated_at": "2026-10-26T18:45:12Z"
+      "updated_at": "2026-11-12T10:14:43Z"
     },
     {
       "number": 24,
@@ -1175,15 +1175,26 @@
         "rank": 1,
         "player": "Lokesh Bam",
         "team": "biratnagar-kings",
-        "innings": 5,
-        "runs": 194,
+        "innings": 6,
+        "runs": 227,
         "wickets": 0,
-        "average": "38.80",
-        "strike_rate": "153.97",
+        "average": "37.83",
+        "strike_rate": "148.37",
         "economy": null
       },
       {
         "rank": 2,
+        "player": "Yuvraj Samra",
+        "team": "pokhara-avengers",
+        "innings": 3,
+        "runs": 205,
+        "wickets": 0,
+        "average": "68.33",
+        "strike_rate": "188.07",
+        "economy": null
+      },
+      {
+        "rank": 3,
         "player": "Ravi Bopara",
         "team": "chitwan-rhinos",
         "innings": 4,
@@ -1194,7 +1205,7 @@
         "economy": "13.00"
       },
       {
-        "rank": 3,
+        "rank": 4,
         "player": "Andre Russell",
         "team": "biratnagar-kings",
         "innings": 5,
@@ -1205,7 +1216,7 @@
         "economy": "10.00"
       },
       {
-        "rank": 4,
+        "rank": 5,
         "player": "Saif Hassan",
         "team": "janakpur-bolts",
         "innings": 4,
@@ -1214,17 +1225,6 @@
         "average": "46.67",
         "strike_rate": "115.70",
         "economy": "6.50"
-      },
-      {
-        "rank": 5,
-        "player": "Pawan Sarraf",
-        "team": "karnali-yaks",
-        "innings": 5,
-        "runs": 140,
-        "wickets": 0,
-        "average": "35.00",
-        "strike_rate": "105.26",
-        "economy": "8.67"
       }
     ],
     "top_wicket_taker": [
@@ -1309,6 +1309,17 @@
       },
       {
         "rank": 3,
+        "player": "Isuru Udana",
+        "team": "biratnagar-kings",
+        "innings": 1,
+        "runs": 25,
+        "wickets": 0,
+        "average": "25.00",
+        "strike_rate": "208.33",
+        "economy": "7.00"
+      },
+      {
+        "rank": 4,
         "player": "Ariful Islam",
         "team": "karnali-yaks",
         "innings": 1,
@@ -1319,7 +1330,7 @@
         "economy": null
       },
       {
-        "rank": 4,
+        "rank": 5,
         "player": "Deepak Dumre",
         "team": "karnali-yaks",
         "innings": 5,
@@ -1327,17 +1338,6 @@
         "wickets": 0,
         "average": "16.20",
         "strike_rate": "197.56",
-        "economy": null
-      },
-      {
-        "rank": 5,
-        "player": "Yuvraj Samra",
-        "team": "pokhara-avengers",
-        "innings": 2,
-        "runs": 121,
-        "wickets": 0,
-        "average": "60.50",
-        "strike_rate": "195.16",
         "economy": null
       }
     ],
