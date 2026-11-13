@@ -6,7 +6,7 @@
     "timezone": "Asia/Kathmandu",
     "utc_offset": "+05:45"
   },
-  "updated_at": "2026-11-12T14:28:45Z",
+  "updated_at": "2026-11-13T07:08:56Z",
   "source": {
     "name": "nplt20league.com",
     "url": "https://nplt20league.com/"
@@ -887,8 +887,8 @@
       "id": "05fc741a-7005-44a6-89a6-e94eeb0b5ed7",
       "start_utc": "2026-11-13T06:45:00Z",
       "venue": "Tribhuvan University Cricket Ground, Kirtipur",
-      "status": "scheduled",
-      "status_raw": "start_in",
+      "status": "other",
+      "status_raw": "live",
       "teams": [
         {
           "slug": "kathmandu-gurkhas",
@@ -903,14 +903,14 @@
           "name": "Sudurpaschim Royals",
           "short": "SPR",
           "placeholder": false,
-          "score": null,
-          "overs": null
+          "score": "15/4",
+          "overs": "4.0"
         }
       ],
       "result": null,
       "outcome": null,
       "winner": null,
-      "updated_at": "2026-11-12T14:23:42Z"
+      "updated_at": "2026-11-13T07:08:56Z"
     },
     {
       "number": 25,
