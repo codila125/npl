@@ -82,14 +82,14 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:npl-2026-m25@codila125.github.io
-DTSTAMP:20261026T184514Z
-LAST-MODIFIED:20261026T184514Z
+DTSTAMP:20261113T144152Z
+LAST-MODIFIED:20261113T144152Z
 DTSTART:20261113T111500Z
 DTEND:20261113T144500Z
 SUMMARY:Janakpur Bolts vs Chitwan Rhinos (NPL Match 25)
 LOCATION:Tribhuvan University Cricket Ground\, Kirtipur
-DESCRIPTION:NPL 2026 · Match 25\nKick-off 5:00 PM NPT\nhttps://codila125.g
- ithub.io/npl/
+DESCRIPTION:Result: Chitwan Rhinos won by 4 wickets\nJanakpur Bolts 88/9 (2
+ 0.0 ov)\nChitwan Rhinos 92/6 (17.2 ov)\nhttps://codila125.github.io/npl/
 URL:https://codila125.github.io/npl/
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT

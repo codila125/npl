@@ -6,7 +6,7 @@
     "timezone": "Asia/Kathmandu",
     "utc_offset": "+05:45"
   },
-  "updated_at": "2026-11-13T07:08:56Z",
+  "updated_at": "2026-11-13T14:46:55Z",
   "source": {
     "name": "nplt20league.com",
     "url": "https://nplt20league.com/"
@@ -56,6 +56,17 @@
   "standings": [
     {
       "position": 1,
+      "team": "sudurpaschim-royals",
+      "played": 7,
+      "won": 5,
+      "lost": 2,
+      "tied": 0,
+      "no_result": 0,
+      "points": 10,
+      "nrr": 0.135
+    },
+    {
+      "position": 2,
       "team": "lumbini-lions",
       "played": 6,
       "won": 4,
@@ -66,29 +77,29 @@
       "nrr": 1.422
     },
     {
-      "position": 2,
-      "team": "kathmandu-gurkhas",
-      "played": 5,
-      "won": 4,
-      "lost": 1,
-      "tied": 0,
-      "no_result": 0,
-      "points": 8,
-      "nrr": 1.168
-    },
-    {
       "position": 3,
-      "team": "sudurpaschim-royals",
+      "team": "kathmandu-gurkhas",
       "played": 6,
       "won": 4,
       "lost": 2,
       "tied": 0,
       "no_result": 0,
       "points": 8,
-      "nrr": 0.081
+      "nrr": 0.882
     },
     {
       "position": 4,
+      "team": "chitwan-rhinos",
+      "played": 6,
+      "won": 3,
+      "lost": 2,
+      "tied": 0,
+      "no_result": 1,
+      "points": 7,
+      "nrr": 0.213
+    },
+    {
+      "position": 5,
       "team": "biratnagar-kings",
       "played": 6,
       "won": 3,
@@ -99,26 +110,15 @@
       "nrr": -0.524
     },
     {
-      "position": 5,
-      "team": "chitwan-rhinos",
-      "played": 5,
-      "won": 2,
-      "lost": 2,
-      "tied": 0,
-      "no_result": 1,
-      "points": 5,
-      "nrr": -0.057
-    },
-    {
       "position": 6,
       "team": "janakpur-bolts",
-      "played": 6,
+      "played": 7,
       "won": 2,
-      "lost": 4,
+      "lost": 5,
       "tied": 0,
       "no_result": 0,
       "points": 4,
-      "nrr": -0.303
+      "nrr": -0.422
     },
     {
       "position": 7,
@@ -887,30 +887,30 @@
       "id": "05fc741a-7005-44a6-89a6-e94eeb0b5ed7",
       "start_utc": "2026-11-13T06:45:00Z",
       "venue": "Tribhuvan University Cricket Ground, Kirtipur",
-      "status": "other",
-      "status_raw": "live",
+      "status": "completed",
+      "status_raw": "completed",
       "teams": [
         {
           "slug": "kathmandu-gurkhas",
           "name": "Kathmandu Gurkhas",
           "short": "KAG",
           "placeholder": false,
-          "score": null,
-          "overs": null
+          "score": "118/7",
+          "overs": "20.0"
         },
         {
           "slug": "sudurpaschim-royals",
           "name": "Sudurpaschim Royals",
           "short": "SPR",
           "placeholder": false,
-          "score": "15/4",
-          "overs": "4.0"
+          "score": "125/6",
+          "overs": "20.0"
         }
       ],
-      "result": null,
-      "outcome": null,
-      "winner": null,
-      "updated_at": "2026-11-13T07:08:56Z"
+      "result": "Sudurpaschim Royals won by 7 runs",
+      "outcome": "result",
+      "winner": "sudurpaschim-royals",
+      "updated_at": "2026-11-13T10:21:01Z"
     },
     {
       "number": 25,
@@ -919,30 +919,30 @@
       "id": "79e5ef79-d23a-43b6-9ae4-9b83a02e6a03",
       "start_utc": "2026-11-13T11:15:00Z",
       "venue": "Tribhuvan University Cricket Ground, Kirtipur",
-      "status": "scheduled",
-      "status_raw": "scheduled",
+      "status": "completed",
+      "status_raw": "completed",
       "teams": [
         {
           "slug": "janakpur-bolts",
           "name": "Janakpur Bolts",
           "short": "JAB",
           "placeholder": false,
-          "score": null,
-          "overs": null
+          "score": "88/9",
+          "overs": "20.0"
         },
         {
           "slug": "chitwan-rhinos",
           "name": "Chitwan Rhinos",
           "short": "CHR",
           "placeholder": false,
-          "score": null,
-          "overs": null
+          "score": "92/6",
+          "overs": "17.2"
         }
       ],
-      "result": null,
-      "outcome": null,
-      "winner": null,
-      "updated_at": "2026-10-26T18:45:14Z"
+      "result": "Chitwan Rhinos won by 4 wickets",
+      "outcome": "result",
+      "winner": "chitwan-rhinos",
+      "updated_at": "2026-11-13T14:41:52Z"
     },
     {
       "number": 26,
@@ -952,7 +952,7 @@
       "start_utc": "2026-11-14T11:15:00Z",
       "venue": "Tribhuvan University Cricket Ground, Kirtipur",
       "status": "scheduled",
-      "status_raw": "scheduled",
+      "status_raw": "start_in",
       "teams": [
         {
           "slug": "biratnagar-kings",
@@ -974,7 +974,7 @@
       "result": null,
       "outcome": null,
       "winner": null,
-      "updated_at": "2026-10-26T18:45:14Z"
+      "updated_at": "2026-11-13T14:41:53Z"
     },
     {
       "number": 27,
@@ -1197,11 +1197,11 @@
         "rank": 3,
         "player": "Ravi Bopara",
         "team": "chitwan-rhinos",
-        "innings": 4,
-        "runs": 170,
+        "innings": 5,
+        "runs": 183,
         "wickets": 0,
-        "average": "56.67",
-        "strike_rate": "131.78",
+        "average": "45.75",
+        "strike_rate": "126.21",
         "economy": "13.00"
       },
       {
@@ -1217,71 +1217,71 @@
       },
       {
         "rank": 5,
-        "player": "Andre Russell",
-        "team": "biratnagar-kings",
-        "innings": 5,
-        "runs": 144,
-        "wickets": 6,
-        "average": "48.00",
-        "strike_rate": "189.47",
-        "economy": "10.00"
+        "player": "Dipendra Singh Airee",
+        "team": "sudurpaschim-royals",
+        "innings": 7,
+        "runs": 150,
+        "wickets": 5,
+        "average": "25.00",
+        "strike_rate": "109.49",
+        "economy": "5.26"
       }
     ],
     "top_wicket_taker": [
       {
         "rank": 1,
-        "player": "Harmeet Singh",
+        "player": "Rahul Yadav",
         "team": "janakpur-bolts",
-        "innings": 6,
-        "runs": 137,
-        "wickets": 11,
-        "average": "12.45",
-        "strike_rate": "130.00",
-        "economy": "5.83"
+        "innings": 7,
+        "runs": 158,
+        "wickets": 12,
+        "average": "13.17",
+        "strike_rate": "84.62",
+        "economy": "6.87"
       },
       {
         "rank": 2,
-        "player": "Rijan Dhakal",
-        "team": "chitwan-rhinos",
-        "innings": 4,
-        "runs": 81,
-        "wickets": 10,
-        "average": "8.10",
-        "strike_rate": "100.00",
-        "economy": "6.75"
+        "player": "Harmeet Singh",
+        "team": "janakpur-bolts",
+        "innings": 7,
+        "runs": 150,
+        "wickets": 11,
+        "average": "13.64",
+        "strike_rate": "120.00",
+        "economy": "5.66"
       },
       {
         "rank": 3,
-        "player": "Sher Malla",
-        "team": "lumbini-lions",
+        "player": "Rijan Dhakal",
+        "team": "chitwan-rhinos",
         "innings": 5,
-        "runs": 98,
-        "wickets": 9,
-        "average": "10.89",
-        "strike_rate": "80.00",
-        "economy": "5.44"
+        "runs": 91,
+        "wickets": 11,
+        "average": "8.27",
+        "strike_rate": "100.00",
+        "economy": "6.07"
       },
       {
         "rank": 4,
-        "player": "Mark Watt",
-        "team": "karnali-yaks",
+        "player": "Anil Kharel",
+        "team": "sudurpaschim-royals",
         "innings": 6,
-        "runs": 127,
-        "wickets": 9,
-        "average": "14.11",
-        "strike_rate": "54.10",
-        "economy": "5.77"
+        "runs": 91,
+        "wickets": 10,
+        "average": "9.10",
+        "strike_rate": "57.58",
+        "economy": "5.41"
       },
       {
         "rank": 5,
         "player": "Kamal Singh Airee",
         "team": "chitwan-rhinos",
-        "innings": 3,
-        "runs": 58,
-        "wickets": 9,
-        "average": "6.44",
-        "strike_rate": "150.00",
-        "economy": "5.80"
+        "innings": 4,
+        "runs": 83,
+        "wickets": 10,
+        "average": "8.30",
+        "strike_rate": "100.00",
+        "economy": "5.93"
       }
     ],
     "batting_strike_rate": [
@@ -1289,23 +1289,23 @@
         "rank": 1,
         "player": "Scott Kuggeleijn",
         "team": "sudurpaschim-royals",
-        "innings": 4,
-        "runs": 47,
-        "wickets": 8,
-        "average": "23.50",
-        "strike_rate": "276.47",
-        "economy": "9.21"
+        "innings": 5,
+        "runs": 53,
+        "wickets": 9,
+        "average": "17.67",
+        "strike_rate": "252.38",
+        "economy": "8.26"
       },
       {
         "rank": 2,
         "player": "Kamil mishara",
         "team": "chitwan-rhinos",
-        "innings": 1,
-        "runs": 28,
-        "wickets": 0,
-        "average": "28.00",
-        "strike_rate": "254.55",
-        "economy": null
+        "innings": 2,
+        "runs": 40,
+        "wickets": 2,
+        "average": "20.00",
+        "strike_rate": "235.29",
+        "economy": "6.00"
       },
       {
         "rank": 3,
@@ -1331,14 +1331,14 @@
       },
       {
         "rank": 5,
-        "player": "Sahan Arachchige",
-        "team": "kathmandu-gurkhas",
-        "innings": 2,
-        "runs": 67,
-        "wickets": 5,
-        "average": "67.00",
-        "strike_rate": "191.43",
-        "economy": "6.77"
+        "player": "Andre Russell",
+        "team": "biratnagar-kings",
+        "innings": 5,
+        "runs": 144,
+        "wickets": 6,
+        "average": "48.00",
+        "strike_rate": "189.47",
+        "economy": "10.00"
       }
     ],
     "bowling_economy": [
@@ -1346,12 +1346,12 @@
         "rank": 1,
         "player": "Harry Tector",
         "team": "janakpur-bolts",
-        "innings": 1,
-        "runs": 9,
+        "innings": 2,
+        "runs": 29,
         "wickets": 1,
-        "average": "9.00",
-        "strike_rate": "25.00",
-        "economy": "2.25"
+        "average": "29.00",
+        "strike_rate": "16.67",
+        "economy": "3.63"
       },
       {
         "rank": 2,
@@ -1377,6 +1377,17 @@
       },
       {
         "rank": 4,
+        "player": "Bishal Shusling",
+        "team": "janakpur-bolts",
+        "innings": 2,
+        "runs": 26,
+        "wickets": 3,
+        "average": "8.67",
+        "strike_rate": "120.75",
+        "economy": "4.33"
+      },
+      {
+        "rank": 5,
         "player": "Shakib AL Hasan",
         "team": "pokhara-avengers",
         "innings": 3,
@@ -1385,17 +1396,6 @@
         "average": "11.25",
         "strike_rate": "63.41",
         "economy": "4.50"
-      },
-      {
-        "rank": 5,
-        "player": "Moeen Ali",
-        "team": "janakpur-bolts",
-        "innings": 4,
-        "runs": 68,
-        "wickets": 7,
-        "average": "9.71",
-        "strike_rate": "104.85",
-        "economy": "4.86"
       }
     ]
   }
