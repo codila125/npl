@@ -6,7 +6,7 @@
     "timezone": "Asia/Kathmandu",
     "utc_offset": "+05:45"
   },
-  "updated_at": "2026-11-13T14:46:55Z",
+  "updated_at": "2026-11-14T15:02:26Z",
   "source": {
     "name": "nplt20league.com",
     "url": "https://nplt20league.com/"
@@ -56,6 +56,17 @@
   "standings": [
     {
       "position": 1,
+      "team": "lumbini-lions",
+      "played": 7,
+      "won": 5,
+      "lost": 1,
+      "tied": 0,
+      "no_result": 1,
+      "points": 11,
+      "nrr": 1.256
+    },
+    {
+      "position": 2,
       "team": "sudurpaschim-royals",
       "played": 7,
       "won": 5,
@@ -64,17 +75,6 @@
       "no_result": 0,
       "points": 10,
       "nrr": 0.135
-    },
-    {
-      "position": 2,
-      "team": "lumbini-lions",
-      "played": 6,
-      "won": 4,
-      "lost": 1,
-      "tied": 0,
-      "no_result": 1,
-      "points": 9,
-      "nrr": 1.422
     },
     {
       "position": 3,
@@ -101,13 +101,13 @@
     {
       "position": 5,
       "team": "biratnagar-kings",
-      "played": 6,
+      "played": 7,
       "won": 3,
-      "lost": 3,
+      "lost": 4,
       "tied": 0,
       "no_result": 0,
       "points": 6,
-      "nrr": -0.524
+      "nrr": -0.467
     },
     {
       "position": 6,
@@ -951,30 +951,30 @@
       "id": "649b55fe-388c-4afc-b586-e6f602636614",
       "start_utc": "2026-11-14T11:15:00Z",
       "venue": "Tribhuvan University Cricket Ground, Kirtipur",
-      "status": "scheduled",
-      "status_raw": "start_in",
+      "status": "completed",
+      "status_raw": "completed",
       "teams": [
         {
           "slug": "biratnagar-kings",
           "name": "Biratnagar Kings",
           "short": "BIK",
           "placeholder": false,
-          "score": null,
-          "overs": null
+          "score": "166/4",
+          "overs": "20.0"
         },
         {
           "slug": "lumbini-lions",
           "name": "Lumbini Lions",
           "short": "LUL",
           "placeholder": false,
-          "score": null,
-          "overs": null
+          "score": "168/6",
+          "overs": "19.5"
         }
       ],
-      "result": null,
-      "outcome": null,
-      "winner": null,
-      "updated_at": "2026-11-13T14:41:53Z"
+      "result": "Lumbini Lions won by 4 wickets",
+      "outcome": "result",
+      "winner": "lumbini-lions",
+      "updated_at": "2026-11-14T14:57:21Z"
     },
     {
       "number": 27,
@@ -984,7 +984,7 @@
       "start_utc": "2026-11-15T06:45:00Z",
       "venue": "Tribhuvan University Cricket Ground, Kirtipur",
       "status": "scheduled",
-      "status_raw": "scheduled",
+      "status_raw": "start_in",
       "teams": [
         {
           "slug": "chitwan-rhinos",
@@ -1006,7 +1006,7 @@
       "result": null,
       "outcome": null,
       "winner": null,
-      "updated_at": "2026-10-26T18:45:15Z"
+      "updated_at": "2026-11-14T14:57:22Z"
     },
     {
       "number": 28,
@@ -1175,11 +1175,11 @@
         "rank": 1,
         "player": "Lokesh Bam",
         "team": "biratnagar-kings",
-        "innings": 6,
-        "runs": 227,
+        "innings": 7,
+        "runs": 242,
         "wickets": 0,
-        "average": "37.83",
-        "strike_rate": "148.37",
+        "average": "34.57",
+        "strike_rate": "142.35",
         "economy": null
       },
       {
@@ -1311,12 +1311,12 @@
         "rank": 3,
         "player": "Isuru Udana",
         "team": "biratnagar-kings",
-        "innings": 1,
-        "runs": 25,
+        "innings": 2,
+        "runs": 31,
         "wickets": 0,
-        "average": "25.00",
-        "strike_rate": "208.33",
-        "economy": "7.00"
+        "average": "31.00",
+        "strike_rate": "206.67",
+        "economy": "9.00"
       },
       {
         "rank": 4,
@@ -1366,17 +1366,6 @@
       },
       {
         "rank": 3,
-        "player": "Abhishesh Gautam",
-        "team": "lumbini-lions",
-        "innings": 3,
-        "runs": 51,
-        "wickets": 5,
-        "average": "10.20",
-        "strike_rate": "94.12",
-        "economy": "4.25"
-      },
-      {
-        "rank": 4,
         "player": "Bishal Shusling",
         "team": "janakpur-bolts",
         "innings": 2,
@@ -1385,6 +1374,17 @@
         "average": "8.67",
         "strike_rate": "120.75",
         "economy": "4.33"
+      },
+      {
+        "rank": 4,
+        "player": "Abhishesh Gautam",
+        "team": "lumbini-lions",
+        "innings": 4,
+        "runs": 66,
+        "wickets": 6,
+        "average": "11.00",
+        "strike_rate": "94.12",
+        "economy": "4.40"
       },
       {
         "rank": 5,
